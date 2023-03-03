@@ -2,52 +2,73 @@
  {
   "CC Units": "Zeovogha",
   "Atilla Units": "Elite Nordic Warriors",
-  "Tier": "Tier II Sword Infantry"
+  "Tier": "Tier II Sword Infantry",
+   "CC Faction": "Saxons",
+   "Atilla Faction" : "Sal Set"
  },
  {
   "CC Units": "Zeovogha Jiha",
   "Atilla Units": "Chosen Warriors",
-  "Tier": "Tier III Sword Infantry"
+  "Tier": "Tier III Sword Infantry",
+  "CC Faction": "Saxons",
+  "Atilla Faction" : "Sal Set"
+  
  },
  {
   "CC Units": "Broiryrdsi",
   "Atilla Units": "Nordic Warriors",
-  "Tier": "Tier II Sword Infantry"
+  "Tier": "Tier II Sword Infantry",
+  "CC Faction": "Saxons",
+  "Atilla Faction" : "Sal Set"
  },
  {
   "CC Units": "Suge",
   "Atilla Units": "Nordic Bows",
-  "Tier": "Tier II Bow Infantry"
+  "Tier": "Tier II Bow Infantry",
+  "CC Faction": "Saxons",
+  "Atilla Faction" : "Sal Set"
  },
  {
   "CC Units": "Suge Jige",
   "Atilla Units": "Nordic Bows*",
-  "Tier": "Tier II Bow Infantry"
+  "Tier": "Tier II Bow Infantry",
+  "CC Faction": "Saxons",
+  "Atilla Faction" : "Sal Set"
  },
  {
   "CC Units": "Hastage",
   "Atilla Units": "Nordic Spearman",
-  "Tier": "Tier II Spear Infantry"
+  "Tier": "Tier II Spear Infantry",
+  "CC Faction": "Saxons",
+  "Atilla Faction" : "Sal Set"
  },
  {
   "CC Units": "Hastage Jige",
   "Atilla Units": "Elite Nordic Spearman",
-  "Tier": "Tier III Spear Infantry"
+  "Tier": "Tier III Spear Infantry",
+  "CC Faction": "Saxons",
+  "Atilla Faction" : "Sal Set"
  },
  {
   "CC Units": "Pilusi",
   "Atilla Units": "Nordic Javelinmen",
-  "Tier": "Tier II Javelin Infantry"
+  "Tier": "Tier II Javelin Infantry",
+  "CC Faction": "Saxons",
+  "Atilla Faction" : "Sal Set"
  },
  {
   "CC Units": "Pilusi Jisi",
   "Atilla Units": "Geoguth Javelinmen",
-  "Tier": "Tier II Javelin Infantry"
+  "Tier": "Tier II Javelin Infantry",
+  "CC Faction": "Saxons",
+  "Atilla Faction" : "Sal Set"
  },
  {
   "CC Units": "Vliptuch",
   "Atilla Units": "Mounted Raiders",
-  "Tier": "Tier I Melee Cavalry"
+  "Tier": "Tier I Melee Cavalry",
+  "CC Faction": "Saxons",
+  "Atilla Faction" : "Sal Set"
  },
  {
   "CC Units": "Onager",
@@ -57,537 +78,753 @@
  {
   "CC Units": "Auxiliary Infantry",
   "Atilla Units": "Nordic Spearman",
-  "Tier": "Tier II Spear Infantry"
+  "Tier": "Tier II Spear Infantry",
+  "CC Faction": "Saxons",
+  "Atilla Faction" : "Sal Set"
+  
  },
  {
   "CC Units": "Auxiliary Swordsmen",
   "Atilla Units": "Hearth Guards",
-  "Tier": "Tier II Sword Infantry"
+  "Tier": "Tier II Sword Infantry",
+  "CC Faction": "Saxons",
+  "Atilla Faction" : "Sal Set"
  },
  {
   "CC Units": "Auxiliary Pikemen",
   "Atilla Units": "Nordic Pikemen",
-  "Tier": "Tier I Pike Infantry"
+  "Tier": "Tier I Pike Infantry",
+  "CC Faction": "Saxons",
+  "Atilla Faction" : "Sal Set"
  },
  {
   "CC Units": "Auxiliary Horsemen",
   "Atilla Units": "Saxon Mounted Waband",
-  "Tier": "Tier I Melee Cavalry"
+  "Tier": "Tier I Melee Cavalry",
+  "CC Faction": "Saxons",
+  "Atilla Faction" : "Sal Set"
  },
  {
   "CC Units": "Auxiliary Horsemen",
   "Atilla Units": "Saxon Lancers",
-  "Tier": "Tier I Shock Cavalry"
+  "Tier": "Tier I Shock Cavalry",
+  "CC Faction": "Saxons",
+  "Atilla Faction" : "Sal Set"
  },
  {
   "CC Units": "Al-Haras al-Malik",
   "Atilla Units": "Gesithas",
-  "Tier": "Tier III Sword Infantry"
+  "Tier": "Tier III Sword Infantry",
+  "CC Faction": "Saxons",
+  "Atilla Faction" : "Sal Set"
  },
  {
   "CC Units": "Al-Fawaris al-Malik",
   "Atilla Units": "Nordic Horse Lords",
-  "Tier": "Tier II Melee Cavalry"
+  "Tier": "Tier II Melee Cavalry",
+  "CC Faction": "Saxons",
+  "Atilla Faction" : "Sal Set"
  },
  {
   "CC Units": "Auxiliary Crossbowmen",
   "Atilla Units": "Geoguth Javelinmen",
-  "Tier": "Tier II Javelin Infantry"
+  "Tier": "Tier II Javelin Infantry",
+  "CC Faction": "Saxons",
+  "Atilla Faction" : "Sal Set"
  },
  {
   "CC Units": "Royal Guard",
   "Atilla Units": "Chieftain with Gedhriht",
-  "Tier": "Tier III Sword Infantry"
+  "Tier": "Tier III Sword Infantry",
+  "CC Faction": "Saxons",
+  "Atilla Faction" : "Sal Set"
  },
  {
   "CC Units": "General Guard",
   "Atilla Units": "Nordic Warlord",
-  "Tier": "Tier II Sword Infantry"
+  "Tier": "Tier II Sword Infantry",
+  "CC Faction": "Saxons",
+  "Atilla Faction" : "Sal Set"
  },
  {
   "CC Units": "Broiryrdsi Axemen",
   "Atilla Units": "Nordic Axe Warband",
-  "Tier": "Tier II Axe Infantry"
+  "Tier": "Tier II Axe Infantry",
+  "CC Faction": "Saxons",
+  "Atilla Faction" : "Sal Set"
  },
  {
   "CC Units": "Sword and Buckler Men",
   "Atilla Units": "Gothic Palatina Defectores",
-  "Tier": "Tier II Sword Infantry"
+  "Tier": "Tier II Sword Infantry",
+  "CC Faction": "Felgrievd",
+  "Atilla Faction": "Ostrogoth"
  },
  {
   "CC Units": "Felgrievian Swordsmen",
   "Atilla Units": "Noble Germanic Swordsmen",
-  "Tier": "Tier II Sword Infantry"
+  "Tier": "Tier II Sword Infantry",
+  "CC Faction": "Felgrievd",
+  "Atilla Faction": "Ostrogoth"
  },
  {
   "CC Units": "Felgrievian Town Militia",
   "Atilla Units": "Gothic Warband",
-  "Tier": "Tier I Sword Infantry"
+  "Tier": "Tier I Sword Infantry",
+  "CC Faction": "Felgrievd",
+  "Atilla Faction": "Ostrogoth"
  },
  {
   "CC Units": "Felgrievian Pike Militia",
   "Atilla Units": "Gothic Pikemen",
-  "Tier": "Tier I Pike Infantry"
+  "Tier": "Tier I Pike Infantry",
+  "CC Faction": "Felgrievd",
+  "Atilla Faction": "Ostrogoth"
  },
  {
   "CC Units": "Felgrievian Spear Militia",
   "Atilla Units": "Germanic Levy",
-  "Tier": "Tier I Spear Infantry"
+  "Tier": "Tier I Spear Infantry",
+  "CC Faction": "Felgrievd",
+  "Atilla Faction": "Ostrogoth"
  },
  {
   "CC Units": "Almogavars",
   "Atilla Units": "Germanic Brigands*",
-  "Tier": "Tier I Javelin Infantry"
+  "Tier": "Tier I Javelin Infantry",
+  "CC Faction": "Felgrievd",
+  "Atilla Faction": "Ostrogoth"
  },
  {
   "CC Units": "Felgrievian Crossbow Militia",
   "Atilla Units": "Germanic Crossbowmen",
-  "Tier": "Tier II Crossbow Infantry"
+  "Tier": "Tier II Crossbow Infantry",
+  "CC Faction": "Felgrievd",
+  "Atilla Faction": "Ostrogoth"
  },
  {
   "CC Units": "Felgrievian Javelinmen",
   "Atilla Units": "Germanic Brigands",
-  "Tier": "Tier I Javelin Infantry"
+  "Tier": "Tier I Javelin Infantry",
+  "CC Faction": "Felgrievd",
+  "Atilla Faction": "Ostrogoth"
  },
  {
   "CC Units": "Felgrievian Pavise Crossbowmen",
   "Atilla Units": "Germanic Crossbowmen**",
-  "Tier": "Tier II Crossbow Infantry"
+  "Tier": "Tier II Crossbow Infantry",
+  "CC Faction": "Felgrievd",
+  "Atilla Faction": "Ostrogoth"
  },
  {
   "CC Units": "Felgrievian Merchant Mercenary Cavalry",
   "Atilla Units": "Germanic Horsemen",
-  "Tier": "Tier I Melee Cavalry"
+  "Tier": "Tier I Melee Cavalry",
+  "CC Faction": "Felgrievd",
+  "Atilla Faction": "Ostrogoth"
  },
  {
   "CC Units": "Jinetes",
   "Atilla Units": "Talifali Cavalry",
-  "Tier": "Tier II Missile Cavalry"
+  "Tier": "Tier II Missile Cavalry",
+  "CC Faction": "Felgrievd",
+  "Atilla Faction": "Ostrogoth"
  },
  {
   "CC Units": "Felgrievian Mounted Crossbowmen",
   "Atilla Units": "Germanic Night Raiders",
-  "Tier": "Tier II Missile Cavalry"
+  "Tier": "Tier II Missile Cavalry",
+  "CC Faction": "Felgrievd",
+  "Atilla Faction": "Ostrogoth"
  },
  {
   "CC Units": "Trahian Town Militia",
   "Atilla Units": "Germanic Levy",
-  "Tier": "Tier I Spear Infantry"
+  "Tier": "Tier I Spear Infantry",
+  "CC Faction": "Trahian",
+  "Atilla Faction": "Franks"
  },
  {
   "CC Units": "Trahian Armoured Sergeants",
   "Atilla Units": "Germanic Spearman*",
-  "Tier": "Tier II Spear Infantry"
+  "Tier": "Tier II Spear Infantry",
+  "CC Faction": "Trahian",
+  "Atilla Faction": "Franks"
  },
  {
   "CC Units": "Trahian Pike Militia",
   "Atilla Units": "Germanic Pikes",
-  "Tier": "Tier I Pike Infantry"
+  "Tier": "Tier I Pike Infantry",
+  "CC Faction": "Trahian",
+  "Atilla Faction": "Franks"
  },
  {
   "CC Units": "Trahian Sergeant Spearman",
   "Atilla Units": "Germanic Spearman",
-  "Tier": "Tier II Spear Infantry"
+  "Tier": "Tier II Spear Infantry",
+  "CC Faction": "Trahian",
+  "Atilla Faction": "Franks"
  },
  {
   "CC Units": "Trahian Spear Militia",
   "Atilla Units": "Germanic Levy*",
-  "Tier": "Tier I Spear Infantry"
+  "Tier": "Tier I Spear Infantry",
+  "CC Faction": "Trahian",
+  "Atilla Faction": "Franks"
  },
  {
   "CC Units": "Dismounted Trahian Feudal Knights",
   "Atilla Units": "Sword Haerbann",
-  "Tier": "Tier I Sword Infantry"
+  "Tier": "Tier I Sword Infantry",
+  "CC Faction": "Trahian",
+  "Atilla Faction": "Franks"
  },
  {
   "CC Units": "Dismounted Trahian Royal Knights",
   "Atilla Units": "Elite Sword Haerbann",
-  "Tier": "Tier II Sword Infantry"
+  "Tier": "Tier II Sword Infantry",
+  "CC Faction": "Trahian",
+  "Atilla Faction": "Franks"
  },
  {
   "CC Units": "Verlorene Haufen",
   "Atilla Units": "Fransiscan Haerbann",
-  "Tier": "Tier II Sword Infantry"
+  "Tier": "Tier II Sword Infantry",
+  "CC Faction": "Trahian",
+  "Atilla Faction": "Franks"
  },
  {
   "CC Units": "Trahian Halberd Militia",
   "Atilla Units": "Germanic Warband",
-  "Tier": "Tier I Sword Infantry"
+  "Tier": "Tier I Sword Infantry",
+  "CC Faction": "Trahian",
+  "Atilla Faction": "Franks"
  },
  {
   "CC Units": "Zweihander",
   "Atilla Units": "Axe Haerbann",
-  "Tier": "Tier II Sword Infantry"
+  "Tier": "Tier II Sword Infantry",
+  "CC Faction": "Trahian",
+  "Atilla Faction": "Franks"
  },
  {
   "CC Units": "Trahian Crossbow Militia",
   "Atilla Units": "Germanic Crossbowmen",
-  "Tier": "Tier I Crossbow Infantry"
+  "Tier": "Tier I Crossbow Infantry",
+  "CC Faction": "Trahian",
+  "Atilla Faction": "Franks"
  },
  {
   "CC Units": "Trahian Pavie Crossbowmen",
   "Atilla Units": "Germanic Crossbowmen**",
-  "Tier": "Tier I Crossbow Infantry"
+  "Tier": "Tier I Crossbow Infantry",
+  "CC Faction": "Trahian",
+  "Atilla Faction": "Franks"
  },
  {
   "CC Units": "Trahian Peasants Archers",
   "Atilla Units": "Germanic Bows",
-  "Tier": "Tier I Bow Infantry"
+  "Tier": "Tier I Bow Infantry",
+  "CC Faction": "Trahian",
+  "Atilla Faction": "Franks"
  },
  {
   "CC Units": "Trahian Peasant Crossbowmen",
   "Atilla Units": "Germanic Crossbowmen",
-  "Tier": "Tier I Crossbow Infantry"
+  "Tier": "Tier I Crossbow Infantry",
+  "CC Faction": "Trahian",
+  "Atilla Faction": "Franks"
  },
  {
   "CC Units": "Trahian Mounted Sergeants",
   "Atilla Units": "Germanic Mounted Warband",
-  "Tier": "Tier I Melee Cavalry"
+  "Tier": "Tier I Melee Cavalry",
+  "CC Faction": "Trahian",
+  "Atilla Faction": "Franks"
  },
  {
   "CC Units": "Trahian Feudal Knights",
   "Atilla Units": "Germanic Horsemen",
-  "Tier": "Tier II Melee Cavalry"
+  "Tier": "Tier II Melee Cavalry",
+  "CC Faction": "Trahian",
+  "Atilla Faction": "Franks"
  },
  {
   "CC Units": "Trahian Knights",
   "Atilla Units": "Antrustiones Cavalry Guard",
-  "Tier": "Tier III Melee Cavalry"
+  "Tier": "Tier III Melee Cavalry",
+  "CC Faction": "Trahian",
+  "Atilla Faction": "Franks"
  },
  {
   "CC Units": "Royal Knights",
   "Atilla Units": "Noble Germanic Horsemen",
-  "Tier": "Tier II Melee Cavalry"
+  "Tier": "Tier II Melee Cavalry",
+  "CC Faction": "Trahian",
+  "Atilla Faction": "Franks"
  },
  {
   "CC Units": "Trahian Mailed Knights",
   "Atilla Units": "Salian Frankish Lancers",
-  "Tier": "Tier I Melee Cavalry"
+  "Tier": "Tier I Melee Cavalry",
+  "CC Faction": "Trahian",
+  "Atilla Faction": "Franks"
  },
  {
   "CC Units": "Trahian Merchant Cavalry Militia",
   "Atilla Units": "Germanic Mounted Warband",
-  "Tier": "Tier I Melee Cavalry"
+  "Tier": "Tier I Melee Cavalry",
+  "CC Faction": "Trahian",
+  "Atilla Faction": "Franks"
  },
  {
   "CC Units": "Trahian Mounted Crossbowmen",
   "Atilla Units": "Germanic Night Raiders",
-  "Tier": "Tier II Missile Cavalry"
+  "Tier": "Tier II Missile Cavalry",
+  "CC Faction": "Trahian",
+  "Atilla Faction": "Franks"
  },
  {
   "CC Units": "Selean Town Militia",
   "Atilla Units": "Germanic Levy",
-  "Tier": "Tier I Spear Infantry"
+  "Tier": "Tier I Spear Infantry",
+  "CC Faction": "Selea",
+  "Atilla Faction": "Visigoth"
  },
  {
   "CC Units": "Selean Levy Spearman",
   "Atilla Units": "Tier I Spear Infantry",
-  "Tier": "Tier I Spear Infantry"
+  "Tier": "Tier I Spear Infantry",
+  "CC Faction": "Selea",
+  "Atilla Faction": "Visigoth"
  },
  {
   "CC Units": "Selean Spear Militia",
   "Atilla Units": "Germanic Levy*",
-  "Tier": "Tier I Spear Infantry"
+  "Tier": "Tier I Spear Infantry",
+  "CC Faction": "Selea",
+  "Atilla Faction": "Visigoth"
  },
  {
   "CC Units": "Selean Armoured Swordsmen",
   "Atilla Units": "Gothic Palatina Defectores",
-  "Tier": "Tier II Sword Infantry"
+  "Tier": "Tier II Sword Infantry",
+  "CC Faction": "Selea",
+  "Atilla Faction": "Visigoth"
  },
  {
   "CC Units": "Billmen",
   "Atilla Units": "Germanic Band",
-  "Tier": "Tier I Sword Infantry"
+  "Tier": "Tier I Sword Infantry",
+  "CC Faction": "Selea",
+  "Atilla Faction": "Visigoth"
  },
  {
   "CC Units": "Bill Militia",
   "Atilla Units": "Gothic Falxes",
-  "Tier": "Tier I Sword Infantry"
+  "Tier": "Tier I Sword Infantry",
+  "CC Faction": "Selea",
+  "Atilla Faction": "Visigoth"
  },
  {
   "CC Units": "Dismounted Selean Knights",
   "Atilla Units": "Thracian Warriors*",
-  "Tier": "Tier II Sword Infantry"
+  "Tier": "Tier II Sword Infantry",
+  "CC Faction": "Selea",
+  "Atilla Faction": "Visigoth"
  },
  {
   "CC Units": "Dismounted Selean Feudal Knights",
   "Atilla Units": "Thracian Warrior",
-  "Tier": "Tier II Sword Infantry"
+  "Tier": "Tier II Sword Infantry",
+  "CC Faction": "Selea",
+  "Atilla Faction": "Visigoth"
  },
  {
   "CC Units": "Heavy Billmen",
   "Atilla Units": "Gothic Warband*",
-  "Tier": "Tier I Sword Infantry"
+  "Tier": "Tier I Sword Infantry",
+  "CC Faction": "Selea",
+  "Atilla Faction": "Visigoth"
  },
  {
   "CC Units": "Heavy Bill Militia",
   "Atilla Units": "Germanic Warband",
-  "Tier": "Tier I Sword Infantry"
+  "Tier": "Tier I Sword Infantry",
+  "CC Faction": "Selea",
+  "Atilla Faction": "Visigoth"
  },
  {
   "CC Units": "Selean Archer Militia",
   "Atilla Units": "Germanic Hunters",
-  "Tier": "Tier I Bow Infantry"
+  "Tier": "Tier I Bow Infantry",
+  "CC Faction": "Selea",
+  "Atilla Faction": "Visigoth"
  },
  {
   "CC Units": "Selean Longbowmen",
   "Atilla Units": "Gothic Archers",
-  "Tier": "Tier II Bow Infantry"
+  "Tier": "Tier II Bow Infantry",
+  "CC Faction": "Selea",
+  "Atilla Faction": "Visigoth"
  },
  {
   "CC Units": "Selean Peasant Archers",
   "Atilla Units": "Germanic Bows",
-  "Tier": "Tier I Bow Infantry"
+  "Tier": "Tier I Bow Infantry",
+  "CC Faction": "Selea",
+  "Atilla Faction": "Visigoth"
  },
  {
   "CC Units": "Selean Retinue Longbowmen",
   "Atilla Units": "Gothic Archers*",
-  "Tier": "Tier II Bow Infantry"
+  "Tier": "Tier II Bow Infantry",
+  "CC Faction": "Selea",
+  "Atilla Faction": "Visigoth"
  },
  {
   "CC Units": "Whitemane Archers",
   "Atilla Units": "Elite Germanic Archers",
-  "Tier": "Tier III Bow Infantry"
+  "Tier": "Tier III Bow Infantry",
+  "CC Faction": "Selea",
+  "Atilla Faction": "Visigoth"
  },
  {
   "CC Units": "Yeoman Archers",
   "Atilla Units": "Germanic Archers",
-  "Tier": "Tier II Bow Infantry"
+  "Tier": "Tier II Bow Infantry",
+  "CC Faction": "Selea",
+  "Atilla Faction": "Visigoth"
  },
  {
   "CC Units": "Hobelars",
   "Atilla Units": "Gothic Mounted Warband",
-  "Tier": "Tier I Melee Cavalry"
+  "Tier": "Tier I Melee Cavalry",
+  "CC Faction": "Selea",
+  "Atilla Faction": "Visigoth"
  },
  {
   "CC Units": "Demi Lancers",
   "Atilla Units": "Noble Germanic Lancers",
-  "Tier": "Tier II Shock Cavalry"
+  "Tier": "Tier II Shock Cavalry",
+  "CC Faction": "Selea",
+  "Atilla Faction": "Visigoth"
  },
  {
   "CC Units": "Selean Knights",
   "Atilla Units": "Noble Germanic Horsemen",
-  "Tier": "Tier II Melee Cavalry"
+  "Tier": "Tier II Melee Cavalry",
+  "CC Faction": "Selea",
+  "Atilla Faction": "Visigoth"
  },
  {
   "CC Units": "Selean Feudal Knights",
   "Atilla Units": "Germanic Horsemen",
-  "Tier": "Tier II Melee Cavalry"
+  "Tier": "Tier II Melee Cavalry",
+  "CC Faction": "Selea",
+  "Atilla Faction": "Visigoth"
  },
  {
   "CC Units": "Selean Mailed Knights",
   "Atilla Units": "Germanic Lancers",
-  "Tier": "Tier I Shock Cavalry"
+  "Tier": "Tier I Shock Cavalry",
+  "CC Faction": "Selea",
+  "Atilla Faction": "Visigoth"
  },
  {
   "CC Units": "Selean Merchant Cavalry Militia",
   "Atilla Units": "Germanic Mounted Warband",
-  "Tier": "Tier I Melee Cavalry"
+  "Tier": "Tier I Melee Cavalry",
+  "CC Faction": "Selea",
+  "Atilla Faction": "Visigoth"
  },
  {
   "CC Units": "Cypran Town Militia",
   "Atilla Units": "Germanic Levy",
-  "Tier": "Tier I Spear Infantry"
+  "Tier": "Tier I Spear Infantry",
+  "CC Faction": "Cypran",
+  "Atilla Faction": "Suebians"
  },
  {
   "CC Units": "Cypan Spearman",
   "Atilla Units": "Germanic Spearmen",
-  "Tier": "Tier II Spear Infantry"
+  "Tier": "Tier II Spear Infantry",
+  "CC Faction": "Cypran",
+  "Atilla Faction": "Suebians"
  },
  {
   "CC Units": "Cypran Spear Militia",
   "Atilla Units": "Germanic Levy*",
-  "Tier": "Tier I Spear Infantry"
+  "Tier": "Tier I Spear Infantry",
+  "CC Faction": "Cypran",
+  "Atilla Faction": "Suebians"
  },
  {
   "CC Units": "Spartan Hoplites",
   "Atilla Units": "Suebi Oath Takers",
-  "Tier": "Tier II Spear Infantry"
+  "Tier": "Tier II Spear Infantry",
+  "CC Faction": "Cypran",
+  "Atilla Faction": "Suebians"
  },
  {
   "CC Units": "Cypran Infantry",
   "Atilla Units": "Germanic Nobles",
-  "Tier": "Tier II Sword Infantry"
+  "Tier": "Tier II Sword Infantry",
+  "CC Faction": "Cypran",
+  "Atilla Faction": "Suebians"
  },
  {
   "CC Units": "Dismounted Drakiakon",
   "Atilla Units": "Noble Germanic Swordsmen",
-  "Tier": "Tier II Sword Infantry"
+  "Tier": "Tier II Sword Infantry",
+  "CC Faction": "Cypran",
+  "Atilla Faction": "Suebians"
  },
  {
   "CC Units": "Cypran Archer Militia",
   "Atilla Units": "Germanic Hunters",
-  "Tier": "Tier I Bow infantry"
+  "Tier": "Tier I Bow infantry",
+  "CC Faction": "Cypran",
+  "Atilla Faction": "Suebians"
  },
  {
   "CC Units": "Cypran Peasant Archers",
   "Atilla Units": "Germanic Bows",
-  "Tier": "Tier I Bow Infantry"
+  "Tier": "Tier I Bow Infantry",
+  "CC Faction": "Cypran",
+  "Atilla Faction": "Suebians"
  },
  {
   "CC Units": "Cypran Militia Cavalry",
   "Atilla Units": "Germanic Mounted Warband",
-  "Tier": "Tier I Melee Cavalry"
+  "Tier": "Tier I Melee Cavalry",
+  "CC Faction": "Cypran",
+  "Atilla Faction": "Suebians"
  },
  {
   "CC Units": "Drakiakon",
   "Atilla Units": "Noble Germanic Horsemen",
-  "Tier": "Tier II Melee Cavalry"
+  "Tier": "Tier II Melee Cavalry",
+  "CC Faction": "Cypran",
+  "Atilla Faction": "Suebians"
  },
  {
   "CC Units": "Cypran Cavalry",
   "Atilla Units": "Taifali Cavalry",
-  "Tier": "Tier I Melee Cavalry"
+  "Tier": "Tier I Melee Cavalry",
+  "CC Faction": "Cypran",
+  "Atilla Faction": "Suebians"
  },
  {
   "CC Units": "Beitikon",
   "Atilla Units": "Taifali Cavalry",
-  "Tier": "Tier I Melee Cavalry"
+  "Tier": "Tier I Melee Cavalry",
+  "CC Faction": "Cypran",
+  "Atilla Faction": "Suebians"
  },
  {
   "CC Units": "Armoured Legionaires",
   "Atilla Units": "Cohors",
-  "Tier": "Tier I Sword Infantry"
+  "Tier": "Tier I Sword Infantry",
+  "CC Faction": "Coragoniacs",
+  "Atilla Faction": "Western Roman Empire"
  },
  {
   "CC Units": "Legionary Cohort",
   "Atilla Units": "Legio",
-  "Tier": "Tier II Sword Infantry"
+  "Tier": "Tier II Sword Infantry",
+  "CC Faction": "Coragoniacs",
+  "Atilla Faction": "Western Roman Empire"
  },
  {
   "CC Units": "Eagle Cohort",
   "Atilla Units": "Legio Comitatenses",
-  "Tier": "Tier II Sword Infantry"
+  "Tier": "Tier II Sword Infantry",
+  "CC Faction": "Coragoniacs",
+  "Atilla Faction": "Western Roman Empire"
  },
  {
   "CC Units": "Evocati Cohort",
   "Atilla Units": "Elite Palatina",
-  "Tier": "Tier III Sword Infantry"
+  "Tier": "Tier III Sword Infantry",
+  "CC Faction": "Coragoniacs",
+  "Atilla Faction": "Western Roman Empire"
  },
  {
   "CC Units": "Praetorian Guard",
   "Atilla Units": "Herculiani Seniores",
-  "Tier": "Tier III Sword Infantry"
+  "Tier": "Tier III Sword Infantry",
+  "CC Faction": "Coragoniacs",
+  "Atilla Faction": "Western Roman Empire"
  },
  {
   "CC Units": "Legionary Cavalry",
   "Atilla Units": "Equites Promoti",
-  "Tier": "Tier II Melee Cavalry"
+  "Tier": "Tier II Melee Cavalry",
+  "CC Faction": "Coragoniacs",
+  "Atilla Faction": "Western Roman Empire"
  },
  {
   "CC Units": "Praetorian Cavalry",
   "Atilla Units": "Scholae Palatinae",
-  "Tier": "Tier II Melee Cavalry"
+  "Tier": "Tier II Melee Cavalry",
+  "CC Faction": "Coragoniacs",
+  "Atilla Faction": "Western Roman Empire"
  },
  {
   "CC Units": "Vigiles",
   "Atilla Units": "Foederati Spears",
-  "Tier": "Tier I Spear Infantry"
+  "Tier": "Tier I Spear Infantry",
+  "CC Faction": "Coragoniacs",
+  "Atilla Faction": "Western Roman Empire"
  },
  {
   "CC Units": "Datlov Spear Militia",
   "Atilla Units": "Nordic Levy",
-  "Tier": "Tier I Spear Infantry"
+  "Tier": "Tier I Spear Infantry",
+  "CC Faction": "Datlov",
+  "Atilla Faction": "Danes"
  },
  {
   "CC Units": "Datlov Woodsmen",
   "Atilla Units": "Nordic Axe Levy",
-  "Tier": "Tier I Axe Infantry"
+  "Tier": "Tier I Axe Infantry",
+  "CC Faction": "Datlov",
+  "Atilla Faction": "Danes"
  },
  {
   "CC Units": "Datlov Spearmen",
   "Atilla Units": "Nordic Spearmen",
-  "Tier": "Tier II Spear Infantry"
+  "Tier": "Tier II Spear Infantry",
+  "CC Faction": "Datlov",
+  "Atilla Faction": "Danes"
  },
  {
   "CC Units": "Berdiche Axemen",
   "Atilla Units": "Nordic Axe Warband",
-  "Tier": "Tier I Axe Infantry"
+  "Tier": "Tier I Axe Infantry",
+  "CC Faction": "Datlov",
+  "Atilla Faction": "Danes"
  },
  {
   "CC Units": "Datlov Archer Militia",
   "Atilla Units": "Nordic Archers",
-  "Tier": "Tier II Bow Infantry"
+  "Tier": "Tier II Bow Infantry",
+  "CC Faction": "Datlov",
+  "Atilla Faction": "Danes"
  },
  {
   "CC Units": "Datlov Cavalry Militia",
   "Atilla Units": "Nordic Horse Raiders",
-  "Tier": "Tier II Melee Cavalry"
+  "Tier": "Tier II Melee Cavalry",
+  "CC Faction": "Datlov",
+  "Atilla Faction": "Danes"
  },
  {
   "CC Units": "Leader's Guard",
   "Atilla Units": "Nordic Horse Lords",
-  "Tier": "Tier II Melee Cavalry"
+  "Tier": "Tier II Melee Cavalry",
+  "CC Faction": "Datlov",
+  "Atilla Faction": "Danes"
  },
  {
   "CC Units": "Chinese Spear Levy",
   "Atilla Units": "Limitanei Borderguards",
-  "Tier": "Tier I Spear Infantry"
+  "Tier": "Tier I Spear Infantry",
+  "CC Faction": "Longquan",
+  "Atilla Faction": "Western Roman Empire"
  },
  {
   "CC Units": "Chinese Levy Pikemen",
   "Atilla Units": "Limitanei Borderguards*",
-  "Tier": "Tier I Spear Infantry"
+  "Tier": "Tier I Spear Infantry",
+  "CC Faction": "Longquan",
+  "Atilla Faction": "Western Roman Empire"
  },
  {
   "CC Units": "Chinese Spearman",
   "Atilla Units": "Comitatenses Spears",
-  "Tier": "Tier II Sword Infantry"
+  "Tier": "Tier II Sword Infantry",
+  "CC Faction": "Longquan",
+  "Atilla Faction": "Western Roman Empire"
  },
  {
   "CC Units": "Chinese Scythemen",
   "Atilla Units": "Praventores",
-  "Tier": "Tier I  Sword Infantry"
+  "Tier": "Tier I  Sword Infantry",
+  "CC Faction": "Longquan",
+  "Atilla Faction": "Western Roman Empire"
  },
  {
   "CC Units": "Chinese Swordsmen",
   "Atilla Units": "Cohors",
-  "Tier": "Tier II Sword Infantry"
+  "Tier": "Tier II Sword Infantry",
+  "CC Faction": "Longquan",
+  "Atilla Faction": "Western Roman Empire"
  },
  {
   "CC Units": "Chinese Imperial Harberders",
   "Atilla Units": "Palatina",
-  "Tier": "Tier II Sword Infantry"
+  "Tier": "Tier II Sword Infantry",
+  "CC Faction": "Longquan",
+  "Atilla Faction": "Western Roman Empire"
  },
  {
   "CC Units": "Chinese Iron Men",
   "Atilla Units": "Armigeri Defensoris",
-  "Tier": "Tier III Sword Infantry"
+  "Tier": "Tier III Sword Infantry",
+  "CC Faction": "Longquan",
+  "Atilla Faction": "Western Roman Empire"
  },
  {
   "CC Units": "Chinese Heavy Swordsmen",
   "Atilla Units": "Legio",
-  "Tier": "Tier II Sword Infantry"
+  "Tier": "Tier II Sword Infantry",
+  "CC Faction": "Longquan",
+  "Atilla Faction": "Western Roman Empire"
  },
  {
   "CC Units": "Chinese Imperial Infantry",
   "Atilla Units": "Legio Comitatenses",
-  "Tier": "Tier III Sword Infantry"
+  "Tier": "Tier III Sword Infantry",
+  "CC Faction": "Longquan",
+  "Atilla Faction": "Western Roman Empire"
  },
  {
   "CC Units": "Chinese Imperial Guard",
   "Atilla Units": "Elite Palatina",
-  "Tier": "Tier I Bow Infantry"
+  "Tier": "Tier III Sword Infantry",
+  "CC Faction": "Longquan",
+  "Atilla Faction": "Western Roman Empire"
  },
  {
   "CC Units": "Chinese Bow Militia",
   "Atilla Units": "Sagitarii",
-  "Tier": "Tier II Crossbow Infantry"
+  "Tier": "Tier II Crossbow Infantry",
+  "CC Faction": "Longquan",
+  "Atilla Faction": "Western Roman Empire"
  },
  {
   "CC Units": "Chinese Crossbowman",
   "Atilla Units": "Balistarii",
-  "Tier": "Tier II Crossbow Infantry"
+  "Tier": "Tier II Crossbow Infantry",
+  "CC Faction": "Longquan",
+  "Atilla Faction": "Western Roman Empire"
  },
  {
   "CC Units": "Repeating Crossbowman",
   "Atilla Units": "Elite Balistarii",
-  "Tier": "Tier I Bow Infantry"
+  "Tier": "Tier III Crossbow Infantry",
+  "CC Faction": "Longquan",
+  "Atilla Faction": "Western Roman Empire"
  },
  {
   "CC Units": "Chinese Archers",
   "Atilla Units": "Sagitarii",
   "Tier": "Tier I Melee Cavalry"
+  ,
+  "CC Faction": "Longquan",
+  "Atilla Faction": "Western Roman Empire"
  },
  {
   "CC Units": "Chinese Light Cavalry",
