@@ -1,18 +1,16 @@
 <template>
   <h1> remember the new days</h1>
   <RouterView/>
-  <army-table></army-table>
+  <unit-table></unit-table>
 </template>
 
 <script>
 import clancraftUnits from './CC_UNITS.json'
 import unitUpkeep from './UNIT_UPKEEP.json'
 import {calculateUpkeep} from './helper'
-import ArmyTable from './components/ArmyTable.vue'
 export default {
   name: 'App',
   components: {
-    ArmyTable
   },
   created(){
 
