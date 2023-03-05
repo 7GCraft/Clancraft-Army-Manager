@@ -34,7 +34,7 @@ export default{
 
 <style scoped>
     .unit-table{
-        width:50%;
+        width:100%;
         border: 2px solid;
     }
     th{

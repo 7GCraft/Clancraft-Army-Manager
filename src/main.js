@@ -4,6 +4,7 @@ import {createRouter,createWebHistory} from 'vue-router'
 import ArmyList from './pages/ArmyList.vue'
 import ArmyView from './pages/ArmyView.vue'
 import NotFound from './pages/NotFound.vue'
+import UnitList from './pages/UnitList.vue'
 const app = createApp(App)
 
     
@@ -19,13 +20,17 @@ const router = createRouter({
         name: 'armies',
         path: '/armies',
         component: ArmyList,
-      }, // our-domain.com/teams => TeamsList
+      }, 
+      {
+        name: 'units',
+        path:'/units',
+        component: UnitList
+      },
       
       { path: '/:notFound(.*)', component: NotFound }
     ],
     linkActiveClass: 'active',
     scrollBehavior(_, _2, savedPosition) {
-      // console.log(to, from, savedPosition);
       if (savedPosition) {
         return savedPosition;
       }
