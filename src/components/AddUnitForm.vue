@@ -12,7 +12,7 @@
         </div>
         <div>
             <ul>
-                <li v-for="unit in selectedUnits" :key="unit['Name']"> {{ unit['Name'] }}{{ unit['CC Units'] }}</li>
+                <li v-for="unit in selectedUnits" :key="unit['Name']"> {{ unit['Name'] }} {{ unit['CC Units'] }}</li>
             </ul>
         </div>
         <button type="button" @click="addUnits">click to add unit</button>
