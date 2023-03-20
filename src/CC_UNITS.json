@@ -1147,7 +1147,7 @@
     "CC Units": "Toyan Axe Conscripts",
     "Atilla Units": "Slavic Axe Levy",
     "Tier": "Tier I Axe Infantry",
-    "CC Faction": "Toyan Empire",
+    "CC Faction": "Toya",
     "Atilla Faction": "Venedians",
     "ID": "TY01"
   },
@@ -1155,7 +1155,7 @@
     "CC Units": "Toyan Axemen",
     "Atilla Units": "Slavic Axemen",
     "Tier": "Tier I Axe Infantry",
-    "CC Faction": "Toyan Empire",
+    "CC Faction": "Toya",
     "Atilla Faction": "Venedians",
     "ID": "TY02"
   },
@@ -1163,7 +1163,7 @@
     "CC Units": "Toyan Warriors",
     "Atilla Units": "Slavic Warriors",
     "Tier": "Tier I Sword Infantry",
-    "CC Faction": "Toyan Empire",
+    "CC Faction": "Toya",
     "Atilla Faction": "Venedians",
     "ID": "TY03"
   },
@@ -1171,7 +1171,7 @@
     "CC Units": "Toyan Axe Warriors",
     "Atilla Units": "Slavic Axe Warriors",
     "Tier": "Tier II Axe Infantry",
-    "CC Faction": "Toyan Empire",
+    "CC Faction": "Toya",
     "Atilla Faction": "Venedians",
     "ID": "TY04"
   },
@@ -1179,7 +1179,7 @@
     "CC Units": "Toyan Champions",
     "Atilla Units": "Slavic Champions",
     "Tier": "Tier II Sword Infantry",
-    "CC Faction": "Toyan Empire",
+    "CC Faction": "Toya",
     "Atilla Faction": "Venedians",
     "ID": "TY05"
   },
@@ -1187,7 +1187,7 @@
     "CC Units": "Followers of Franete",
     "Atilla Units": "Followers of Veles",
     "Tier": "Tier II Axe Infantry",
-    "CC Faction": "Toyan Empire",
+    "CC Faction": "Toya",
     "Atilla Faction": "Venedians",
     "ID": "TY06"
   },
@@ -1195,7 +1195,7 @@
     "CC Units": "Franete's Chosen",
     "Atilla Units": "Franete's Chosen",
     "Tier": "Tier II Axe Infantry",
-    "CC Faction": "Toyan Empire",
+    "CC Faction": "Toya",
     "Atilla Faction": "Venedians",
     "ID": "TY07"
   },
@@ -1203,7 +1203,7 @@
     "CC Units": "Kalete's Champions",
     "Atilla Units": "Perun's Champions",
     "Tier": "Tier III Sword Infantry",
-    "CC Faction": "Toyan Empire",
+    "CC Faction": "Toya",
     "Atilla Faction": "Venedians",
     "ID": "TY08"
   },
@@ -1211,7 +1211,7 @@
     "CC Units": "Toyan Conscript Spearmen",
     "Atilla Units": "Slavic Levy Spearmen",
     "Tier": "Tier I Spear Infantry",
-    "CC Faction": "Toyan Empire",
+    "CC Faction": "Toya",
     "Atilla Faction": "Venedians",
     "ID": "TY09"
   },
@@ -1219,7 +1219,7 @@
     "CC Units": "Toyan Spearmen",
     "Atilla Units": "Slavic Spearmen",
     "Tier": "Tier I Spear Infantry",
-    "CC Faction": "Toyan Empire",
+    "CC Faction": "Toya",
     "Atilla Faction": "Venedians",
     "ID": "TY10"
   },
@@ -1227,7 +1227,7 @@
     "CC Units": "Toyan Large Shields",
     "Atilla Units": "Slavic Large Shields",
     "Tier": "Tier II Spear Infantry",
-    "CC Faction": "Toyan Empire",
+    "CC Faction": "Toya",
     "Atilla Faction": "Venedians",
     "ID": "TY11"
   },
@@ -1235,7 +1235,7 @@
     "CC Units": "Toyan Archers",
     "Atilla Units": "Slavic Archers",
     "Tier": "Tier I Bow Infantry",
-    "CC Faction": "Toyan Empire",
+    "CC Faction": "Toya",
     "Atilla Faction": "Venedians",
     "ID": "TY12"
   },
@@ -1243,7 +1243,7 @@
     "CC Units": "Toyan Conscript Archers",
     "Atilla Units": "Slavic Levy Archers",
     "Tier": "Tier I Bow Infantry",
-    "CC Faction": "Toyan Empire",
+    "CC Faction": "Toya",
     "Atilla Faction": "Venedians",
     "ID": "TY13"
   },
@@ -1251,7 +1251,7 @@
     "CC Units": "Toyan Conscript Skirmishers",
     "Atilla Units": "Slavic Levy Skirmishers",
     "Tier": "Tier I Javelin Infantry",
-    "CC Faction": "Toyan Empire",
+    "CC Faction": "Toya",
     "Atilla Faction": "Venedians",
     "ID": "TY14"
   },
@@ -1259,7 +1259,7 @@
     "CC Units": "Toyan Skirmishers",
     "Atilla Units": "Slavic Skirmishers",
     "Tier": "Tier I Javelin Infantry",
-    "CC Faction": "Toyan Empire",
+    "CC Faction": "Toya",
     "Atilla Faction": "Venedians",
     "ID": "TY15"
   },
