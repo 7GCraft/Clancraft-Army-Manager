@@ -7,7 +7,6 @@
                 <th>Unit Name</th>
                 <th>Unit ID</th>
                 <th>Unit Type</th>
-                <th>Unit Tier</th>
                 <th>Unit Number</th>
                 <th>Unit Maximum Number</th>
                 <th>Base Upkeep</th>
@@ -17,14 +16,13 @@
                
             </tr>
             <tr v-for="unit of armyList" :key="unit.number">
-               <td>{{ unit.number }}</td>
-               <td>{{ unit.unitName }}</td>
-               <td>{{ unit.unitID }}</td>
-               <td>{{ unit.type }}</td>
-               <td>{{ unit.tier }}</td>
-               <td>{{ unit.size }}</td>
+               <td>{{ unit.Number }}</td>
+               <td>{{ unit.Name }}</td>
+               <td>{{ unit.ID }}</td>
+               <td>{{ unit.Tier }}</td>
+               <td>{{ unit.Tier.includes('Infantry') ? 160 : 80}}</td>
                <td>{{ unit.maxSize }}</td>
-               <td>{{ unit.baseUpkeep }}</td>
+               <td>{{ calculateUpkeep('Tier I Axe Infantry',unitUpkeep) }}</td>
                <td>{{ unit.upkeepModifier }}</td>
                <td>{{ unit.totalUpkeep }}</td>
                <td>{{ unit.localStatus }}</td>
@@ -35,9 +33,11 @@
 <script>
 
 
+
+
 export default{
-    props:['armyList']
-  
+    props:['armyList'],
+    inject:['calculateUpkeep','unitUpkeep']
 }
 </script>
 <style scoped>
