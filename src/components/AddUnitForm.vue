@@ -12,7 +12,7 @@
         </div>
         <div>
             <ul>
-                <li v-for="unit in selectedUnits" :key="unit">{{ unit['CC Units'] }} {{ unit['Name'] }}</li>
+                <li v-for="unit in selectedUnits" :key="unit['Name']"> {{ unit['Name'] }}{{ unit['CC Units'] }}</li>
             </ul>
         </div>
         <button type="button" @click="addUnits">click to add unit</button>
@@ -40,6 +40,7 @@ export default {
     },
     methods:{
         submitForm(){
+            console.log(this.clancraftUnits,this.armyName)
             this.$emit('submit',this.selectedUnits)
         },
         addUnits(){

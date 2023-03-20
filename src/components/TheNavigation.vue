@@ -5,6 +5,9 @@
         </nav>
         <nav>
             <ul>
+              <li>
+                    <router-link to="/">Army List</router-link>
+                </li>
                 <li>
                     <router-link to="/units">Units</router-link>
                 </li>
