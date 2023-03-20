@@ -7,12 +7,22 @@
             </select>
         </div>
         <div class="form control">
-            <input type="text" v-model="selectedUnit.name" name="unit-name"/>
             <label for="unit-name">Unit Name</label>
+            <input type="text" v-model="selectedUnit.name" id="unit-name"/>
+        </div>
+        <div class="form-control">
+            <label for="unit-structure">Structure</label>
+            <input type="text" v-model="selectedUnit.structure" id="unit-structure">
+        </div>
+        <div class="form-control">
+            <label for="unit-sub-structure">Sub-Structure</label>
+            <input type="text" v-model="selectedUnit.subStructure" id="unit-sub-structure">
         </div>
         <div>
             <ul>
-                <li v-for="unit in selectedUnits" :key="unit['Name']"> {{ unit['Name'] }} {{ unit['CC Units'] }}</li>
+                <li v-for="unit in selectedUnits" :key="unit['Name']">
+                    {{ unit['Name'] }} {{ unit['CC Units'] }} - {{ unit['SubStructure'] }} - {{ unit['Structure'] }}
+                </li>
             </ul>
         </div>
         <button type="button" @click="addUnits">click to add unit</button>
@@ -29,7 +39,9 @@ export default {
             selectedUnits:[],
             selectedUnit:{
                 ID:'',
-                name:''
+                name:'',
+                structure:'',
+                subStructure:'',
             }
         }
     },
@@ -47,7 +59,12 @@ export default {
             let targetUnit;
             for(let unit of this.clancraftUnits){
                 if(unit.ID === this.selectedUnit.ID){
-                    targetUnit = {...unit,Name: this.selectedUnit.name}
+                    targetUnit = {
+                        ...unit,
+                        Name: this.selectedUnit.name,
+                        Structure: this.selectedUnit.structure,
+                        SubStructure: this.selectedUnit.subStructure
+                    }
                 }
             }
             console.log(targetUnit)
