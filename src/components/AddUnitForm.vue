@@ -34,6 +34,7 @@
 import { calculateUnitSize } from '@/helper'
 export default {
     props:['armyName'],
+    emits:['submit'],
     inject:['clancraftUnits','calculateUnitSize','findUpkeep','unitUpkeep'],
     data(){
         return{
