@@ -1,6 +1,7 @@
 <template>
     <h1> this is the army viewer for {{ armyName }}</h1>
     <army-table :armyList="armyList"></army-table>
+    <h2>Total upkeep: {{ totalUpkeep }}</h2>
     <add-unit-form @submit="updateArmy" :armyName="armyName"></add-unit-form>
 </template>
 <script>
@@ -23,14 +24,14 @@ export default {
     },
     methods:{
         updateArmy(newUnits){
-            console.log(newUnits,'new Units Form data')
+            console.log('new Units are',newUnits)
             const newArmyList = [...this.armyList]
+            let newNumber = this.armyList.length + 1;
             for(let newUnit of newUnits){
+                newUnit.Number = newNumber;
+                newNumber++;
                 newArmyList.push(newUnit)
-                console.log('target Unit',newUnit)
-                console.log('new List after adding',newArmyList)
             }
-            console.log(newArmyList,'resultant')
             localStorage.setItem(`armies/${this.armyName}`,JSON.stringify(newArmyList))
             this.fetchArmyList()
         },
@@ -51,6 +52,9 @@ export default {
             }
             return null
         },
+        totalUpkeep(){
+            return this.armyList.reduce((sum,unit)=> sum+ unit.BaseUpkeep,0)
+        }
        
     }
 }

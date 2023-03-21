@@ -18,7 +18,7 @@
                 <td>{{units['CC Units']}}</td>
                 <td>{{ units['Atilla Units'] }}</td>
                 <td>{{ units['Tier'] }}</td>
-                <td>{{ calculateUpkeep(units.Tier,unitUpkeep) }}</td>
+                <td>{{ findUpkeep(units.Tier,unitUpkeep) }}</td>
             
             </tr>
         </thead>
@@ -28,7 +28,7 @@
 
 
 export default{
-    inject:['clancraftUnits','calculateUpkeep','unitUpkeep']
+    inject:['clancraftUnits','findUpkeep','unitUpkeep']
 }
 </script>
 

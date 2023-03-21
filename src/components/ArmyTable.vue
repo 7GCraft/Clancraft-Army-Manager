@@ -5,6 +5,7 @@
             <tr>
                 <th>No.</th>
                 <th>Unit Name</th>
+                <th>Atilla Name</th>
                 <th>Unit ID</th>
                 <th>Unit Type</th>
                 <th>Unit Number</th>
@@ -18,21 +19,22 @@
             </tr>
             <template v-for="(groupedArmy, structure) in groupedArmyList" :key="structure">
                <template v-for="(armyUnits, subStructure, subStructureIdx) in groupedArmy" :key="subStructure">
-                  <tr v-for="(unit, unitIdx) of armyUnits" :key="unit.number">
+                  <tr v-for="(unit, unitIdx) of armyUnits" :key="unit.Number">
                      <td>{{ unit.Number }}</td>
                      <td>{{ unit.Name }}</td>
+                     <td>{{ unit['Atilla Units'] }}</td>
                      <td>{{ unit.ID }}</td>
                      <td>{{ unit.Tier }}</td>
-                     <td>{{ unit.Tier.includes('Infantry') ? 160 : 80}}</td>
-                     <td>{{ unit.maxSize }}</td>
-                     <td>{{ calculateUpkeep('Tier I Axe Infantry',unitUpkeep) }}</td>
+                     <td>{{ unit.Size }} </td>
+                     <td>{{ calculateUnitSize(unit.Tier) }}</td>
+                     <td>{{ unit.BaseUpkeep }}</td>
                      <td>{{ unit.upkeepModifier }}</td>
-                     <td>{{ unit.totalUpkeep }}</td>
+                     <td>{{ calculateUpkeep(unit.BaseUpkeep,unit.upkeepModifier) }}</td>
                      <td>{{ unit.localStatus }}</td>
                      <td v-if="unitIdx === 0" :rowspan="armyUnits.length">{{ subStructure }}</td>
                      <td
                         v-if="subStructureIdx === 0 && unitIdx === 0"
-                        :rowspan="Object.values(groupedArmy).reduce((totalUnits, units) => totalUnits + units.length, 0)"
+                        :rowspan="calculateGroupRowspan(groupedArmy)"
                      >
                         {{ structure }}
                      </td>
@@ -50,7 +52,7 @@ import { groupBy } from '@/helper';
 
 export default{
     props:['armyList'],
-    inject:['calculateUpkeep','unitUpkeep'],
+    inject:['findUpkeep','unitUpkeep','calculateUnitSize','calculateUpkeep'],
     computed: {
         groupedArmyList: function () {
             if (this.armyList.length == 0) {
@@ -62,6 +64,13 @@ export default{
                 return [groupedArmy[0], groupBy(groupedArmy[1], "SubStructure")];
             });
             return Object.fromEntries(secondGroupArmyList);
+        },
+    
+       
+    },
+    methods: {
+        calculateGroupRowspan(groupedArmy){
+           return Object.values(groupedArmy).reduce((totalUnits, units) => totalUnits + units.length, 0)
         }
     }
 }

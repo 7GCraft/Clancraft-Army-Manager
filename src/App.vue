@@ -7,7 +7,7 @@
 import clancraftUnits from './CC_UNITS.json'
 import unitUpkeep from './UNIT_UPKEEP.json'
 import StateList from './STATE_ID.json'
-import {calculateUpkeep} from './helper'
+import {calculateUpkeep, calculateUnitSize, findBaseUpkeep} from './helper'
 import TheNavigation from './components/TheNavigation.vue'
 export default {
   name: 'App',
@@ -20,9 +20,11 @@ export default {
   provide(){
     return{
       stateList: StateList,
+      findUpkeep: findBaseUpkeep,
       calculateUpkeep: calculateUpkeep,
       clancraftUnits : clancraftUnits,
-      unitUpkeep: unitUpkeep
+      unitUpkeep: unitUpkeep,
+      calculateUnitSize: calculateUnitSize
     }
   },
   data(){

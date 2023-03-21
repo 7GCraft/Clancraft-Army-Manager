@@ -3,7 +3,7 @@
         <h3>Add unit form</h3>
         <div class="form-control">
             <select v-model="selectedUnit.ID" >
-            <option v-for="unit in availableUnits" v-bind:key="unit.ID" :value="unit.ID">{{ unit['CC Units'] }}</option>
+            <option v-for="unit in sortedAvailableUnits" v-bind:key="unit.ID" :value="unit.ID">{{ unit['CC Units'] }}</option>
             </select>
         </div>
         <div class="form control">
@@ -21,7 +21,7 @@
         <div>
             <ul>
                 <li v-for="unit in selectedUnits" :key="unit['Name']">
-                    {{ unit['Name'] }} {{ unit['CC Units'] }} - {{ unit['SubStructure'] }} - {{ unit['Structure'] }}
+                    {{ unit['Name'] }} - {{ unit['Atilla Units'] }} - {{ unit['SubStructure'] }} - {{ unit['Structure'] }}
                 </li>
             </ul>
         </div>
@@ -31,9 +31,10 @@
 </template>
 
 <script>
+import { calculateUnitSize } from '@/helper'
 export default {
     props:['armyName'],
-    inject:['clancraftUnits'],
+    inject:['clancraftUnits','calculateUnitSize','findUpkeep','unitUpkeep'],
     data(){
         return{
             selectedUnits:[],
@@ -46,14 +47,22 @@ export default {
         }
     },
     computed: {
-        availableUnits(){
-            return this.clancraftUnits.filter(unit=> unit['CC Faction'] == this.armyName)
+        sortedAvailableUnits(){
+            const availableUnits = this.clancraftUnits.filter(unit=> unit['CC Faction'] == this.armyName);
+            console.log(availableUnits)
+            return availableUnits.sort((a, b) => a['CC Units'].localeCompare(b['CC Units']));
         }
     },
     methods:{
         submitForm(){
-            console.log(this.clancraftUnits,this.armyName)
             this.$emit('submit',this.selectedUnits)
+            this.selectedUnits = []
+            this.selectedUnit = {
+                ID:'',
+                name:'',
+                structure:'',
+                subStructure:'',
+            }
         },
         addUnits(){
             let targetUnit;
@@ -61,13 +70,17 @@ export default {
                 if(unit.ID === this.selectedUnit.ID){
                     targetUnit = {
                         ...unit,
+                        Size: calculateUnitSize(unit.Tier),
+                        upkeepModifier: 0,
+                        localStatus: "F",
+                        BaseUpkeep: this.findUpkeep(unit.Tier,this.unitUpkeep),
                         Name: this.selectedUnit.name,
                         Structure: this.selectedUnit.structure,
                         SubStructure: this.selectedUnit.subStructure
                     }
                 }
             }
-            console.log(targetUnit)
+            this.selectedUnit.name = ''
             this.selectedUnits.push(targetUnit)
         }
     }
