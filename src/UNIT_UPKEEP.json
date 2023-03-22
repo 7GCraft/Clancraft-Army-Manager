@@ -23,5 +23,8 @@
   "Tier III Crossbow Infantry": 450,
   "Tier III Melee Cavalry": 500,
   "Tier III Spear Infantry": 300,
-  "Tier III Sword Infantry": 400
+  "Tier III Sword Infantry": 400,
+  "Tier I Siege Weapon" : 200,
+  "Tier II Siege Weapon": 350,
+  "Tier III Siege Weapon": 600
 }
