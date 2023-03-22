@@ -88,7 +88,7 @@ export default {
       );
     },
     deleteRow(unit){
-        this.$emit('deleteRow',unit)
+        this.$emit('deleteRow',unit.Number)
     }
   },
 };

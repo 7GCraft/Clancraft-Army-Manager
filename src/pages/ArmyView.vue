@@ -39,7 +39,7 @@ export default {
             this.armyList = newArmyList ? JSON.parse(newArmyList) : []
         },
         removeUnit(unitIdx){
-            const targetedUnitIdx = this.armyList.findIndex(unit=> unit.Number = unitIdx)
+            const targetedUnitIdx = this.armyList.findIndex(unit=> unit.Number == unitIdx)
             const newArmyList = [...this.armyList]
             newArmyList.splice(targetedUnitIdx,1);
             let counter = 1;
