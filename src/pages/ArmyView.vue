@@ -1,6 +1,6 @@
 <template>
     <h1> this is the army viewer for {{ armyName }}</h1>
-    <army-table @deleteRow="removeUnit" :armyList="armyList"></army-table>
+    <army-table @deleteRow="removeUnit" @updateRow="updateUnit" :armyList="armyList"></army-table>
     <add-unit-form @submit="updateArmy" :armyName="armyName"></add-unit-form>
 </template>
 <script>
@@ -49,7 +49,11 @@ export default {
             }
 
             localStorage.setItem(`armies/${this.armyName}`,JSON.stringify(newArmyList))
-            this.fetchArmyList()
+            this.fetchArmyList();
+        },
+        updateUnit(updatedArmyList){
+            localStorage.setItem(`armies/${this.armyName}`,JSON.stringify(updatedArmyList))
+            this.fetchArmyList();
         }
     },
     computed:{
