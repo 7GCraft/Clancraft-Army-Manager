@@ -25,6 +25,7 @@
                 </li>
             </ul>
         </div>
+         <h4>Recruitment cost: {{totalRecruitmentCost}}</h4>
         <button type="button" @click="addUnits">click to add unit</button>
         <button>Click to submit</button>
     </form>
@@ -35,7 +36,7 @@ import { calculateUnitSize } from '@/helper'
 export default {
     props:['armyName'],
     emits:['submit'],
-    inject:['clancraftUnits','calculateUnitSize','findUpkeep','unitUpkeep'],
+    inject:['clancraftUnits','calculateUnitSize','findUpkeep','unitUpkeep','findRecruitmentCost','recruitmentCost'],
     data(){
         return{
             selectedUnits:[],
@@ -52,6 +53,11 @@ export default {
             const availableUnits = this.clancraftUnits.filter(unit=> unit['CC Faction'] == this.armyName);
             console.log(availableUnits)
             return availableUnits.sort((a, b) => a['CC Units'].localeCompare(b['CC Units']));
+        },
+        totalRecruitmentCost(){
+            console.log(this.recruitmentCosts,'yahallo')
+            const recruitmentCosts = this.selectedUnits.map(unit=> this.findRecruitmentCost(unit.Tier,this.recruitmentCost));
+           return recruitmentCosts.reduce((sum,nextUnitCost) => sum + nextUnitCost,0 )
         }
     },
     methods:{

@@ -7,7 +7,8 @@
 import clancraftUnits from './CC_UNITS.json'
 import unitUpkeep from './UNIT_UPKEEP.json'
 import StateList from './STATE_ID.json'
-import {calculateUpkeep, calculateUnitSize, findBaseUpkeep} from './helper'
+import recruitmentCost from './UNIT_RECRUITMENT.json'
+import {calculateUpkeep, calculateUnitSize, findBaseUpkeep,findRecruitmentCost} from './helper'
 import TheNavigation from './components/TheNavigation.vue'
 export default {
   name: 'App',
@@ -24,7 +25,9 @@ export default {
       calculateUpkeep: calculateUpkeep,
       clancraftUnits : clancraftUnits,
       unitUpkeep: unitUpkeep,
-      calculateUnitSize: calculateUnitSize
+      calculateUnitSize: calculateUnitSize,
+      findRecruitmentCost: findRecruitmentCost,
+      recruitmentCost: recruitmentCost
     }
   },
   data(){

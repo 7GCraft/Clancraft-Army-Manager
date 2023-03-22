@@ -6,6 +6,10 @@ export function findBaseUpkeep(unitType,upkeepReferenceObject){
   return upkeepReferenceObject[unitType]
 }
 
+export function findRecruitmentCost(unitTier,recruitmentReferenceObject){
+  return recruitmentReferenceObject[unitTier]
+}
+
 export function groupBy (data, key)
 {
 	return data.reduce(function(storage, item) {
