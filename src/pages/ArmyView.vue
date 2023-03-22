@@ -1,7 +1,6 @@
 <template>
     <h1> this is the army viewer for {{ armyName }}</h1>
-    <army-table :armyList="armyList"></army-table>
-    <h2>Total upkeep: {{ totalUpkeep }}</h2>
+    <army-table @deleteRow="removeUnit" :armyList="armyList"></army-table>
     <add-unit-form @submit="updateArmy" :armyName="armyName"></add-unit-form>
 </template>
 <script>
@@ -38,6 +37,19 @@ export default {
         fetchArmyList(){
             const newArmyList = localStorage.getItem(`armies/${this.armyName}`) 
             this.armyList = newArmyList ? JSON.parse(newArmyList) : []
+        },
+        removeUnit(unitIdx){
+            const targetedUnitIdx = this.armyList.findIndex(unit=> unit.Number = unitIdx)
+            const newArmyList = [...this.armyList]
+            newArmyList.splice(targetedUnitIdx,1);
+            let counter = 1;
+            for(let unit of newArmyList){
+                unit.Number = counter;
+                counter++
+            }
+
+            localStorage.setItem(`armies/${this.armyName}`,JSON.stringify(newArmyList))
+            this.fetchArmyList()
         }
     },
     computed:{
@@ -51,11 +63,7 @@ export default {
                 }
             }
             return null
-        },
-        totalUpkeep(){
-            return this.armyList.reduce((sum,unit)=> sum+ unit.BaseUpkeep,0)
-        }
-       
+        },     
     }
 }
 </script>
