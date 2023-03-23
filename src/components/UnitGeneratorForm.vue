@@ -21,7 +21,7 @@
     </button>
     <ul>
       <li v-for="unit in generatedUnits" :key="unit.Number">
-        {{ unit.Name }} - {{ unit["CC Units"] }} - {{ unit["Atilla Units"] }}
+        {{ unit.Name }} - {{ unit["CC Units"] }} - {{ unit["Atilla Units"] }} {{ unit["SubStructure"] !== '' ? ` - ${unit["SubStructure"]}` : '' }} {{ unit["Structure"] !== '' ? ` - ${unit["Structure"]}` : '' }}
       </li>
     </ul>
     <button type="button" @click="addUnits">
@@ -46,21 +46,25 @@ export default {
     };
   },
   methods: {
-    addUnitStructure(){
+    clearForm(){
+        this.generatedUnits = [],
+        this.generationSize = 0;
+    },
+    addUnitStructure(units){
         if(this.generatedArmyStructure !== ''){
-            for(let unit of this.generatedUnits){
+            for(let unit of units){
                 unit.Structure = this.generatedArmyStructure;
             }
         }
         if(this.generatedArmySubstructure !== ''){
-            for(let unit of this.generatedUnits){
+            for(let unit of units){
                 unit.SubStructure = this.generatedArmySubStructure;
             }
         }
     },
     generateUnitBasedOnMode() {
-  
-      console.log(this.generatedUnits,'kamadar')
+       
+
       if (this.mode === "feudal") {
         const nobleSize = Math.round((this.generationSize * 2) / 10);
         const levySize = Math.round((this.generationSize * 8) / 10);
@@ -82,19 +86,26 @@ export default {
             !name.includes("knight")
           );
         });
-        const nobleArmy = this.generateUnits(nobleUnits,nobleSize,this.generatedUnits.length)
-        const levyArmy = this.generateUnits(levyUnits,levySize,this.generatedUnits.length + nobleArmy.length)
-        this.generatedUnits = [...this.generatedUnits, ...nobleArmy, ...levyArmy]
+        const nobleArmy = this.generateUnits(nobleUnits,nobleSize,0)
+        const levyArmy = this.generateUnits(levyUnits,levySize, nobleArmy.length)
+        const combinedArmy = [...nobleArmy, ...levyArmy]
+        this.addUnitStructure(combinedArmy)
+        this.generatedUnits = [...this.generatedUnits, ...combinedArmy]
       } else {
+          const newUnits = this.generateUnits(this.units,this.generationSize,0)
+          this.addUnitStructure(newUnits)
         this.generatedUnits = [
-          ...this.generateUnits(
-            this.units,
-            this.generationSize,
-            this.generatedUnits.length
-          ),
+            ...this.generatedUnits,
+            ...newUnits
         ]
       }
-      this.addUnitStructure()
+      
+
+      this.mode = "normal",
+      this.generationSize = 0
+      this.generatedArmyStructure = ""
+      this.generatedArmySubStructure = ""
+  
     },
     generateUnits(units, size, startingIndex) {
       const newUnits = [];
@@ -113,6 +124,7 @@ export default {
     },
     addUnits(){
         this.$emit('add-units',this.generatedUnits)
+        this.clearForm()
     }
   },
 };

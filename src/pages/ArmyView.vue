@@ -85,9 +85,6 @@ export default {
         armyName(){
             for(const state in this.stateList){
                 if(this.stateList[state] === this.$route.params.armyId){
-                    if(state === 'Frielant'){
-                        return 'Trahian'
-                    }
                     return state
                 }
             }

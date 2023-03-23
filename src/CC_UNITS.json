@@ -267,7 +267,7 @@
     "CC Units": "Trahian Town Militia",
     "Atilla Units": "Germanic Levy",
     "Tier": "Tier I Spear Infantry",
-    "CC Faction": "Trahian",
+    "CC Faction": "Frielant",
     "Atilla Faction": "Franks",
     "ID": "TR01"
   },
@@ -275,7 +275,7 @@
     "CC Units": "Trahian Armoured Sergeants",
     "Atilla Units": "Germanic Spearman*",
     "Tier": "Tier II Spear Infantry",
-    "CC Faction": "Trahian",
+    "CC Faction": "Frielant",
     "Atilla Faction": "Franks",
     "ID": "TR02"
   },
@@ -283,7 +283,7 @@
     "CC Units": "Trahian Pike Militia",
     "Atilla Units": "Germanic Pikes",
     "Tier": "Tier I Pike Infantry",
-    "CC Faction": "Trahian",
+    "CC Faction": "Frielant",
     "Atilla Faction": "Franks",
     "ID": "TR03"
   },
@@ -291,7 +291,7 @@
     "CC Units": "Trahian Sergeant Spearman",
     "Atilla Units": "Germanic Spearman",
     "Tier": "Tier II Spear Infantry",
-    "CC Faction": "Trahian",
+    "CC Faction": "Frielant",
     "Atilla Faction": "Franks",
     "ID": "TR04"
   },
@@ -299,7 +299,7 @@
     "CC Units": "Trahian Spear Militia",
     "Atilla Units": "Germanic Levy*",
     "Tier": "Tier I Spear Infantry",
-    "CC Faction": "Trahian",
+    "CC Faction": "Frielant",
     "Atilla Faction": "Franks",
     "ID": "TR05"
   },
@@ -307,7 +307,7 @@
     "CC Units": "Dismounted Trahian Feudal Knights",
     "Atilla Units": "Sword Haerbann",
     "Tier": "Tier I Sword Infantry",
-    "CC Faction": "Trahian",
+    "CC Faction": "Frielant",
     "Atilla Faction": "Franks",
     "ID": "TR06"
   },
@@ -315,7 +315,7 @@
     "CC Units": "Dismounted Trahian Royal Knights",
     "Atilla Units": "Elite Sword Haerbann",
     "Tier": "Tier II Sword Infantry",
-    "CC Faction": "Trahian",
+    "CC Faction": "Frielant",
     "Atilla Faction": "Franks",
     "ID": "TR07"
   },
@@ -323,7 +323,7 @@
     "CC Units": "Verlorene Haufen",
     "Atilla Units": "Fransiscan Haerbann",
     "Tier": "Tier II Sword Infantry",
-    "CC Faction": "Trahian",
+    "CC Faction": "Frielant",
     "Atilla Faction": "Franks",
     "ID": "TR08"
   },
@@ -331,7 +331,7 @@
     "CC Units": "Trahian Halberd Militia",
     "Atilla Units": "Germanic Warband",
     "Tier": "Tier I Sword Infantry",
-    "CC Faction": "Trahian",
+    "CC Faction": "Frielant",
     "Atilla Faction": "Franks",
     "ID": "TR09"
   },
@@ -339,7 +339,7 @@
     "CC Units": "Zweihander",
     "Atilla Units": "Axe Haerbann",
     "Tier": "Tier II Sword Infantry",
-    "CC Faction": "Trahian",
+    "CC Faction": "Frielant",
     "Atilla Faction": "Franks",
     "ID": "TR10"
   },
@@ -347,7 +347,7 @@
     "CC Units": "Trahian Crossbow Militia",
     "Atilla Units": "Germanic Crossbowmen",
     "Tier": "Tier I Crossbow Infantry",
-    "CC Faction": "Trahian",
+    "CC Faction": "Frielant",
     "Atilla Faction": "Franks",
     "ID": "TR11"
   },
@@ -355,7 +355,7 @@
     "CC Units": "Trahian Pavie Crossbowmen",
     "Atilla Units": "Germanic Crossbowmen**",
     "Tier": "Tier I Crossbow Infantry",
-    "CC Faction": "Trahian",
+    "CC Faction": "Frielant",
     "Atilla Faction": "Franks",
     "ID": "TR12"
   },
@@ -363,7 +363,7 @@
     "CC Units": "Trahian Peasants Archers",
     "Atilla Units": "Germanic Bows",
     "Tier": "Tier I Bow Infantry",
-    "CC Faction": "Trahian",
+    "CC Faction": "Frielant",
     "Atilla Faction": "Franks",
     "ID": "TR13"
   },
@@ -371,7 +371,7 @@
     "CC Units": "Trahian Peasant Crossbowmen",
     "Atilla Units": "Germanic Crossbowmen",
     "Tier": "Tier I Crossbow Infantry",
-    "CC Faction": "Trahian",
+    "CC Faction": "Frielant",
     "Atilla Faction": "Franks",
     "ID": "TR14"
   },
@@ -379,7 +379,7 @@
     "CC Units": "Trahian Mounted Sergeants",
     "Atilla Units": "Germanic Mounted Warband",
     "Tier": "Tier I Melee Cavalry",
-    "CC Faction": "Trahian",
+    "CC Faction": "Frielant",
     "Atilla Faction": "Franks",
     "ID": "TR15"
   },
@@ -387,7 +387,7 @@
     "CC Units": "Trahian Feudal Knights",
     "Atilla Units": "Germanic Horsemen",
     "Tier": "Tier II Melee Cavalry",
-    "CC Faction": "Trahian",
+    "CC Faction": "Frielant",
     "Atilla Faction": "Franks",
     "ID": "TR16"
   },
@@ -395,7 +395,7 @@
     "CC Units": "Trahian Knights",
     "Atilla Units": "Antrustiones Cavalry Guard",
     "Tier": "Tier III Melee Cavalry",
-    "CC Faction": "Trahian",
+    "CC Faction": "Frielant",
     "Atilla Faction": "Franks",
     "ID": "TR17"
   },
@@ -403,7 +403,7 @@
     "CC Units": "Royal Knights",
     "Atilla Units": "Noble Germanic Horsemen",
     "Tier": "Tier II Melee Cavalry",
-    "CC Faction": "Trahian",
+    "CC Faction": "Frielant",
     "Atilla Faction": "Franks",
     "ID": "TR18"
   },
@@ -411,7 +411,7 @@
     "CC Units": "Trahian Mailed Knights",
     "Atilla Units": "Salian Frankish Lancers",
     "Tier": "Tier I Melee Cavalry",
-    "CC Faction": "Trahian",
+    "CC Faction": "Frielant",
     "Atilla Faction": "Franks",
     "ID": "TR19"
   },
@@ -419,7 +419,7 @@
     "CC Units": "Trahian Merchant Cavalry Militia",
     "Atilla Units": "Germanic Mounted Warband",
     "Tier": "Tier I Melee Cavalry",
-    "CC Faction": "Trahian",
+    "CC Faction": "Frielant",
     "Atilla Faction": "Franks",
     "ID": "TR20"
   },
@@ -427,7 +427,7 @@
     "CC Units": "Trahian Mounted Crossbowmen",
     "Atilla Units": "Germanic Night Raiders",
     "Tier": "Tier II Missile Cavalry",
-    "CC Faction": "Trahian",
+    "CC Faction": "Frielant",
     "Atilla Faction": "Franks",
     "ID": "TR21"
   },
@@ -1458,11 +1458,11 @@
   {
     "CC Units": "Onager",
     "Atilla Units": "Onager",
-    "Tier": "Siege Equipment"
+    "Tier": "Tier I Siege Equipment"
   },
   {
     "CC Units": "Scorpion",
     "Atilla Units": "Cheiroballista",
-    "Tier": "Siege Equipment"
+    "Tier": "Tier II Siege Equipment"
   }
 ]
