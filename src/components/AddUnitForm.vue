@@ -35,6 +35,7 @@
 import { calculateUnitSize } from '@/helper'
 export default {
     emits:['submit'],
+    props:['units'],
     inject:['clancraftUnits','calculateUnitSize','findUpkeep','unitUpkeep','findRecruitmentCost','recruitmentCost'],
     data(){
         return{
