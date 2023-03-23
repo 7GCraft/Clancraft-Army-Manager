@@ -9,11 +9,11 @@
     </div>
     <input type="number" v-model="generationSize" />
     <div class="form-control" >
-        <input type="text" name="structure" v-model="generatedArmyStructure"/>
+        <input type="text" name="structure" v-model.trim="generatedArmyStructure"/>
         <label for="structure">Army Structure</label>
     </div>
     <div class="form-control" >
-        <input type="text" name="subStructure" v-model="generatedArmySubStructure"/>
+        <input type="text" name="subStructure" v-model.trim="generatedArmySubStructure"/>
         <label for="subStructure">Army Sub Structure</label>
     </div>
     <button type="button" @click="generateUnitBasedOnMode(mode)">
