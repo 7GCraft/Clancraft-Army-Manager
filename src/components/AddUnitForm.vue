@@ -32,11 +32,10 @@
 </template>
 
 <script>
-import { calculateUnitSize } from '@/helper'
 export default {
     emits:['submit'],
     props:['units'],
-    inject:['clancraftUnits','calculateUnitSize','findUpkeep','unitUpkeep','findRecruitmentCost','recruitmentCost'],
+    inject:['clancraftUnits','findUpkeep','unitUpkeep','findRecruitmentCost','recruitmentCost'],
     data(){
         return{
             selectedUnits:[],
@@ -72,10 +71,7 @@ export default {
                 if(unit.ID === this.selectedUnit.ID){
                     targetUnit = {
                         ...unit,
-                        Size: calculateUnitSize(unit.Tier),
-                        upkeepModifier: 0,
-                        localStatus: "F",
-                        BaseUpkeep: this.findUpkeep(unit.Tier,this.unitUpkeep),
+                       
                         Name: this.selectedUnit.name,
                         Structure: this.selectedUnit.structure,
                         SubStructure: this.selectedUnit.subStructure

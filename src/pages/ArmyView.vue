@@ -2,21 +2,22 @@
     <h1> this is the army viewer for {{ armyName }}</h1>
     <army-table @deleteRow="removeUnit" @updateRow="updateUnit" :armyList="armyList"></army-table>
     <add-unit-form @submit="updateArmy" :units="sortedAvailableUnits" ></add-unit-form>
-    <unit-generator-form :units="sortedAvailableUnits"> </unit-generator-form>
+    <unit-generator-form @add-units="updateArmy" :units="sortedAvailableUnits"> </unit-generator-form>
 </template>
 <script>
 import ArmyTable from '@/components/ArmyTable.vue';
 import AddUnitForm from '@/components/AddUnitForm.vue';
 import UnitGeneratorForm from '@/components/UnitGeneratorForm.vue';
 export default {
-    inject:['stateList','clancraftUnits'],
+    inject:['stateList','clancraftUnits','calculateUnitSize','findUpkeep','unitUpkeep'],
     components:{ArmyTable, AddUnitForm, UnitGeneratorForm},
     created(){
         if(!Object.values(this.stateList).includes(this.$route.params.armyId)){
             this.$router.push('/')
         }
-        console.log(this.armyList,'yotsuba')
+       
         this.fetchArmyList()
+        console.log(this.armyList,'yotsuba')
     },
     data(){
         return{
@@ -24,15 +25,30 @@ export default {
         }
     },
     methods:{
+        addBasicDetails(newUnits){
+            const newArmy = []
+            let newNumber = this.armyList.length + 1;
+            for (let newUnit of newUnits) {
+                console.log(newUnit,'nueva',this.calculateUnitSize,this.findUpkeep)
+                newUnit = {
+                    ...newUnit,
+                    Number: newNumber,
+                    Size: this.calculateUnitSize(newUnit.Tier),
+                    upkeepModifier: 0,
+                    localStatus: "F",
+                    BaseUpkeep: this.findUpkeep(newUnit.Tier, this.unitUpkeep),
+                }
+                newNumber++;
+                newArmy.push(newUnit)
+            }
+            return newArmy
+
+        },
         updateArmy(newUnits){
             console.log('new Units are',newUnits)
-            const newArmyList = [...this.armyList]
-            let newNumber = this.armyList.length + 1;
-            for(let newUnit of newUnits){
-                newUnit.Number = newNumber;
-                newNumber++;
-                newArmyList.push(newUnit)
-            }
+
+            const newArmy = this.addBasicDetails(newUnits)
+            const newArmyList = [...this.armyList,...newArmy]
             console.log('dreams of a republic')
             localStorage.setItem(`armies/${this.armyName}`,JSON.stringify(newArmyList))
             this.fetchArmyList()
