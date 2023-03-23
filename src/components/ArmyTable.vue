@@ -1,6 +1,6 @@
 <template>
   <h3>this is the unit table</h3>
-  <table class="army-table" @keydown.esc="cancelEdit" @keydown.enter="saveEdit">
+  <table class="army-table" @keydown.esc="cancelEdit" >
     <thead>
       <tr>
         <th>No.</th>
@@ -29,25 +29,25 @@
           <tr v-for="(unit, unitIdx) of armyUnits" :key="unit.Number">
             <td>{{ unit.Number }}</td>
             <td @dblclick="selectDataCellToEdit(unit, 'Name')">
-                <input v-model="unit.Name" v-if="checkIfUnitAndAttributeSelected(unit,'Name')" type="text">
+                <input :value="unit.Name" @keydown.enter="saveEdit($event,unit,'Name')" v-if="checkIfUnitAndAttributeSelected(unit,'Name')" type="text">
                 <template v-else>{{ unit.Name }}</template>
             </td>
             <td>{{ unit["Atilla Units"] }}</td>
             <td>{{ unit.ID }}</td>
             <td>{{ unit.Tier }}</td>
             <td @dblclick="selectDataCellToEdit(unit, 'Size')">
-                <input v-model="unit.Size" v-if="checkIfUnitAndAttributeSelected(unit,'Size')" type="number">
+                <input :value="unit.Size" @keydown.enter="saveEdit($event,unit,'Size')" v-if="checkIfUnitAndAttributeSelected(unit,'Size')" type="number">
                 <template v-else>{{ unit.Size }}</template>
             </td>
             <td>{{ calculateUnitSize(unit.Tier) }}</td>
             <td>{{ unit.BaseUpkeep }}</td>
-            <td @dblclick="selectDataCellToEdit(unit, 'UpkeepModifier')">
-                <input v-model="unit.upkeepModifier" v-if="checkIfUnitAndAttributeSelected(unit,'UpkeepModifier')" type="number">
+            <td @dblclick="selectDataCellToEdit(unit, 'upkeepModifier')">
+                <input :value="unit.upkeepModifier" @keydown.enter="saveEdit($event,unit,'UpkeepModifier')" v-if="checkIfUnitAndAttributeSelected(unit,'UpkeepModifier')" type="number">
                 <template v-else>{{ unit.upkeepModifier }}</template>
             </td>
             <td>{{ calculateUpkeep(unit.BaseUpkeep, unit.upkeepModifier) }}</td>
-            <td @dblclick="selectDataCellToEdit(unit, 'LocalStatus')">
-                <input v-model="unit.localStatus" v-if="checkIfUnitAndAttributeSelected(unit,'LocalStatus')" type="text">
+            <td @dblclick="selectDataCellToEdit(unit, 'localStatus')">
+                <input :value="unit.localStatus" @keydown.enter="saveEdit($event,unit,'LocalStatus')" v-if="checkIfUnitAndAttributeSelected(unit,'LocalStatus')" type="text">
                 <template v-else>{{ unit.localStatus }}</template>
             </td>
             <td v-if="unitIdx === 0" :rowspan="armyUnits.length">
@@ -76,13 +76,9 @@ export default {
   inject: ["findUpkeep", "unitUpkeep", "calculateUnitSize", "calculateUpkeep"],
   data() {
     return {
-        modifiableArmyList: [],
         beforeEditUnit: null,
         selectedEditAttribute: null,
     }
-  },
-  mounted(){
-    this.modifiableArmyList = JSON.parse(JSON.stringify(this.armyList));
   },
   computed: {
     groupedArmyList: function () {
@@ -91,7 +87,7 @@ export default {
       }
 
       const firstGroupArmyList = Object.entries(
-        groupBy(this.modifiableArmyList, "Structure")
+        groupBy(this.armyList, "Structure")
       );
       const secondGroupArmyList = firstGroupArmyList.map((groupedArmy) => {
         return [groupedArmy[0], groupBy(groupedArmy[1], "SubStructure")];
@@ -110,13 +106,16 @@ export default {
       );
     },
     cancelEdit(){
-        let selectedUnitIdx = this.modifiableArmyList.findIndex(unit => unit.Number == this.beforeEditUnit.Number);
-        this.modifiableArmyList[selectedUnitIdx] = JSON.parse(JSON.stringify(this.beforeEditUnit));
         this.beforeEditUnit = null;
         this.selectedEditAttribute = null;
     },
-    saveEdit(){
-        this.$emit('updateRow',this.modifiableArmyList);
+    saveEdit(evt,unit,targetAttribute){
+        let newUnit = {...unit}
+        console.log('kruyoso"s dream', evt)
+        console.log('adraso"s death we mourn',unit)
+        console.log('Turlan is the most superior race',targetAttribute)
+        newUnit[targetAttribute] = evt.target.value;
+        this.$emit('updateRow',newUnit);
 
         this.beforeEditUnit = null;
         this.selectedEditAttribute = null;

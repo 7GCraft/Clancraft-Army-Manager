@@ -13,7 +13,7 @@ export default {
         if(!Object.values(this.stateList).includes(this.$route.params.armyId)){
             this.$router.push('/')
         }
-        console.log(this.armyList)
+        console.log(this.armyList,'yotsuba')
         this.fetchArmyList()
     },
     data(){
@@ -31,6 +31,7 @@ export default {
                 newNumber++;
                 newArmyList.push(newUnit)
             }
+            console.log('dreams of a republic')
             localStorage.setItem(`armies/${this.armyName}`,JSON.stringify(newArmyList))
             this.fetchArmyList()
         },
@@ -51,9 +52,15 @@ export default {
             localStorage.setItem(`armies/${this.armyName}`,JSON.stringify(newArmyList))
             this.fetchArmyList();
         },
-        updateUnit(updatedArmyList){
-            localStorage.setItem(`armies/${this.armyName}`,JSON.stringify(updatedArmyList))
-            this.fetchArmyList();
+        updateUnit(newUnit){
+             console.log('428',newUnit.Number);
+            const newArmyList = [...this.armyList]
+            const targetUnitIdx = newArmyList.findIndex(unit=> unit.Number == newUnit.Number)
+            console.log(targetUnitIdx)
+            newArmyList.splice(targetUnitIdx,1,newUnit)
+            console.log(newArmyList)
+            localStorage.setItem(`armies/${this.armyName}`,JSON.stringify(newArmyList))
+            this.fetchArmyList()
         }
     },
     computed:{
