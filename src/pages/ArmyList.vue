@@ -1,8 +1,8 @@
 <template>
     <h3> this is the army list</h3>
     <ul>
-        <li v-for="(stateId,stateName) in CCStateList" :key="stateId">
-            <router-link :to="this.$route.path+'/'+stateId">{{ stateName }}</router-link>
+        <li v-for="state in CCStateList" :key="state">
+            <router-link :to="this.$route.path+'/'+stateList[state]">{{ state }}</router-link>
         </li>
     </ul>
 </template>
@@ -10,10 +10,11 @@
 
 
 export default {
-    inject:['stateList'],
+    inject:['clancraftUnits','stateList'],
     computed:{
         CCStateList(){
-            return this.stateList
+            const stateList =  [...new Set(this.clancraftUnits.map(unit => unit["CC Faction"]))];
+            return stateList.filter(state => state).sort()
         },
     }
 }

@@ -611,7 +611,7 @@
     "CC Units": "Cypran Town Militia",
     "Atilla Units": "Germanic Levy",
     "Tier": "Tier I Spear Infantry",
-    "CC Faction": "Cypran",
+    "CC Faction": "Cypra",
     "Atilla Faction": "Suebians",
     "ID": "CP01"
   },
@@ -619,7 +619,7 @@
     "CC Units": "Cypan Spearman",
     "Atilla Units": "Germanic Spearmen",
     "Tier": "Tier II Spear Infantry",
-    "CC Faction": "Cypran",
+    "CC Faction": "Cypra",
     "Atilla Faction": "Suebians",
     "ID": "CP02"
   },
@@ -627,7 +627,7 @@
     "CC Units": "Cypran Spear Militia",
     "Atilla Units": "Germanic Levy*",
     "Tier": "Tier I Spear Infantry",
-    "CC Faction": "Cypran",
+    "CC Faction": "Cypra",
     "Atilla Faction": "Suebians",
     "ID": "CP03"
   },
@@ -635,7 +635,7 @@
     "CC Units": "Spartan Hoplites",
     "Atilla Units": "Suebi Oath Takers",
     "Tier": "Tier II Spear Infantry",
-    "CC Faction": "Cypran",
+    "CC Faction": "Cypra",
     "Atilla Faction": "Suebians",
     "ID": "CP04"
   },
@@ -643,7 +643,7 @@
     "CC Units": "Cypran Infantry",
     "Atilla Units": "Germanic Nobles",
     "Tier": "Tier II Sword Infantry",
-    "CC Faction": "Cypran",
+    "CC Faction": "Cypra",
     "Atilla Faction": "Suebians",
     "ID": "CP05"
   },
@@ -651,7 +651,7 @@
     "CC Units": "Dismounted Drakiakon",
     "Atilla Units": "Noble Germanic Swordsmen",
     "Tier": "Tier II Sword Infantry",
-    "CC Faction": "Cypran",
+    "CC Faction": "Cypra",
     "Atilla Faction": "Suebians",
     "ID": "CP06"
   },
@@ -659,7 +659,7 @@
     "CC Units": "Cypran Archer Militia",
     "Atilla Units": "Germanic Hunters",
     "Tier": "Tier I Bow Infantry",
-    "CC Faction": "Cypran",
+    "CC Faction": "",
     "Atilla Faction": "Suebians",
     "ID": "CP07"
   },
@@ -667,7 +667,7 @@
     "CC Units": "Cypran Peasant Archers",
     "Atilla Units": "Germanic Bows",
     "Tier": "Tier I Bow Infantry",
-    "CC Faction": "Cypran",
+    "CC Faction": "Cypra",
     "Atilla Faction": "Suebians",
     "ID": "CP08"
   },
@@ -675,7 +675,7 @@
     "CC Units": "Cypran Militia Cavalry",
     "Atilla Units": "Germanic Mounted Warband",
     "Tier": "Tier I Melee Cavalry",
-    "CC Faction": "Cypran",
+    "CC Faction": "Cypra",
     "Atilla Faction": "Suebians",
     "ID": "CP09"
   },
@@ -683,7 +683,7 @@
     "CC Units": "Drakiakon",
     "Atilla Units": "Noble Germanic Horsemen",
     "Tier": "Tier II Melee Cavalry",
-    "CC Faction": "Cypran",
+    "CC Faction": "Cypra",
     "Atilla Faction": "Suebians",
     "ID": "CP10"
   },
@@ -691,7 +691,7 @@
     "CC Units": "Cypran Cavalry",
     "Atilla Units": "Taifali Cavalry",
     "Tier": "Tier I Melee Cavalry",
-    "CC Faction": "Cypran",
+    "CC Faction": "Cypra",
     "Atilla Faction": "Suebians",
     "ID": "CP11"
   },
@@ -699,7 +699,7 @@
     "CC Units": "Beitikon",
     "Atilla Units": "Taifali Cavalry",
     "Tier": "Tier I Melee Cavalry",
-    "CC Faction": "Cypran",
+    "CC Faction": "Cypra",
     "Atilla Faction": "Suebians",
     "ID": "CP12"
   },
@@ -707,7 +707,7 @@
     "CC Units": "Armoured Legionaires",
     "Atilla Units": "Cohors",
     "Tier": "Tier I Sword Infantry",
-    "CC Faction": "Coragoniacs",
+    "CC Faction": "Corragonics",
     "Atilla Faction": "Western Roman Empire",
     "ID": "CR01"
   },
@@ -715,7 +715,7 @@
     "CC Units": "Legionary Cohort",
     "Atilla Units": "Legio",
     "Tier": "Tier II Sword Infantry",
-    "CC Faction": "Coragoniacs",
+    "CC Faction": "Corragonics",
     "Atilla Faction": "Western Roman Empire",
     "ID": "CR02"
   },
@@ -723,7 +723,7 @@
     "CC Units": "Eagle Cohort",
     "Atilla Units": "Legio Comitatenses",
     "Tier": "Tier II Sword Infantry",
-    "CC Faction": "Coragoniacs",
+    "CC Faction": "Corragonics",
     "Atilla Faction": "Western Roman Empire",
     "ID": "CR03"
   },
@@ -731,7 +731,7 @@
     "CC Units": "Evocati Cohort",
     "Atilla Units": "Elite Palatina",
     "Tier": "Tier III Sword Infantry",
-    "CC Faction": "Coragoniacs",
+    "CC Faction": "Corragonics",
     "Atilla Faction": "Western Roman Empire",
     "ID": "CR04"
   },
@@ -739,7 +739,7 @@
     "CC Units": "Praetorian Guard",
     "Atilla Units": "Herculiani Seniores",
     "Tier": "Tier III Sword Infantry",
-    "CC Faction": "Coragoniacs",
+    "CC Faction": "Corragonics",
     "Atilla Faction": "Western Roman Empire",
     "ID": "CR05"
   },
@@ -747,7 +747,7 @@
     "CC Units": "Legionary Cavalry",
     "Atilla Units": "Equites Promoti",
     "Tier": "Tier II Melee Cavalry",
-    "CC Faction": "Coragoniacs",
+    "CC Faction": "Corragonics",
     "Atilla Faction": "Western Roman Empire",
     "ID": "CR06"
   },
@@ -755,7 +755,7 @@
     "CC Units": "Praetorian Cavalry",
     "Atilla Units": "Scholae Palatinae",
     "Tier": "Tier II Melee Cavalry",
-    "CC Faction": "Coragoniacs",
+    "CC Faction": "Corragonics",
     "Atilla Faction": "Western Roman Empire",
     "ID": "CR07"
   },
@@ -763,7 +763,7 @@
     "CC Units": "Vigiles",
     "Atilla Units": "Foederati Spears",
     "Tier": "Tier I Spear Infantry",
-    "CC Faction": "Coragoniacs",
+    "CC Faction": "Corragonics",
     "Atilla Faction": "Western Roman Empire",
     "ID": "CR08"
   },
