@@ -1,32 +1,42 @@
 <template>
-    <form @submit.prevent="generateUnits">
-        <h3>Add unit form</h3>
-        <div class="form-control">
-            <select v-model="selectedUnit.ID" >
-            <option v-for="unit in sortedAvailableUnits" v-bind:key="unit.ID" :value="unit.ID">{{ unit['CC Units'] }}</option>
-            </select>
-        </div>
-        <div class="form control">
-            <label for="unit-name">Unit Name</label>
-            <input type="text" v-model="selectedUnit.name" id="unit-name"/>
-        </div>
-        <div class="form-control">
-            <label for="unit-structure">Structure</label>
-            <input type="text" v-model="selectedUnit.structure" id="unit-structure">
-        </div>
-        <div class="form-control">
-            <label for="unit-sub-structure">Sub-Structure</label>
-            <input type="text" v-model="selectedUnit.subStructure" id="unit-sub-structure">
-        </div>
-        <div>
-            <ul>
-                <li v-for="unit in selectedUnits" :key="unit['Name']">
-                    {{ unit['Name'] }} - {{ unit['Atilla Units'] }} - {{ unit['SubStructure'] }} - {{ unit['Structure'] }}
-                </li>
-            </ul>
-        </div>
-         <h4>Recruitment cost: {{totalRecruitmentCost}}</h4>
+    <form >
+        <h3>Unit Generator</h3>
+        <input type="number" v-model="generationSize"/>
+        <button type="button" @click="generateUnits">Generate units</button>
+        <ul>
+            <li v-for="unit in generatedUnits" :key="unit.Number">{{ unit.Name }} - {{ unit['CC Units'] }} - {{ unit['Atilla Units'] }}</li>
+        </ul>
         <button type="button" @click="replaceUnits">click to add generated unit.</button>
         <button type="button" >Click to replace unit with generated units.</button>
+
     </form>
 </template>
+<script>
+import { generateOrdinalIndicator } from '@/helper'
+export default{
+    props:['units'],
+    inject: ['generateOrdinalIndicator'],
+    data(){
+        return {
+            generatedUnits: [],
+            generationSize: 0
+        }
+    },
+    methods: {
+        generateUnits() {
+            console.log('genius prince futesro',this.generationSize)
+            let availableUnits= [...this.units]
+      
+            for(let i = 0; i < this.generationSize; i++){
+                const unitNumber = i+1;
+                const randomIndex = Math.floor(Math.random()*availableUnits.length)
+                const newUnit = {...availableUnits[randomIndex]}
+                newUnit.Number = unitNumber
+                newUnit.Name = `${unitNumber}${generateOrdinalIndicator(unitNumber)} Company of ${newUnit['CC Units']}`
+                this.generatedUnits.push(newUnit)
+            }
+            console.log('yuigahama yui', this.generatedUnits)
+        }
+    }
+}
+</script>
