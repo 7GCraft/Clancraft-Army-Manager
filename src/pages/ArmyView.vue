@@ -1,14 +1,16 @@
 <template>
     <h1> this is the army viewer for {{ armyName }}</h1>
     <army-table @deleteRow="removeUnit" @updateRow="updateUnit" :armyList="armyList"></army-table>
-    <add-unit-form @submit="updateArmy" :armyName="armyName"></add-unit-form>
+    <add-unit-form @submit="updateArmy" :units="sortedAvailableUnits" ></add-unit-form>
+    <unit-generator-form :units="sortedAvailableUnits"> </unit-generator-form>
 </template>
 <script>
 import ArmyTable from '@/components/ArmyTable.vue';
 import AddUnitForm from '@/components/AddUnitForm.vue';
+import UnitGeneratorForm from '@/components/UnitGeneratorForm.vue';
 export default {
-    inject:['stateList'],
-    components:{ArmyTable, AddUnitForm},
+    inject:['stateList','clancraftUnits'],
+    components:{ArmyTable, AddUnitForm, UnitGeneratorForm},
     created(){
         if(!Object.values(this.stateList).includes(this.$route.params.armyId)){
             this.$router.push('/')
@@ -74,6 +76,11 @@ export default {
                 }
             }
             return null
+        },
+        sortedAvailableUnits(){
+            const availableUnits = this.clancraftUnits.filter(unit=> unit['CC Faction'] == this.armyName);
+            console.log(availableUnits)
+            return availableUnits.sort((a, b) => a['CC Units'].localeCompare(b['CC Units']));
         },     
     }
 }

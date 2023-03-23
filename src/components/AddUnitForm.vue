@@ -3,7 +3,7 @@
         <h3>Add unit form</h3>
         <div class="form-control">
             <select v-model="selectedUnit.ID" >
-            <option v-for="unit in sortedAvailableUnits" v-bind:key="unit.ID" :value="unit.ID">{{ unit['CC Units'] }}</option>
+            <option v-for="unit in units" v-bind:key="unit.ID" :value="unit.ID">{{ unit['CC Units'] }}</option>
             </select>
         </div>
         <div class="form control">
@@ -34,7 +34,6 @@
 <script>
 import { calculateUnitSize } from '@/helper'
 export default {
-    props:['armyName'],
     emits:['submit'],
     inject:['clancraftUnits','calculateUnitSize','findUpkeep','unitUpkeep','findRecruitmentCost','recruitmentCost'],
     data(){
@@ -49,11 +48,6 @@ export default {
         }
     },
     computed: {
-        sortedAvailableUnits(){
-            const availableUnits = this.clancraftUnits.filter(unit=> unit['CC Faction'] == this.armyName);
-            console.log(availableUnits)
-            return availableUnits.sort((a, b) => a['CC Units'].localeCompare(b['CC Units']));
-        },
         totalRecruitmentCost(){
             console.log(this.recruitmentCosts,'yahallo')
             const recruitmentCosts = this.selectedUnits.map(unit=> this.findRecruitmentCost(unit.Tier,this.recruitmentCost));
