@@ -105,7 +105,7 @@ export default {
         newUnit.Number = unitNumber;
         newUnit.Name = `${unitNumber}${generateOrdinalIndicator(
           unitNumber
-        )} Company of ${newUnit["CC Units"]}`;
+        )} Unit of ${newUnit["CC Units"]}`;
 
         newUnits.push(newUnit);
       }
