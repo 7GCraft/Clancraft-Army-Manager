@@ -28,7 +28,7 @@ export default{
             let availableUnits= [...this.units]
       
             for(let i = 0; i < this.generationSize; i++){
-                const unitNumber = i+1;
+                const unitNumber = i+1+ this.generatedUnits.length;
                 const randomIndex = Math.floor(Math.random()*availableUnits.length)
                 const newUnit = {...availableUnits[randomIndex]}
                 newUnit.Number = unitNumber
