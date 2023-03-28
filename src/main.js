@@ -5,7 +5,7 @@ import ArmyList from './pages/ArmyList.vue'
 import ArmyView from './pages/ArmyView.vue'
 import NotFound from './pages/NotFound.vue'
 import UnitList from './pages/UnitList.vue'
-import './index.css'
+import './assets/tailwind.css'
 
 const app = createApp(App)
     
