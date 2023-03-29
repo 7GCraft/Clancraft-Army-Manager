@@ -1,15 +1,15 @@
 <template>
-    
-    <div class="my-2 mx-2 shadow-2xl inline-block w-[200px]  border border-black">
+    <div class="flex w-full">
+    <div class="my-2 mx-2 shadow-2xl inline-block w-40 h-fit  border border-black">
     <h1 class="text-5xl border border-black px-2 bg-black text-white w-100 h-[110px] cursor-pointer"> Army List</h1>
     <ul>
-        <li class="hover:bg-green-700 hover:text-white focus:bg-green-500  text-medium font-medium mx-2 my-1  px-2.5 py-0.5 rounded" v-for="state in CCStateList" :key="state">
+        <li class="hover:bg-green-700 active:bg-green-600 hover:text-white focus:bg-green-500  text-medium font-medium mx-2 my-1  px-2.5 py-0.5 rounded" v-for="state in CCStateList" :key="state">
             <router-link :to="'/armies/'+stateList[state]">{{ state }}</router-link>
         </li>
     </ul>
    
     </div>
-    <div class="h-fit w-fill grow overflow-scroll px-2 ml-0 mr-0 my-2 shadow-2xl inline-block border border-black absolute">
+   
     <router-view></router-view>
     </div>
 </template>

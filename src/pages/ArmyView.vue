@@ -1,8 +1,13 @@
 <template>
+ <div class="h-fit pb-2 px-2 ml-0 mr-0 my-2 shadow-2xl inline-block border border-black grow">
     <h1 class="text-center text-xl border border-black border-xl mb-2"> {{ armyName }}</h1>
     <army-table  @deleteRow="removeUnit" @updateRow="updateUnit" :armyList="armyList"></army-table>
     <add-unit-form @submit="updateArmy" :units="sortedAvailableUnits" ></add-unit-form>
-    <unit-generator-form @add-units="updateArmy" :units="sortedAvailableUnits"> </unit-generator-form>
+
+    <unit-generator-form v-if="showUnitGenerator" @add-units="updateArmy" :units="sortedAvailableUnits"> </unit-generator-form>
+    <button @click="showUnitGenerator = !showUnitGenerator" class="hover:bg-sky-500 h-12 border px-2 text-white border-black bg-sky-600 mt-2">{{showUnitGenerator ? 'Close' : 'Open' }} Unit Generator</button>
+    <button @click="showSpecialAddUnit = !showSpecialAddUnit" class=" mx-2 hover:bg-yellow-500 h-12 border px-2 text-white border-black bg-yellow-600 mt-2">{{showSpecialAddUnit ? 'Close' : 'Open'}} Special Unit Adder </button>
+ </div>
 </template>
 <script>
 import ArmyTable from '@/components/ArmyTable.vue';
@@ -21,12 +26,14 @@ export default {
     },
     data(){
         return{
-            armyList: []
+            armyList: [],
+            showUnitGenerator: false
         }
     },
     watch: {
         armyName(){
             this.fetchArmyList()
+            this.showUnitGenerator = false
         }
     },
     methods:{
