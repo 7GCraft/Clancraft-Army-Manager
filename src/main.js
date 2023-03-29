@@ -5,6 +5,7 @@ import ArmyList from './pages/ArmyList.vue'
 import ArmyView from './pages/ArmyView.vue'
 import NotFound from './pages/NotFound.vue'
 import UnitList from './pages/UnitList.vue'
+import BaseCard from './components/UI/BaseCard.vue'
 import './assets/tailwind.css'
 
 const app = createApp(App)
@@ -41,4 +42,5 @@ const router = createRouter({
 
 app.use(router)
 
+app.component('base-card',BaseCard)
 app.mount('#app')

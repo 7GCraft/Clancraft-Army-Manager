@@ -1,10 +1,12 @@
 <template>
-    <h3> this is the army list</h3>
+    <base-card>
+    <h1 class="text-5xl border border-black bg-black text-white w-100 h-[110px] cursor-pointer"> Army List</h1>
     <ul>
-        <li v-for="state in CCStateList" :key="state">
+        <li class="hover:bg-green-700 hover:text-white focus:bg-green-500  text-medium font-medium mx-2 my-1  px-2.5 py-0.5 rounded" v-for="state in CCStateList" :key="state">
             <router-link :to="this.$route.path+'/'+stateList[state]">{{ state }}</router-link>
         </li>
     </ul>
+    </base-card>
 </template>
 <script>
 
