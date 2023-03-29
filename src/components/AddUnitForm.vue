@@ -52,7 +52,16 @@ export default {
             }
         }
     },
+    watch: {
+        availableUnits(){
+            this.selectedUnits = []
+            this.selectedUnit = {}
+        }
+    },
     computed: {
+        availableUnits(){
+            return this.units
+        },
         totalRecruitmentCost(){
             console.log(this.recruitmentCosts,'yahallo')
             const recruitmentCosts = this.selectedUnits.map(unit=> this.findRecruitmentCost(unit.Tier,this.recruitmentCost));
