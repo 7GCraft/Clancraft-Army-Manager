@@ -14,14 +14,18 @@ const router = createRouter({
     history: createWebHistory(),
     routes: [
       { path: '/', redirect: '/armies' },
-      {name:'armyView',
-        path:'/armies/:armyId',
-        component: ArmyView
-    },
+     
       {
         name: 'armies',
         path: '/armies',
         component: ArmyList,
+        children:[
+          { name:'armyView',
+          path:':armyId',
+          component: ArmyView
+        }
+        ],
+        
       }, 
       {
         name: 'units',

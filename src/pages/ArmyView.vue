@@ -1,6 +1,6 @@
 <template>
-    <h1> this is the army viewer for {{ armyName }}</h1>
-    <army-table @deleteRow="removeUnit" @updateRow="updateUnit" :armyList="armyList"></army-table>
+    <h1 class="text-center text-xl border border-black border-xl mb-2"> {{ armyName }}</h1>
+    <army-table  @deleteRow="removeUnit" @updateRow="updateUnit" :armyList="armyList"></army-table>
     <add-unit-form @submit="updateArmy" :units="sortedAvailableUnits" ></add-unit-form>
     <unit-generator-form @add-units="updateArmy" :units="sortedAvailableUnits"> </unit-generator-form>
 </template>
@@ -22,6 +22,11 @@ export default {
     data(){
         return{
             armyList: []
+        }
+    },
+    watch: {
+        armyName(){
+            this.fetchArmyList()
         }
     },
     methods:{

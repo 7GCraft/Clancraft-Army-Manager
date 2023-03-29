@@ -1,6 +1,6 @@
 <template>
-  <h3>this is the unit table</h3>
-  <table class="army-table" @keydown.esc="cancelEdit" >
+  <div>
+  <table class="army-table text-xs" @keydown.esc="cancelEdit" >
     <thead>
       <tr>
         <th>No.</th>
@@ -8,10 +8,10 @@
         <th>Atilla Name</th>
         <th>Unit ID</th>
         <th>Unit Type</th>
-        <th>Unit Number</th>
-        <th>Unit Maximum Number</th>
+        <th>Unit Size</th>
+        <th>Max Size</th>
         <th>Base Upkeep</th>
-        <th>Upkeep Modifier</th>
+        <th>Modifier</th>
         <th>Unit Upkeep</th>
         <th>Location Status</th>
         <th>Army Sub-Structure</th>
@@ -65,8 +65,10 @@
       </template>
     </thead>
   </table>
-  <h2>Total upkeep: {{ totalUpkeep }}</h2>
+  <h2 class="font-bold text-lg">Total upkeep: {{ totalUpkeep }}</h2>
+  </div>
 </template>
+
 <script>
 import { groupBy } from "@/helper";
 

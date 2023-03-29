@@ -1,5 +1,5 @@
 <template>
-    <div class="mx-auto my-2 text-center shadow-2xl  border border-black w-48" >
+    <div class="my-2 shadow-2xl  border border-black w-48" >
         <slot/>
     </div>
 </template>
