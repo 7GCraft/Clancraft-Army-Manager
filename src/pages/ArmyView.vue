@@ -5,8 +5,8 @@
     <add-unit-form @submit="updateArmy" :units="sortedAvailableUnits" ></add-unit-form>
 
     <unit-generator-form v-if="showUnitGenerator" @add-units="updateArmy" :units="sortedAvailableUnits"> </unit-generator-form>
-    <button @click="showUnitGenerator = !showUnitGenerator" class="hover:bg-sky-500 h-12 border px-2 text-white border-black bg-sky-600 mt-2">{{showUnitGenerator ? 'Close' : 'Open' }} Unit Generator</button>
-    <button @click="showSpecialAddUnit = !showSpecialAddUnit" class=" mx-2 hover:bg-yellow-500 h-12 border px-2 text-white border-black bg-yellow-600 mt-2">{{showSpecialAddUnit ? 'Close' : 'Open'}} Special Unit Adder </button>
+    <button @click="showUnitGenerator = !showUnitGenerator" class="active:bg-sky-400 active:text-bold hover:bg-sky-500 h-12 border px-2 text-white border-black bg-sky-600 mt-2">{{showUnitGenerator ? 'Close' : 'Open' }} Unit Generator</button>
+    <button @click="showSpecialAddUnit = !showSpecialAddUnit" class="active:bg-yellow-400 active:text-bold  mx-2 hover:bg-yellow-500 h-12 border px-2 text-white border-black bg-yellow-600 mt-2">{{showSpecialAddUnit ? 'Close' : 'Open'}} Special Unit Adder </button>
  </div>
 </template>
 <script>
