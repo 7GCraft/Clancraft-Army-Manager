@@ -1,34 +1,39 @@
 <template>
-    <form @submit.prevent="submitForm">
-        <h3>Add unit form</h3>
-        <div class="form-control">
-            <select v-model.trim="selectedUnit.ID" >
+    <div class="w-96 h-fit mt-1 mb-2">
+   <h3 class="px-2 text-lg text-white bg-black">Add unit form</h3>
+    <form @submit.prevent="submitForm" class="border border-black px-1">
+        <div class="form-control mt-1">
+            <label for="unit-selection" class="mr-6">Select a unit</label>
+            <select name="unit-selection" v-model.trim="selectedUnit.ID" class="border-black border w-[185px]">
             <option v-for="unit in units" v-bind:key="unit.ID" :value="unit.ID">{{ unit['CC Units'] }}</option>
             </select>
         </div>
-        <div class="form control">
-            <label for="unit-name">Unit Name</label>
-            <input type="text" v-model.trim="selectedUnit.name" id="unit-name"/>
+        <div class="form control mt-1">
+            <label for="unit-name" class="mr-9">Unit Name</label>
+            <input type="text" class="border border-black" v-model.trim="selectedUnit.name" id="unit-name"/>
         </div>
-        <div class="form-control">
-            <label for="unit-structure">Structure</label>
-            <input type="text" v-model.trim="selectedUnit.structure" id="unit-structure">
+        <div class="form-control mt-1">
+            <label for="unit-structure" class="mr-12">Structure</label>
+            <input type="text" class="border border-black" v-model.trim="selectedUnit.structure" id="unit-structure">
         </div>
-        <div class="form-control">
-            <label for="unit-sub-structure">Sub-Structure</label>
-            <input type="text" v-model.trim="selectedUnit.subStructure" id="unit-sub-structure">
+        <div class="form-control mt-1">
+            <label for="unit-sub-structure" class="mr-4">Sub-Structure</label>
+            <input type="text" class="border border-black" v-model.trim="selectedUnit.subStructure" id="unit-sub-structure">
         </div>
-        <div>
+       
+         <h4 class="font-lg mt-1 font-semibold">Total Recruitment Cost: {{totalRecruitmentCost}}G</h4>
+          <h4 class="font-lg mt-1 font-semibold">New Upkeep Cost: {{ totalUpkeepCost}}G</h4>
+        <button class="px-2 text-white border h-12 bg-green-500 hover:bg-green-400 hover:font-semibold border-black my-2 mr-2" type="button" @click="addUnits">Add Unit</button>
+        <button class="px-2 text-white border bg-red-500 hover:bg-red-400 hover:font-semibold border-black border-lg h-12">Submit</button>
+    </form>
+     <div class="">
             <ul>
                 <li v-for="unit in selectedUnits" :key="unit['Name']">
                     {{ unit['Name'] }} - {{ unit['Atilla Units'] }} - {{ unit['SubStructure'] }} - {{ unit['Structure'] }}
                 </li>
             </ul>
         </div>
-         <h4>Recruitment cost: {{totalRecruitmentCost}}</h4>
-        <button type="button" @click="addUnits">click to add unit</button>
-        <button>Click to submit</button>
-    </form>
+      </div>
 </template>
 
 <script>
@@ -52,6 +57,10 @@ export default {
             console.log(this.recruitmentCosts,'yahallo')
             const recruitmentCosts = this.selectedUnits.map(unit=> this.findRecruitmentCost(unit.Tier,this.recruitmentCost));
            return recruitmentCosts.reduce((sum,nextUnitCost) => sum + nextUnitCost,0 )
+        },
+        totalUpkeepCost(){
+         const upkeepCosts = this.selectedUnits.map(unit => this.findUpkeep(unit.Tier, this.unitUpkeep))
+         return upkeepCosts.reduce((sum,nextUpkeep)=> sum+ nextUpkeep,0)
         }
     },
     methods:{

@@ -1,16 +1,21 @@
 <template>
+   <div class="w-96 h-fit">
   <form>
-    <h3>Unit Generator</h3>
-    <div class="form-control">
-      <label for="normal">Normal</label>
-      <input type="radio" value="normal" v-model="mode" name="normal" />
-      <label for="feudal">Feudal</label>
+    <h3 class="px-2 text-lg text-white bg-black">Unit Generator</h3>
+    <div class="form-control mt-1">
+      <label for="normal" class="mr-1">Normal</label>
+      <input type="radio" class="mr-1" value="normal" v-model="mode" name="normal" />
+      <label for="feudal" class="mr-1">Feudal</label>
       <input type="radio" value="feudal" name="feudal" v-model="mode" />
     </div>
-    <input type="number" v-model="generationSize" />
     <div class="form-control" >
-        <input type="text" name="structure" v-model.trim="generatedArmyStructure"/>
+        <label for="size">Army Size</label>
+        <input type="text" name="size" v-model.number="generationSize"/>
+    </div>
+
+    <div class="form-control" >
         <label for="structure">Army Structure</label>
+        <input type="text" name="structure" v-model.trim="generatedArmyStructure"/>
     </div>
     <div class="form-control" >
         <input type="text" name="subStructure" v-model.trim="generatedArmySubStructure"/>
@@ -29,6 +34,7 @@
     </button>
     <button type="button" @click="replaceUnits">Click to replace unit with generated units.</button>
   </form>
+    </div>
 </template>
 <script>
 import { generateOrdinalIndicator } from "@/helper";

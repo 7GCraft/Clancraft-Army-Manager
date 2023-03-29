@@ -1,22 +1,22 @@
 <template>
-  <h3>this is the unit table</h3>
-  <table class="army-table" @keydown.esc="cancelEdit" >
-    <thead>
+  <div>
+  <table class="army-table text-xs" @keydown.esc="cancelEdit" >
+    <thead v-if="this.armyList.length > 0">
       <tr>
         <th>No.</th>
         <th>Unit Name</th>
         <th>Atilla Name</th>
         <th>Unit ID</th>
         <th>Unit Type</th>
-        <th>Unit Number</th>
-        <th>Unit Maximum Number</th>
+        <th>Unit Size</th>
+        <th>Max Size</th>
         <th>Base Upkeep</th>
         <th>Upkeep Modifier</th>
         <th>Unit Upkeep</th>
         <th>Location Status</th>
         <th>Army Sub-Structure</th>
         <th>Army Structure</th>
-        <th>Delete Row</th>
+        <th>Delete Unit</th>
       </tr>
       <template
         v-for="(groupedArmy, structure) in groupedArmyList"
@@ -65,8 +65,10 @@
       </template>
     </thead>
   </table>
-  <h2>Total upkeep: {{ totalUpkeep }}</h2>
+  <h2 class="font-bold text-lg" v-if="this.armyList.length > 0">Total upkeep: {{ totalUpkeep }}</h2>
+  </div>
 </template>
+
 <script>
 import { groupBy } from "@/helper";
 
