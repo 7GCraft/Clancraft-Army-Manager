@@ -1,9 +1,9 @@
 <template>
   <div>
-  <table class="army-table text-xs" @keydown.esc="cancelEdit" >
-    <thead v-if="this.armyList.length > 0">
-      <tr>
-        <th>No.</th>
+  <table class="army-table text-sm" @keydown.esc="cancelEdit" >
+    <thead v-if="this.armyList.length > 0" >
+      <tr class>
+        <th>No</th>
         <th>Unit Name</th>
         <th>Atilla Name</th>
         <th>Unit ID</th>
@@ -18,6 +18,7 @@
         <th>Army Structure</th>
         <th>Delete Unit</th>
       </tr>
+
       <template
         v-for="(groupedArmy, structure) in groupedArmyList"
         :key="structure"

@@ -1,40 +1,46 @@
 <template>
-   <div class="w-96 h-fit">
-  <form>
-    <h3 class="px-2 text-lg text-white bg-black">Unit Generator</h3>
+<div class="w-full flex h-fit">
+   <div class="w-96">
+      <h3 class="px-2 text-lg text-white bg-black">Unit Generator</h3>
+  <form class="border border-black px-1" @submit.prevent="addUnits">
+   
     <div class="form-control mt-1">
-      <label for="normal" class="mr-1">Normal</label>
+      <label class="mr-28">Mode </label>
       <input type="radio" class="mr-1" value="normal" v-model="mode" name="normal" />
+      <label for="normal" class="mr-2">Normal</label>
+      <input type="radio" class="mr-1" value="feudal" name="feudal" v-model="mode" />
       <label for="feudal" class="mr-1">Feudal</label>
-      <input type="radio" value="feudal" name="feudal" v-model="mode" />
     </div>
-    <div class="form-control" >
-        <label for="size">Army Size</label>
-        <input type="text" name="size" v-model.number="generationSize"/>
+    <div class="form-control mt-2" >
+        <label for="size" class="mr-[88px]">Army Size</label>
+        <input type="text" class="border text-center w-[42px] border-black" name="size" v-model.number="generationSize"/>
+        <label for="size" class="ml-1"> Units</label>
     </div>
 
-    <div class="form-control" >
-        <label for="structure">Army Structure</label>
-        <input type="text" name="structure" v-model.trim="generatedArmyStructure"/>
+    <div class="form-control mt-1" >
+        <label for="structure" class="mr-[54px]">Army Structure</label>
+        <input type="text" class="border border-black px-2 w-42" name="structure" v-model.trim="generatedArmyStructure"/>
     </div>
-    <div class="form-control" >
-        <input type="text" name="subStructure" v-model.trim="generatedArmySubStructure"/>
-        <label for="subStructure">Army Sub Structure</label>
+    <div class="form-control mt-1" >
+        <label for="subStructure" class="mr-16">Sub Structure</label>
+        <input type="text" class="border border-black w-42 px-2" name="subStructure" v-model.trim="generatedArmySubStructure"/>
+    
     </div>
-    <button type="button" @click="generateUnitBasedOnMode(mode)">
-      Generate units
-    </button>
-    <ul>
-      <li v-for="unit in generatedUnits" :key="unit.Number">
+     <button class="px-2 text-white border h-12 bg-green-500 hover:bg-green-400 hover:font-semibold border-black my-2 mr-2" type="button" @click="generateUnitBasedOnMode()">Generate Unit</button>
+        <button class="px-2 text-white border bg-red-500 hover:bg-red-400 hover:font-semibold border-black border-lg h-12" @click="addUnits">Submit</button>
+  
+  </form>
+    
+    </div>
+    <div class="flex-grow text-center mx-3" v-if="generatedUnits.length > 0">
+      <h3 class="text-white bg-black text-lg text-bold">Generated Units</h3>
+      <ul>
+      <li v-for="unit in generatedUnits" class="border border-black px-2" :key="unit.Number">
         {{ unit.Name }} - {{ unit["CC Units"] }} - {{ unit["Atilla Units"] }} {{ unit["SubStructure"] !== '' ? ` - ${unit["SubStructure"]}` : '' }} {{ unit["Structure"] !== '' ? ` - ${unit["Structure"]}` : '' }}
       </li>
     </ul>
-    <button type="button" @click="addUnits">
-      click to add generated unit.
-    </button>
-    <button type="button" @click="replaceUnits">Click to replace unit with generated units.</button>
-  </form>
     </div>
+</div>
 </template>
 <script>
 import { generateOrdinalIndicator } from "@/helper";
