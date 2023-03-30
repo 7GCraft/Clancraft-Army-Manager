@@ -1,7 +1,7 @@
 <template>
     <div class="w-full h-fit flex">
     <div class="w-96 mt-1 mb-2">
-   <h3 class="px-2 text-lg text-white bg-black">Add unit form</h3>
+   <h3 class="px-2 text-lg text-white bg-black">Add Unit Form</h3>
     <form @submit.prevent="submitForm" class="border border-black px-1">
         <div class="form-control mt-1">
             <label for="unit-selection" class="mr-6">Select a unit</label>
