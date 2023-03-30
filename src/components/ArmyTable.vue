@@ -66,7 +66,7 @@
       </template>
     </thead>
   </table>
-  <h2 class="font-bold text-xl my-1" v-if="this.armyList.length > 0">Total upkeep: {{ totalUpkeep }}G</h2>
+  <h2 class="font-bold text-xl my-1" v-if="this.armyList.length > 0">Total upkeep: {{ totalUpkeep }} {{baseUnit  }}</h2>
   </div>
 </template>
 
@@ -74,7 +74,7 @@
 import { groupBy } from "@/helper";
 
 export default {
-  props: ["armyList"],
+  props: ["armyList","baseUnit"],
   emits:["deleteRow","updateRow"],
   inject: ["findUpkeep", "unitUpkeep", "calculateUnitSize", "calculateUpkeep"],
   data() {

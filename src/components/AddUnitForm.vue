@@ -22,8 +22,8 @@
             <input type="text" class="border border-black px-2" v-model.trim="selectedUnit.subStructure" id="unit-sub-structure">
         </div>
        
-         <h4 class="font-lg mt-1 font-semibold">Total Recruitment Cost: {{totalRecruitmentCost}}G</h4>
-          <h4 class="font-lg mt-1 font-semibold">New Upkeep Cost: {{ totalUpkeepCost}}G</h4>
+         <h4 class="font-lg mt-1 font-semibold">Total Recruitment Cost: {{totalRecruitmentCost}} {{ baseUnit }}</h4>
+          <h4 class="font-lg mt-1 font-semibold">New Upkeep Cost: {{ totalUpkeepCost}} {{ baseUnit }}</h4>
         <button class="active:font-bold active:bg-green-300 px-2 text-white border h-12 bg-green-500 hover:bg-green-400 hover:font-semibold border-black my-2 mr-2" type="button" @click="addUnits">Add Unit</button>
         <button class="active:font-bold active:bg-red-300 px-2 text-white border bg-red-500 hover:bg-red-400 hover:font-semibold border-black border-lg h-12">Submit</button>
     </form>
@@ -42,7 +42,7 @@
 <script>
 export default {
     emits:['submit'],
-    props:['units'],
+    props:['units','baseUnit'],
     inject:['clancraftUnits','findUpkeep','unitUpkeep','findRecruitmentCost','recruitmentCost'],
     data(){
         return{

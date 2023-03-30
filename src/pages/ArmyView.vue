@@ -3,10 +3,10 @@
         <h1 class=" text-white bg-black  text-center font-bold  py-3 text-2xl border border-black border-xl mb-2">
             {{ armyName }}
         </h1>
-        <army-table @deleteRow="removeUnit" @updateRow="updateUnit" :armyList="armyList"></army-table>
-        <add-unit-form v-if="formVisibility.showAddUnit" @submit="updateArmy" :units="sortedAvailableUnits"></add-unit-form>
+        <army-table :baseUnit="stateCurrency" @deleteRow="removeUnit" @updateRow="updateUnit" :armyList="armyList"></army-table>
+        <add-unit-form :baseUnit="stateCurrency" v-if="formVisibility.showAddUnit" @submit="updateArmy" :units="sortedAvailableUnits"></add-unit-form>
 
-        <unit-generator-form v-if="formVisibility.showUnitGenerator" @add-units="updateArmy" :units="sortedAvailableUnits">
+        <unit-generator-form :baseUnit="stateCurrency" v-if="formVisibility.showUnitGenerator" @add-units="updateArmy" :units="sortedAvailableUnits">
         </unit-generator-form>
         <button @click="toggleForm('showAddUnit')"
             class="active:bg-green-400 active:font-bold mx-2 hover:font-semibold hover:bg-green-500 h-12 border px-2 text-white border-black bg-green-600 mt-2">
@@ -27,7 +27,7 @@ import ArmyTable from '@/components/ArmyTable.vue';
 import AddUnitForm from '@/components/AddUnitForm.vue';
 import UnitGeneratorForm from '@/components/UnitGeneratorForm.vue';
 export default {
-    inject: ['stateList', 'clancraftUnits', 'calculateUnitSize', 'findUpkeep', 'unitUpkeep'],
+    inject: ['currency','stateList', 'clancraftUnits', 'calculateUnitSize', 'findUpkeep', 'unitUpkeep'],
     components: { ArmyTable, AddUnitForm, UnitGeneratorForm },
     created() {
         if (!Object.values(this.stateList).includes(this.$route.params.armyId)) {
@@ -132,6 +132,9 @@ export default {
             console.log(availableUnits)
             return availableUnits.sort((a, b) => a['CC Units'].localeCompare(b['CC Units']));
         },
+        stateCurrency(){
+            return this.currency[this.armyName]
+        }
     }
 }
 </script>

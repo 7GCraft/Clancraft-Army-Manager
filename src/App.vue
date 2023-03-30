@@ -7,6 +7,7 @@
 import clancraftUnits from './CC_UNITS.json'
 import unitUpkeep from './UNIT_UPKEEP.json'
 import StateList from './STATE_ID.json'
+import currency from './CURRENCY.json'
 import recruitmentCost from './UNIT_RECRUITMENT.json'
 import {calculateUpkeep, calculateUnitSize, findBaseUpkeep,findRecruitmentCost,generateOrdinalIndicator} from './helper'
 import TheNavigation from './components/TheNavigation.vue'
@@ -28,13 +29,10 @@ export default {
       calculateUnitSize: calculateUnitSize,
       findRecruitmentCost: findRecruitmentCost,
       recruitmentCost: recruitmentCost,
-      generateOrdinalIndicator
+      generateOrdinalIndicator,
+      currency
     }
   },
-  data(){
-    return{
-    }
-  }
 }
 </script>
 
