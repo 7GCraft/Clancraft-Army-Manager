@@ -1,6 +1,6 @@
 <template>
     <div class="h-fit pb-2 px-2 ml-0 mr-0 my-2 shadow-2xl inline-block border border-black grow">
-        <h1 class="text-center text-xl border border-black border-xl mb-2">
+        <h1 class=" text-white bg-black  text-center font-bold  py-3 text-2xl border border-black border-xl mb-2">
             {{ armyName }}
         </h1>
         <army-table @deleteRow="removeUnit" @updateRow="updateUnit" :armyList="armyList"></army-table>
@@ -10,7 +10,7 @@
         </unit-generator-form>
         <button @click="toggleForm('showAddUnit')"
             class="active:bg-green-400 active:font-bold mx-2 hover:font-semibold hover:bg-green-500 h-12 border px-2 text-white border-black bg-green-600 mt-2">
-            {{ formVisibility.showUnitGenerator ? "Close" : "Open" }} Factional Unit Adder
+            {{ formVisibility.showAddUnit ? "Close" : "Open" }} Factional Unit Adder
         </button>
         <button @click="toggleForm('showUnitGenerator')"
             class="active:bg-sky-400 active:font-bold  hover:font-semibold hover:bg-sky-500 h-12 border px-2 text-white border-black bg-sky-600 mt-2">
