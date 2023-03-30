@@ -9,15 +9,15 @@
         <unit-generator-form v-if="formVisibility.showUnitGenerator" @add-units="updateArmy" :units="sortedAvailableUnits">
         </unit-generator-form>
         <button @click="toggleForm('showAddUnit')"
-            class="mx-2 hover:bg-green-500 h-12 border px-2 text-white border-black bg-green-600 mt-2">
+            class="active:bg-green-400 active:font-bold mx-2 hover:font-semibold hover:bg-green-500 h-12 border px-2 text-white border-black bg-green-600 mt-2">
             {{ formVisibility.showUnitGenerator ? "Close" : "Open" }} Factional Unit Adder
         </button>
         <button @click="toggleForm('showUnitGenerator')"
-            class="hover:bg-sky-500 h-12 border px-2 text-white border-black bg-sky-600 mt-2">
+            class="active:bg-sky-400 active:font-bold  hover:font-semibold hover:bg-sky-500 h-12 border px-2 text-white border-black bg-sky-600 mt-2">
             {{ formVisibility.showUnitGenerator ? "Close" : "Open" }} Unit Generator
         </button>
         <button @click="toggleForm('showSpecialAddUnit')"
-            class="mx-2 hover:bg-yellow-500 h-12 border px-2 text-white border-black bg-yellow-600 mt-2">
+            class="active:bg-yellow-400 active:font-bold mx-2 hover:font-semibold hover:bg-yellow-500 h-12 border px-2 text-white border-black bg-yellow-600 mt-2">
             {{ formVisibility.showSpecialAddUnit ? "Close" : "Open" }} Special Unit Adder
         </button>
     </div>

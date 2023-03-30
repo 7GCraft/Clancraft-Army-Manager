@@ -26,8 +26,8 @@
         <input type="text" class="border border-black w-42 px-2" name="subStructure" v-model.trim="generatedArmySubStructure"/>
     
     </div>
-     <button class="px-2 text-white border h-12 bg-green-500 hover:bg-green-400 hover:font-semibold border-black my-2 mr-2" type="button" @click="generateUnitBasedOnMode()">Generate Unit</button>
-        <button class="px-2 text-white border bg-red-500 hover:bg-red-400 hover:font-semibold border-black border-lg h-12" @click="addUnits">Submit</button>
+     <button class="active:font-bold active:bg-green-300  px-2 text-white border h-12 bg-green-500 hover:bg-green-400 hover:font-semibold border-black my-2 mr-2" type="button" @click="generateUnitBasedOnMode()">Generate Unit</button>
+        <button class="active:font-bold active:bg-red-300  px-2 text-white border bg-red-500 hover:bg-red-400 hover:font-semibold border-black border-lg h-12" @click="addUnits">Submit</button>
   
   </form>
     

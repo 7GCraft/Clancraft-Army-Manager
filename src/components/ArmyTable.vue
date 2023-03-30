@@ -2,7 +2,7 @@
   <div>
   <table class="army-table text-sm" @keydown.esc="cancelEdit" >
     <thead v-if="this.armyList.length > 0" >
-      <tr class>
+      <tr >
         <th>No</th>
         <th>Unit Name</th>
         <th>Atilla Name</th>
@@ -11,7 +11,7 @@
         <th>Unit Size</th>
         <th>Max Size</th>
         <th>Base Upkeep</th>
-        <th>Upkeep Modifier</th>
+        <th>Modifier</th>
         <th>Unit Upkeep</th>
         <th>Location Status</th>
         <th>Army Sub-Structure</th>
@@ -30,20 +30,20 @@
           <tr v-for="(unit, unitIdx) of armyUnits" :key="unit.Number">
             <td>{{ unit.Number }}</td>
             <td @dblclick="selectDataCellToEdit(unit, 'Name')">
-                <input :value="unit.Name" @keydown.enter="saveEdit($event,unit,'Name')" v-if="checkIfUnitAndAttributeSelected(unit,'Name')" type="text">
+                <input class="w-80 px-2 mx-0" :value="unit.Name" @keydown.enter="saveEdit($event,unit,'Name')" v-if="checkIfUnitAndAttributeSelected(unit,'Name')" type="text">
                 <template v-else>{{ unit.Name }}</template>
             </td>
             <td>{{ unit["Atilla Units"] }}</td>
             <td>{{ unit.ID }}</td>
             <td>{{ unit.Tier }}</td>
             <td @dblclick="selectDataCellToEdit(unit, 'Size')">
-                <input :value="unit.Size" @keydown.enter="saveEdit($event,unit,'Size')" v-if="checkIfUnitAndAttributeSelected(unit,'Size')" type="number">
+                <input class="w-16 px-1" :value="unit.Size" @keydown.enter="saveEdit($event,unit,'Size')" v-if="checkIfUnitAndAttributeSelected(unit,'Size')" type="number">
                 <template v-else>{{ unit.Size }}</template>
             </td>
             <td>{{ calculateUnitSize(unit.Tier) }}</td>
             <td>{{ unit.BaseUpkeep }}</td>
             <td @dblclick="selectDataCellToEdit(unit, 'upkeepModifier')">
-                <input :value="unit.upkeepModifier" @keydown.enter="saveEdit($event,unit,'UpkeepModifier')" v-if="checkIfUnitAndAttributeSelected(unit,'UpkeepModifier')" type="number">
+                <input class="w-16 px-1" :value="unit.upkeepModifier" @keydown.enter="saveEdit($event,unit,'UpkeepModifier')" v-if="checkIfUnitAndAttributeSelected(unit,'UpkeepModifier')" type="number">
                 <template v-else>{{ unit.upkeepModifier }}</template>
             </td>
             <td>{{ calculateUpkeep(unit.BaseUpkeep, unit.upkeepModifier) }}</td>
@@ -60,13 +60,13 @@
             >
               {{ structure }}
             </td>
-            <td @click="deleteRow(unit)"><span>X</span></td>
+            <td class="cursor-pointer active:bg-red-300" @click="deleteRow(unit)"><font-awesome-icon icon="fa-solid fa-trash" class="text-red-400 border"></font-awesome-icon></td>
           </tr>
         </template>
       </template>
     </thead>
   </table>
-  <h2 class="font-bold text-lg" v-if="this.armyList.length > 0">Total upkeep: {{ totalUpkeep }}</h2>
+  <h2 class="font-bold text-xl my-1" v-if="this.armyList.length > 0">Total upkeep: {{ totalUpkeep }}G</h2>
   </div>
 </template>
 
