@@ -1,6 +1,8 @@
 <template>
-    <h3> this is the unit table</h3>
-    <table class="unit-table">
+    <h1 class=" text-white bg-black  text-center font-bold  py-3 text-2xl border border-black border-xl mb-2">
+            Unit List
+        </h1>
+    <table class="unit-table text-sm">
         <thead>
             <tr>
                 <th>Unit ID</th>
