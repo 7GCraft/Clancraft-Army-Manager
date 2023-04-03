@@ -46,7 +46,7 @@
                 <input class="w-16 px-1" :value="unit.upkeepModifier" @keydown.enter="saveEdit($event,unit,'UpkeepModifier')" v-if="checkIfUnitAndAttributeSelected(unit,'UpkeepModifier')" type="number">
                 <template v-else>{{ unit.upkeepModifier }}</template>
             </td>
-            <td>{{ calculateUpkeep(unit.BaseUpkeep, unit.upkeepModifier) }}</td>
+            <td>{{ calculateUpkeep(unit.BaseUpkeep, unit.upkeepModifier) * unit.Size / calculateUnitSize(unit.Tier) }}</td>
             <td @dblclick="selectDataCellToEdit(unit, 'localStatus')">
                 <input :value="unit.localStatus" @keydown.enter="saveEdit($event,unit,'LocalStatus')" v-if="checkIfUnitAndAttributeSelected(unit,'LocalStatus')" type="text">
                 <template v-else>{{ unit.localStatus }}</template>
@@ -98,7 +98,7 @@ export default {
       return Object.fromEntries(secondGroupArmyList);
     },
     totalUpkeep() {
-      return this.armyList.reduce((sum, unit) => sum + unit.BaseUpkeep, 0);
+      return this.armyList.reduce((sum, unit) => sum + ((1 + unit.upkeepModifier) * unit.BaseUpkeep * (unit.Size / this.calculateUnitSize(unit.Tier))) , 0);
     },
   },
   methods: {
