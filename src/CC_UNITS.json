@@ -112,7 +112,7 @@
     "ID": "SS14"
   },
   {
-    "CC Units": "Auxiliary Horsemen",
+    "CC Units": "Auxiliary Lancers",
     "Atilla Units": "Saxon Lancers",
     "Tier": "Tier I Shock Cavalry",
     "CC Faction": "Sal Set",
@@ -1458,11 +1458,15 @@
   {
     "CC Units": "Onager",
     "Atilla Units": "Onager",
-    "Tier": "Tier I Siege Equipment"
+    "Tier": "Tier I Siege Equipment",
+    "CC Faction": "",
+    "Atilla Faction": ""
   },
   {
     "CC Units": "Scorpion",
     "Atilla Units": "Cheiroballista",
-    "Tier": "Tier II Siege Equipment"
+    "Tier": "Tier II Siege Equipment",
+    "CC Faction": "",
+    "Atilla Faction": ""
   }
 ]

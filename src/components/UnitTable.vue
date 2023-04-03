@@ -13,14 +13,14 @@
                 <th>Unit Type</th>
                 <th>Unit Upkeep</th>
             </tr>
-            <tr v-for="units of clancraftUnits" :key="units['CC Units']">
-                <td>{{ units['ID'] }}</td>
-                <td>{{ units['CC Faction'] }}</td>
-                <td>{{ units['Atilla Faction'] }}</td>
-                <td>{{units['CC Units']}}</td>
-                <td>{{ units['Atilla Units'] }}</td>
-                <td>{{ units['Tier'] }}</td>
-                <td>{{ findUpkeep(units.Tier,unitUpkeep) }}</td>
+            <tr v-for="unit of units" :key="unit['CC Units']">
+                <td>{{ unit['ID'] }}</td>
+                <td>{{ unit['CC Faction'] }}</td>
+                <td>{{ unit['Atilla Faction'] }}</td>
+                <td>{{unit['CC Units']}}</td>
+                <td>{{ unit['Atilla Units'] }}</td>
+                <td>{{ unit['Tier'] }}</td>
+                <td>{{ findUpkeep(unit.Tier,unitUpkeep) }}</td>
             
             </tr>
         </thead>
@@ -30,7 +30,8 @@
 
 
 export default{
-    inject:['clancraftUnits','findUpkeep','unitUpkeep']
+    props:['units'],
+    inject:['findUpkeep','unitUpkeep']
 }
 </script>
 
