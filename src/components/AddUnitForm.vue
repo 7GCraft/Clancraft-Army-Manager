@@ -33,7 +33,8 @@
       <ul>
       <li v-for="unit in selectedUnits" class="border border-black px-2" :key="unit.Number">
         {{ unit.Name }} - {{ unit["CC Units"] }} - {{ unit["Atilla Units"] }} {{ unit["SubStructure"] !== '' ? ` - ${unit["SubStructure"]}` : '' }} {{ unit["Structure"] !== '' ? ` - ${unit["Structure"]}` : '' }}
-      </li>
+        <span class="cursor-pointer active:bg-red-300 grow border-sm mx-2 border-black" @click="deleteUnit(unit.Number)"><font-awesome-icon icon="fa-solid fa-trash" class="text-red-400 border"></font-awesome-icon></span>
+    </li>
     </ul>
     </div>
       </div>
@@ -78,20 +79,28 @@ export default {
         },
         addUnits(){
             let targetUnit;
+            let startingIndex = this.selectedUnits.length 
             for(let unit of this.clancraftUnits){
                 if(unit.ID === this.selectedUnit.ID){
                     targetUnit = {
                         ...unit,
-                       
+                        Number: startingIndex,
                         Name: this.selectedUnit.name,
                         Structure: this.selectedUnit.structure,
                         SubStructure: this.selectedUnit.subStructure
                     }
+                    startingIndex++
                 }
             }
             this.selectedUnit.name = ''
             this.selectedUnits.push(targetUnit)
-        }
+        },
+        deleteUnit(targetUnitId){
+            const newUnits = [...this.selectedUnits]
+            const targetUnitIdx = newUnits.findIndex(unit=> unit.Number == targetUnitId)
+            newUnits.splice(targetUnitIdx,1)
+            this.selectedUnits = newUnits;
+  }
     }
 }
 </script>

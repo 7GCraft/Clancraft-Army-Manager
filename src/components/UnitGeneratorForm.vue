@@ -28,15 +28,15 @@
     </div>
      <button class="active:font-bold active:bg-green-300  px-2 text-white border h-12 bg-green-500 hover:bg-green-400 hover:font-semibold border-black my-2 mr-2" type="button" @click="generateUnitBasedOnMode()">Generate Unit</button>
         <button class="active:font-bold active:bg-sky-300 px-2 text-white border bg-sky-500 hover:bg-sky-400 hover:font-semibold border-black border-lg h-12" @click="addUnits">Submit</button>
-  
   </form>
     
     </div>
     <div class="flex-grow text-center mx-3" v-if="generatedUnits.length > 0">
       <h3 class="text-white bg-black text-lg text-bold">Generated Units</h3>
       <ul>
-      <li v-for="unit in generatedUnits" class="border border-black px-2" :key="unit.Number">
+      <li v-for="unit in generatedUnits" class="border border-black px-2 " :key="unit.Number">
         {{ unit.Name }} - {{ unit["CC Units"] }} - {{ unit["Atilla Units"] }} {{ unit["SubStructure"] !== '' ? ` - ${unit["SubStructure"]}` : '' }} {{ unit["Structure"] !== '' ? ` - ${unit["Structure"]}` : '' }}
+        <span class="cursor-pointer active:bg-red-300 grow border-sm mx-2 border-black" @click="deleteUnit(unit.Number)"><font-awesome-icon icon="fa-solid fa-trash" class="text-red-400 border"></font-awesome-icon></span>
       </li>
     </ul>
     </div>
@@ -137,7 +137,14 @@ export default {
     addUnits(){
         this.$emit('add-units',this.generatedUnits)
         this.clearForm()
-    }
+    },
+    deleteUnit(targetUnitId){
+    const newUnits = [...this.generatedUnits]
+    const targetUnitIdx = newUnits.findIndex(unit=> unit.Number == targetUnitId)
+    newUnits.splice(targetUnitIdx,1)
+    this.generatedUnits = newUnits;
+  }
   },
+ 
 };
 </script>
