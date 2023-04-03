@@ -27,7 +27,7 @@
     
     </div>
      <button class="active:font-bold active:bg-green-300  px-2 text-white border h-12 bg-green-500 hover:bg-green-400 hover:font-semibold border-black my-2 mr-2" type="button" @click="generateUnitBasedOnMode()">Generate Unit</button>
-        <button class="active:font-bold active:bg-red-300  px-2 text-white border bg-red-500 hover:bg-red-400 hover:font-semibold border-black border-lg h-12" @click="addUnits">Submit</button>
+        <button class="active:font-bold active:bg-sky-300 px-2 text-white border bg-sky-500 hover:bg-sky-400 hover:font-semibold border-black border-lg h-12" @click="addUnits">Submit</button>
   
   </form>
     
