@@ -57,6 +57,16 @@ export default {
       generatedArmySubStructure: ''
     };
   },
+  computed:{
+    totalRecruitmentCost(){
+            const recruitmentCosts = this.selectedUnits.map(unit=> this.findRecruitmentCost(unit.Tier,this.recruitmentCost));
+           return recruitmentCosts.reduce((sum,nextUnitCost) => sum + nextUnitCost,0 )
+        },
+        totalUpkeepCost(){
+         const upkeepCosts = this.selectedUnits.map(unit => this.findUpkeep(unit.Tier, this.unitUpkeep))
+         return upkeepCosts.reduce((sum,nextUpkeep)=> sum+ nextUpkeep,0)
+        }
+    },
   methods: {
     clearForm(){
         this.generatedUnits = [],
@@ -147,6 +157,7 @@ export default {
     this.generatedUnits = newUnits;
   }
   },
+  
  
 };
 </script>

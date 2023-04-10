@@ -7,7 +7,7 @@
         <add-unit-form :baseUnit="stateCurrency" v-if="formVisibility.showAddUnit" @submit="updateArmy" :units="sortedAvailableUnits"></add-unit-form>
 
         <unit-generator-form :baseUnit="stateCurrency" v-if="formVisibility.showUnitGenerator" @add-units="updateArmy" :units="sortedAvailableUnits"/>
-        <special-unit-form v-if="formVisibility.showSpecialAddUnit"/>
+        <special-unit-form :baseUnit="stateCurrency"  @submit="updateArmy" v-if="formVisibility.showSpecialAddUnit"/>
         <button @click="toggleForm('showAddUnit')"
             class="active:bg-green-400 active:font-bold mx-2 hover:font-semibold hover:bg-green-500 h-12 border px-2 text-white border-black bg-green-600 mt-2">
             {{ formVisibility.showAddUnit ? "Close" : "Open" }} Factional Unit Adder
@@ -77,7 +77,7 @@ export default {
                     Size: this.calculateUnitSize(newUnit.Tier),
                     upkeepModifier: 0,
                     localStatus: "F",
-                    BaseUpkeep: this.findUpkeep(newUnit.Tier, this.unitUpkeep),
+                    BaseUpkeep: this.findUpkeep(newUnit.Tier, this.unitUpkeep) || newUnit.baseUpkeep,
                 }
                 newNumber++;
                 newArmy.push(newUnit)
@@ -86,6 +86,7 @@ export default {
 
         },
         updateArmy(newUnits) {
+            console.log(newUnits,'laser')
             const newArmy = this.addBasicDetails(newUnits)
             const newArmyList = [...this.armyList, ...newArmy]
             localStorage.setItem(`armies/${this.armyName}`, JSON.stringify(newArmyList))
