@@ -86,7 +86,8 @@ export default {
             name.includes("samurai") ||
             name.includes("noble") ||
             name.includes("cavalry") ||
-            name.includes("knight")
+            name.includes("knight") ||
+            unit.Tier.includes('Tier III')
           );
         });
         const levyUnits = this.units.filter((unit) => {
@@ -94,8 +95,9 @@ export default {
           return (
             !name.includes("samurai") &&
             !name.includes("noble") &&
-            !name.includes("cavalry") &
-            !name.includes("knight")
+            !name.includes("cavalry") &&
+            !name.includes("knight") &&
+            !unit.Tier.includes('Tier III')
           );
         });
         const nobleArmy = this.generateUnits(nobleUnits,nobleSize,0)

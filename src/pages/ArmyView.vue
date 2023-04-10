@@ -6,8 +6,8 @@
         <army-table :baseUnit="stateCurrency" @deleteRow="removeUnit" @updateRow="updateUnit" :armyList="armyList"></army-table>
         <add-unit-form :baseUnit="stateCurrency" v-if="formVisibility.showAddUnit" @submit="updateArmy" :units="sortedAvailableUnits"></add-unit-form>
 
-        <unit-generator-form :baseUnit="stateCurrency" v-if="formVisibility.showUnitGenerator" @add-units="updateArmy" :units="sortedAvailableUnits">
-        </unit-generator-form>
+        <unit-generator-form :baseUnit="stateCurrency" v-if="formVisibility.showUnitGenerator" @add-units="updateArmy" :units="sortedAvailableUnits"/>
+        <special-unit-form v-if="formVisibility.showSpecialAddUnit"/>
         <button @click="toggleForm('showAddUnit')"
             class="active:bg-green-400 active:font-bold mx-2 hover:font-semibold hover:bg-green-500 h-12 border px-2 text-white border-black bg-green-600 mt-2">
             {{ formVisibility.showAddUnit ? "Close" : "Open" }} Factional Unit Adder
@@ -26,9 +26,10 @@
 import ArmyTable from '@/components/ArmyTable.vue';
 import AddUnitForm from '@/components/AddUnitForm.vue';
 import UnitGeneratorForm from '@/components/UnitGeneratorForm.vue';
+import SpecialUnitForm from '@/components/SpecialUnitForm.vue'
 export default {
     inject: ['currency','stateList', 'clancraftUnits', 'calculateUnitSize', 'findUpkeep', 'unitUpkeep'],
-    components: { ArmyTable, AddUnitForm, UnitGeneratorForm },
+    components: { ArmyTable, AddUnitForm, UnitGeneratorForm, SpecialUnitForm },
     created() {
         if (!Object.values(this.stateList).includes(this.$route.params.armyId)) {
             this.$router.push('/')
@@ -59,6 +60,7 @@ export default {
             for(let key in this.formVisibility){
                 if(key == target){
                     this.formVisibility[key] = !this.formVisibility[key]
+                    console.log(this.formVisibility.showSpecialAddUnit,'cournelis')
                 }else{
                     this.formVisibility[key] = false
                 }
