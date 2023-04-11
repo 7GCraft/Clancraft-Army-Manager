@@ -1,15 +1,15 @@
 <template>
-    <header>
-        <nav>
-            <h1><router-link to="/">Clancraft Army Manager</router-link></h1>
+    <header class="flex justify-center">
+        <nav class="mr-20">
+            <h1 class="text-xl font-bold border border-white active:border-4 active:bg-green-600"><router-link to="/">Clancraft Army Manager</router-link></h1>
         </nav>
-        <nav>
+        <nav class="">
             <ul>
               <li>
-                    <router-link to="/">Army List</router-link>
+                    <router-link class="text-xl active:bg-green-600 active:border-white border border-white" to="/">Army List</router-link>
                 </li>
                 <li>
-                    <router-link to="/units">Units</router-link>
+                    <router-link class="text-xl active:bg-green-600 active:border-white border border-white" to="/units">Units</router-link>
                 </li>
             </ul>
         </nav>
@@ -56,13 +56,7 @@ h1 a.router-link-active {
   border-color: transparent;
 }
 
-header nav {
-  width: 30%;
-  margin: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+
 
 header ul {
   list-style: none;

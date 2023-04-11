@@ -28,7 +28,7 @@
           v-for="(armyUnits, subStructure, subStructureIdx) in groupedArmy"
           :key="subStructure"
         >
-          <tr v-for="(unit, unitIdx) of armyUnits" :key="unit.Number">
+          <tr v-for="(unit, unitIdx) of armyUnits" :key="unit.Name">
             <td>{{ unit.Number }}</td>
             <td @dblclick="selectDataCellToEdit(unit, 'Name')">
                 <input class="w-72 px-2 mx-1" :value="unit.Name" @keydown.enter="saveEdit($event,unit,'Name')" v-if="checkIfUnitAndAttributeSelected(unit,'Name')" type="text">
