@@ -1,14 +1,11 @@
 <template>
-    <div class="h-fit pb-2 px-2 ml-0 mr-0 my-2 shadow-2xl inline-block border border-black grow">
+    <div class="h-fit pb-2 px-2 ml-0 mr-0 my-2  shadow-2xl inline-block border border-black grow">
         <h1 class=" text-white bg-black  text-center font-bold  py-3 text-2xl border border-black border-xl mb-2">
             {{ armyName }}
         </h1>
-        <army-table :baseUnit="stateCurrency" @deleteRow="removeUnit" @updateRow="updateUnit" :armyList="armyList"></army-table>
-        <add-unit-form :baseUnit="stateCurrency" v-if="formVisibility.showAddUnit" @submit="updateArmy" :units="sortedAvailableUnits"></add-unit-form>
-
-        <unit-generator-form :baseUnit="stateCurrency" v-if="formVisibility.showUnitGenerator" @add-units="updateArmy" :units="sortedAvailableUnits"/>
-        <special-unit-form :baseUnit="stateCurrency"  @submit="updateArmy" v-if="formVisibility.showSpecialAddUnit"/>
-        <button @click="toggleForm('showAddUnit')"
+        <army-table :armyName="armyName" :baseUnit="stateCurrency" @deleteRow="removeUnit" @updateRow="updateUnit" :armyList="armyList"></army-table>
+        <div class="mb-4">
+            <button @click="toggleForm('showAddUnit')"
             class="active:bg-green-400 active:font-bold mx-2 hover:font-semibold hover:bg-green-500 h-12 border px-2 text-white border-black bg-green-600 mt-2">
             {{ formVisibility.showAddUnit ? "Close" : "Open" }} Factional Unit Adder
         </button>
@@ -20,6 +17,15 @@
             class="active:bg-yellow-400 active:font-bold mx-2 hover:font-semibold hover:bg-yellow-500 h-12 border px-2 text-white border-black bg-yellow-600 mt-2">
             {{ formVisibility.showSpecialAddUnit ? "Close" : "Open" }} Special Unit Adder
         </button>
+        </div>
+        <div class="mb-8 mx-2">
+            <add-unit-form :baseUnit="stateCurrency" v-if="formVisibility.showAddUnit" @submit="updateArmy" :units="sortedAvailableUnits"></add-unit-form>
+
+        <unit-generator-form :baseUnit="stateCurrency" v-if="formVisibility.showUnitGenerator" @add-units="updateArmy" :units="sortedAvailableUnits"/>
+        <special-unit-form :baseUnit="stateCurrency"  @submit="updateArmy" v-if="formVisibility.showSpecialAddUnit"/>
+        </div>
+        
+      
     </div>
 </template>
 <script>
