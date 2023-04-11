@@ -5,6 +5,7 @@
       <tr >
         <th>No</th>
         <th>Unit Name</th>
+        <th>Atilla Faction</th>
         <th>Atilla Name</th>
         <th>Unit ID</th>
         <th>Unit Type</th>
@@ -33,6 +34,7 @@
                 <input class="w-80 px-2 mx-0" :value="unit.Name" @keydown.enter="saveEdit($event,unit,'Name')" v-if="checkIfUnitAndAttributeSelected(unit,'Name')" type="text">
                 <template v-else>{{ unit.Name }}</template>
             </td>
+            <td>{{ unit['Atilla Faction'] }}</td>
             <td>{{ unit["Atilla Units"] }}</td>
             <td>{{ unit.ID }}</td>
             <td>{{ unit.Tier }}</td>
