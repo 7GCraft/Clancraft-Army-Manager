@@ -100,7 +100,7 @@ export default {
       return Object.fromEntries(secondGroupArmyList);
     },
     totalUpkeep() {
-      return this.armyList.reduce((sum, unit) => sum + ((1 + unit.upkeepModifier) * unit.BaseUpkeep * (unit.Size / this.calculateUnitSize(unit.Tier))) , 0);
+      return this.armyList.reduce((sum, unit) => sum + (( this.calculateUpkeep(unit.BaseUpkeep,unit.upkeepModifier))* (unit.Size / this.calculateUnitSize(unit.Tier))) , 0);
     },
   },
   methods: {

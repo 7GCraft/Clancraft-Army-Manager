@@ -131,8 +131,9 @@ export default {
       this.generatedArmySubStructure = ""
   
     },
-    generateUnits(units, size, startingIndex) {
+    generateUnits(unitPool, size, startingIndex) {
       const newUnits = [];
+      const units = unitPool.filter(unit=> !unit.ID.includes('SG'))
       for (let i = 0; i < size; i++) {
         const unitNumber = i + 1 + startingIndex;
         const randomIndex = Math.floor(Math.random() * units.length);
