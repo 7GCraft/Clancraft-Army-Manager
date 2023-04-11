@@ -9,7 +9,7 @@
                     <router-link class="text-xl active:bg-green-600 active:border-white border border-white" to="/">Army List</router-link>
                 </li>
                 <li>
-                    <router-link class="text-xl active:bg-green-600 active:border-white border border-white" to="/units">Units</router-link>
+                    <router-link class="text-xl active:bg-green-600 active:border-white border border-white" to="/units">Unit List</router-link>
                 </li>
             </ul>
         </nav>
