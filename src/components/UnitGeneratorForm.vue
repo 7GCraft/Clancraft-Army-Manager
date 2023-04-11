@@ -31,9 +31,9 @@
   </form>
     
     </div>
-    <div class="flex-grow text-center mx-3" v-if="generatedUnits.length > 0">
+    <div class="flex-grow text-center mx-3 mt-1" >
       <h3 class="text-white bg-black text-lg text-bold">Generated Units</h3>
-      <ul>
+      <ul v-if="generatedUnits.length > 0" >
       <li v-for="unit in generatedUnits" class="border border-black px-2 " :key="unit.Number">
         {{ unit.Name }} - {{ unit["CC Units"] }} - {{ unit["Atilla Units"] }} {{ unit["SubStructure"] !== '' ? ` - ${unit["SubStructure"]}` : '' }} {{ unit["Structure"] !== '' ? ` - ${unit["Structure"]}` : '' }}
         <span class="cursor-pointer active:bg-red-300 grow border-sm mx-2 border-black" @click="deleteUnit(unit.Number)"><font-awesome-icon icon="fa-solid fa-trash" class="text-red-400 border"></font-awesome-icon></span>

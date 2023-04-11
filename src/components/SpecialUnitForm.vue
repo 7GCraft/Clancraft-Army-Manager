@@ -67,9 +67,9 @@
         <button class="ml-1 active:font-bold active:bg-sky-300 px-2 text-white border bg-sky-500 hover:bg-sky-400 hover:font-semibold border-black border-lg h-12 ">Submit</button>
     </form>
 </div>
-<div class="flex-grow text-center mx-3" v-if="selectedUnits.length > 0">
+<div class="flex-grow text-center mx-3 mt-1">
       <h3 class="text-white bg-black text-lg text-bold">Generated Units</h3>
-      <ul>
+      <ul v-if="selectedUnits.length > 0">
       <li v-for="unit in selectedUnits" class="border border-black px-2" :key="unit.Number">
         {{ unit.Name }} - {{ unit["CC Units"] }} - {{ unit["Atilla Units"] }} - {{ unit["CC Faction"] }} - {{ unit["Atilla Faction"] }} - {{ unit["Tier"] }}   {{ unit["structure"] !== '' ? ` - ${unit["structure"]}` : '' }} {{ unit["subStructure"] !== '' ? ` - ${unit["subStructure"]}` : '' }}
         <span class="cursor-pointer active:bg-red-300 grow border-sm mx-2 border-black" @click="deleteUnit(unit.Number)"><font-awesome-icon icon="fa-solid fa-trash" class="text-red-400 border"></font-awesome-icon></span>
