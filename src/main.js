@@ -5,6 +5,7 @@ import ArmyList from './pages/ArmyList.vue'
 import ArmyView from './pages/ArmyView.vue'
 import NotFound from './pages/NotFound.vue'
 import UnitList from './pages/UnitList.vue'
+import userAlert from './components/UserAlert'
 import './assets/tailwind.css'
 /* import the fontawesome core */
 
@@ -14,14 +15,15 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
-import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faTrash,faX } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
-library.add(faTrash)
+library.add(faTrash,faX)
 
 const app = createApp(App)
 
 app.component('font-awesome-icon',FontAwesomeIcon)
+app.component('user-alert', userAlert)
     
 const router = createRouter({
     history: createWebHistory(),
