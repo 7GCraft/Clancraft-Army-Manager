@@ -1468,5 +1468,12 @@
     "Tier": "Tier II Siege Equipment",
     "CC Faction": "",
     "Atilla Faction": ""
+  },
+  {
+    "CC Units": "Bastion Onager",
+    "Atilla Units": "Bastion Onager",
+    "Tier": "Tier III Siege Equipment",
+    "CC Faction": "",
+    "Atilla Faction": ""
   }
 ]

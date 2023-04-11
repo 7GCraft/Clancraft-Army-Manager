@@ -131,7 +131,7 @@ export default {
             return null
         },
         sortedAvailableUnits() {
-            const availableUnits = this.clancraftUnits.filter(unit => unit['CC Faction'] == this.armyName);
+            const availableUnits = this.clancraftUnits.filter(unit => unit['CC Faction'] == this.armyName || unit['CC Faction'] === '');
             console.log(availableUnits)
             return availableUnits.sort((a, b) => a['CC Units'].localeCompare(b['CC Units']));
         },
