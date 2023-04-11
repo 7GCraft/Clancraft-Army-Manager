@@ -1,6 +1,6 @@
 <template>
   <div>
-  <table class="army-table text-sm" @keydown.esc="cancelEdit" >
+  <table ref="armyTable" class="army-table text-sm" @keydown.esc="cancelEdit" >
     <thead v-if="this.armyList.length > 0" >
       <tr >
         <th>No</th>
@@ -68,21 +68,31 @@
       </template>
     </thead>
   </table>
+  
   <h2 class="font-bold text-xl my-1" v-if="this.armyList.length > 0">Total upkeep: {{ totalUpkeep }} {{baseUnit  }}</h2>
+  <button v-if="this.armyList.length > 0" @click="exportTable" class="w-28 h-24 border my-2 mx-2 text-xl   border-black bg-green-700 text-white" type="button">Save to Excel.</button>
   </div>
+  <user-alert :show="showAlert" @hide="showAlert = false">
+    <template v-slot:title>Army data transported to Excel!</template>
+    <template v-slot:body>The excel army data of state {{ armyName }} has been created in {{ armyName }}.xlsx</template>
+  </user-alert>
 </template>
 
 <script>
 import { groupBy } from "@/helper";
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver';
 
 export default {
-  props: ["armyList","baseUnit"],
+  props: ["armyList","baseUnit",'armyName'],
   emits:["deleteRow","updateRow"],
   inject: ["findUpkeep", "unitUpkeep", "calculateUnitSize", "calculateUpkeep"],
   data() {
     return {
         beforeEditUnit: null,
         selectedEditAttribute: null,
+        tableData: [],
+        showAlert: false
     }
   },
   computed: {
@@ -115,7 +125,6 @@ export default {
         this.selectedEditAttribute = null;
     },
     saveEdit(evt,unit,targetAttribute){
-     
         let newUnit = {...unit}
         console.log('kruyoso"s dream', evt)
         console.log('adraso"s death we mourn',unit)
@@ -140,7 +149,16 @@ export default {
     
         this.beforeEditUnit = JSON.parse(JSON.stringify(unit));
         this.selectedEditAttribute = attribute;
-    }
+    },
+     exportTable() {
+      const worksheet = XLSX.utils.table_to_sheet(this.$refs.armyTable);
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, `${this.armyName}`);
+      const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+      const excelBlob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      saveAs(excelBlob, `${this.armyName}.xlsx`);
+      this.showAlert = true;
+    },
   },
 };
 </script>
