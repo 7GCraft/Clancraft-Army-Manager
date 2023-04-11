@@ -1458,21 +1458,24 @@
   {
     "CC Units": "Onager",
     "Atilla Units": "Onager",
-    "Tier": "Tier I Siege Equipment",
+    "Tier": "Tier I Siege Weapon",
+    "ID": "SG1",
     "CC Faction": "",
     "Atilla Faction": ""
   },
   {
     "CC Units": "Scorpion",
     "Atilla Units": "Cheiroballista",
-    "Tier": "Tier II Siege Equipment",
+    "Tier": "Tier II Siege Weapon",
+    "ID": "SG2",
     "CC Faction": "",
     "Atilla Faction": ""
   },
   {
     "CC Units": "Bastion Onager",
     "Atilla Units": "Bastion Onager",
-    "Tier": "Tier III Siege Equipment",
+    "Tier": "Tier III Siege Weapon",
+    "ID": "SG3",
     "CC Faction": "",
     "Atilla Faction": ""
   }

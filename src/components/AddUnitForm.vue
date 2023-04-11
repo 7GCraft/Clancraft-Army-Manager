@@ -41,6 +41,7 @@
 </template>
 
 <script>
+
 export default {
     emits:['submit'],
     props:['units','baseUnit'],
@@ -93,7 +94,9 @@ export default {
                 }
             }
             this.selectedUnit.name = ''
+            this.selectedUnit.ID = ''
             this.selectedUnits.push(targetUnit)
+            console.log(this.selectedUnits,'mothership')
         },
         deleteUnit(targetUnitId){
             const newUnits = [...this.selectedUnits]
