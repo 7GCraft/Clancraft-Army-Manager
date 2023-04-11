@@ -925,7 +925,7 @@
     "Tier": "Tier III Crossbow Infantry",
     "CC Faction": "Longquan",
     "Atilla Faction": "Western Roman Empire",
-    "ID": "LQ12"
+    "ID": "LQ13"
   },
   {
     "CC Units": "Chinese Archers",
@@ -933,7 +933,7 @@
     "Tier": "Tier I Melee Cavalry",
     "CC Faction": "Longquan",
     "Atilla Faction": "Western Roman Empire",
-    "ID": "LQ13"
+    "ID": "LQ14"
   },
   {
     "CC Units": "Chinese Light Cavalry",
@@ -941,7 +941,7 @@
     "Tier": "Tier I Shock Cavalry",
     "CC Faction": "Longquan",
     "Atilla Faction": "Western Roman Empire",
-    "ID": "LQ14"
+    "ID": "LQ15"
   },
   {
     "CC Units": "Chinese Lancers",
@@ -949,7 +949,7 @@
     "Tier": "Tier II Melee Cavalry",
     "CC Faction": "Longquan",
     "Atilla Faction": "Western Roman Empire",
-    "ID": "LQ15"
+    "ID": "LQ16"
   },
   {
     "CC Units": "Chinese Medium Cavalry",
@@ -957,7 +957,7 @@
     "Tier": "Tier II Melee Cavalry",
     "CC Faction": "Longquan",
     "Atilla Faction": "Western Roman Empire",
-    "ID": "LQ16"
+    "ID": "LQ17"
   },
   {
     "CC Units": "Chinese Imperial Cavalry",
@@ -965,7 +965,7 @@
     "Tier": "Tier II Melee Cavalry",
     "CC Faction": "Longquan",
     "Atilla Faction": "Western Roman Empire",
-    "ID": "LQ17"
+    "ID": "LQ18"
   },
   {
     "CC Units": "Javanese Light Spearman",
