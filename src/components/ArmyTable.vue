@@ -31,7 +31,7 @@
           <tr v-for="(unit, unitIdx) of armyUnits" :key="unit.Number">
             <td>{{ unit.Number }}</td>
             <td @dblclick="selectDataCellToEdit(unit, 'Name')">
-                <input class="w-80 px-2 mx-0" :value="unit.Name" @keydown.enter="saveEdit($event,unit,'Name')" v-if="checkIfUnitAndAttributeSelected(unit,'Name')" type="text">
+                <input class="w-72 px-2 mx-1" :value="unit.Name" @keydown.enter="saveEdit($event,unit,'Name')" v-if="checkIfUnitAndAttributeSelected(unit,'Name')" type="text">
                 <template v-else>{{ unit.Name }}</template>
             </td>
             <td>{{ unit['Atilla Faction'] }}</td>
@@ -45,12 +45,12 @@
             <td>{{ calculateUnitSize(unit.Tier) }}</td>
             <td>{{ unit.BaseUpkeep }}</td>
             <td @dblclick="selectDataCellToEdit(unit, 'upkeepModifier')">
-                <input class="w-16 px-1" :value="unit.upkeepModifier" @keydown.enter="saveEdit($event,unit,'UpkeepModifier')" v-if="checkIfUnitAndAttributeSelected(unit,'UpkeepModifier')" type="number">
+                <input class="w-16 px-1 mx-1" :value="unit.upkeepModifier" @keydown.enter="saveEdit($event,unit,'upkeepModifier')" v-if="checkIfUnitAndAttributeSelected(unit,'upkeepModifier')" type="number">
                 <template v-else>{{ unit.upkeepModifier }}</template>
             </td>
             <td>{{ calculateUpkeep(unit.BaseUpkeep, unit.upkeepModifier) * unit.Size / calculateUnitSize(unit.Tier) }}</td>
             <td @dblclick="selectDataCellToEdit(unit, 'localStatus')">
-                <input :value="unit.localStatus" @keydown.enter="saveEdit($event,unit,'LocalStatus')" v-if="checkIfUnitAndAttributeSelected(unit,'LocalStatus')" type="text">
+                <input class="px-2 w-10" :value="unit.localStatus" @keydown.enter="saveEdit($event,unit,'localStatus')" v-if="checkIfUnitAndAttributeSelected(unit,'localStatus')" type="text">
                 <template v-else>{{ unit.localStatus }}</template>
             </td>
             <td v-if="unitIdx === 0" :rowspan="armyUnits.length">
@@ -115,6 +115,7 @@ export default {
         this.selectedEditAttribute = null;
     },
     saveEdit(evt,unit,targetAttribute){
+     
         let newUnit = {...unit}
         console.log('kruyoso"s dream', evt)
         console.log('adraso"s death we mourn',unit)
@@ -136,6 +137,7 @@ export default {
         this.$emit('deleteRow',unit.Number)
     },
     selectDataCellToEdit(unit,attribute){
+    
         this.beforeEditUnit = JSON.parse(JSON.stringify(unit));
         this.selectedEditAttribute = attribute;
     }
