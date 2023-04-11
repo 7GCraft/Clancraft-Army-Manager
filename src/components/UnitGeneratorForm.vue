@@ -2,7 +2,7 @@
 <div class="w-full flex h-fit">
    <div class="w-96">
       <h3 class="px-2 text-lg text-white bg-black">Unit Generator</h3>
-  <form class="border border-black px-1" @submit.prevent="addUnits">
+  <form class="border border-black px-2" @submit.prevent="addUnits">
    
     <div class="form-control mt-1">
       <label class="mr-28">Mode </label>
