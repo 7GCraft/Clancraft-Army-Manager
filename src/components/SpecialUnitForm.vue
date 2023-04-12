@@ -29,11 +29,11 @@
     <div class="border border-black px-2 py-2 my-3 mx-1">
         <h3 class=" font-bold text-lg mb-1">Unit Details</h3>
         <div class="form control mt-1">
-            <label for="unit-name" class="mr-[15px]">Unit Name</label>
+            <label for="unit-name" class="mr-16">Unit Name</label>
             <input type="text" class="border border-black px-2" v-model.trim="selectedUnit.name" id="unit-name"/>
         </div>
         <div class="form-control mt-1">
-            <label for="unit-structure" class="mr-[67px]">Tier</label>
+            <label for="unit-structure" class="mr-[115px]">Tier</label>
             <select class="border border-black px-2" v-model.trim="selectedUnit.tier" id="unit-structure">
                 <option v-for="level in unitTierLevel" :value="level" :key="level">{{ level }}</option>   
             </select>
@@ -42,17 +42,17 @@
             </select>
         </div>
            <div class="form-control mt-1">
-            <label for="unit-st" class="mr-10">CC Unit</label>
+            <label for="unit-st" class="mr-[87px]">CC Unit</label>
             <input type="text" class="border border-black px-2" v-model.trim="selectedUnit['CC Units']" id="unit-clancraft-name">
         </div>
            <div class="form-control mt-1">
-            <label for="unit-structure" class="mr-6">Atilla Unit</label>
+            <label for="unit-structure" class="mr-[71px]">Atilla Unit</label>
             <input type="text" class="border border-black px-2" v-model.trim="selectedUnit['Atilla Units']" id="unit-atilla-units">
         </div>
            
           
         <div class="form-control mt-1">
-            <label for="unit-upkeep" class="mr-10">Upkeep</label>
+            <label for="unit-upkeep" class="mr-[86px]">Upkeep</label>
             <input type="text" class="border text-center border-black px-2 w-16 mr-2" v-model.number="selectedUnit.upkeep" id="unit-atilla-faction">
             <span class="text-lg font-semibold">{{ baseUnit }}</span>
         </div>
