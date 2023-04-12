@@ -37,7 +37,7 @@
             <select class="border border-black px-2" v-model.trim="selectedUnit.tier" id="unit-structure">
                 <option v-for="level in unitTierLevel" :value="level" :key="level">{{ level }}</option>   
             </select>
-            <select class="border border-black px-2" v-model.trim="selectedUnit.type" id="unit-structure">
+            <select class="border border-black px-2 w-[120px]" v-model.trim="selectedUnit.type" id="unit-structure">
                 <option v-for="tier in unitType" :value="tier" :key="tier">{{ tier }}</option>   
             </select>
         </div>
