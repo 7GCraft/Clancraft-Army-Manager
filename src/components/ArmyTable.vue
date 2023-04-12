@@ -72,10 +72,12 @@
   <h2 class="font-bold text-xl my-1" v-if="this.armyList.length > 0">Total upkeep: {{ totalUpkeep }} {{baseUnit  }}</h2>
   <button v-if="this.armyList.length > 0" @click="exportTable" class="w-28 h-24 border my-2 mx-2 text-xl   border-black bg-green-700 text-white" type="button">Save to Excel.</button>
   </div>
+  <transition name="fade-in">
   <user-alert :show="showAlert" @hide="showAlert = false">
     <template v-slot:title>Army data transported to Excel!</template>
     <template v-slot:body>The excel army data of state {{ armyName }} has been created in {{ armyName }}.xlsx</template>
   </user-alert>
+</transition>
 </template>
 
 <script>
@@ -158,6 +160,9 @@ export default {
       const excelBlob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
       saveAs(excelBlob, `${this.armyName}.xlsx`);
       this.showAlert = true;
+      setTimeout(()=>{
+        this.showAlert = false
+      },5000)
     },
   },
 };
@@ -177,4 +182,5 @@ td {
   text-align: center;
   border: 2px solid;
 }
+
 </style>
