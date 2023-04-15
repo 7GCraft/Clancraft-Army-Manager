@@ -4,6 +4,8 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
+
+
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
@@ -12,9 +14,14 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
+
 app.post('/api/save-army-data', (req, res) => {
   const data = req.body.armyData;
   const armyUrl = req.body.armyName;
+
+  if (!fs.existsSync('./data')) {
+    fs.mkdirSync('./data');
+  }
 
   fs.writeFile(`./data/${armyUrl}.json`, JSON.stringify(data), (err) => {
     if (err) {
@@ -28,6 +35,11 @@ app.post('/api/save-army-data', (req, res) => {
 });
 
 app.get('/api/get-army-data', (req, res) => {
+
+  if (!fs.existsSync('./data')) {
+    fs.mkdirSync('./data');
+  }
+
     const armyUrl = req.query.armyName;
     const filePath = `./data/${armyUrl}.json`
     if (fs.existsSync(filePath)) {
