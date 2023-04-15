@@ -24,11 +24,10 @@
         <unit-generator-form :baseUnit="stateCurrency" v-if="formVisibility.showUnitGenerator" @add-units="updateArmy" :units="sortedAvailableUnits"/>
         <special-unit-form :baseUnit="stateCurrency"  @submit="updateArmy" v-if="formVisibility.showSpecialAddUnit"/>
         </div>
-        
-      
-    </div>
+        </div>
 </template>
 <script>
+import axios from 'axios'
 import ArmyTable from '@/components/ArmyTable.vue';
 import AddUnitForm from '@/components/AddUnitForm.vue';
 import UnitGeneratorForm from '@/components/UnitGeneratorForm.vue';
@@ -96,12 +95,54 @@ export default {
             const newArmy = this.addBasicDetails(newUnits)
             const newArmyList = [...this.armyList, ...newArmy]
             localStorage.setItem(`armies/${this.armyName}`, JSON.stringify(newArmyList))
-            this.fetchArmyList()
+            this.armyList =[...newArmyList]
+            this.setArmyList(newArmyList)
             this.showUnitGenerator = false
         },
-        fetchArmyList() {
-            const newArmyList = localStorage.getItem(`armies/${this.armyName}`)
-            this.armyList = newArmyList ? JSON.parse(newArmyList) : []
+        async setArmyList(armyList){
+            let response;
+            try{
+                response = await axios.post('http://localhost:3000/api/save-army-data',{
+                    armyData : armyList,
+                    armyName : this.armyName
+                })
+            }catch(err){
+                console.log(err)
+                throw Error('Failed to save army data!')
+            }
+
+            if(response.status <= 200 & response.status >= 300){
+              
+                throw Error('Failed to save army data!')
+            }
+            
+
+
+        },
+        async fetchArmyList() {
+            let response
+            try{
+                response = await axios.get(`http://localhost:3000/api/get-army-data?armyName=${this.armyName}`)
+            }catch(err){
+                if(response.status != 404){
+                    throw Error('Network error!!')
+                }
+            }
+            console.log(response,'responsive')
+            let responseData;
+           if(200 < response.status && response.status < 300){
+             responseData = [];
+            
+           }else{
+            responseData = response.data
+        
+           }
+           console.log(responseData,'responsiveData')
+            localStorage.setItem(`armies/${this.armyName}`,JSON.stringify(responseData))
+           this.armyList = responseData ? responseData : []
+         
+       
+        
         },
         removeUnit(unitIdx) {
             const targetedUnitIdx = this.armyList.findIndex(unit => unit.Number == unitIdx)
@@ -112,9 +153,9 @@ export default {
                 unit.Number = counter;
                 counter++
             }
-
-            localStorage.setItem(`armies/${this.armyName}`, JSON.stringify(newArmyList))
-            this.fetchArmyList();
+            this.armyList = [...newArmyList]
+            
+            this.setArmyList(newArmyList)
         },
         updateUnit(newUnit) {
             console.log('428', newUnit.Number);
@@ -124,7 +165,8 @@ export default {
             newArmyList.splice(targetUnitIdx, 1, newUnit)
             console.log(newArmyList)
             localStorage.setItem(`armies/${this.armyName}`, JSON.stringify(newArmyList))
-            this.fetchArmyList()
+            this.setArmyList(newArmyList)
+            this.armyList = [...newArmyList]
         }
     },
     computed: {
