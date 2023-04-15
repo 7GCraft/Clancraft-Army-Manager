@@ -1,5 +1,5 @@
 export function calculateUpkeep  (base,modifier) {
-    return base * (1+(modifier/100))
+    return +base +  +modifier
 }
 
 export function findBaseUpkeep(unitType,upkeepReferenceObject){
