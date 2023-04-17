@@ -13,7 +13,7 @@
   "Tier II Axe Infantry": 350,
   "Tier II Bow Infantry": 200,
   "Tier II Crossbow Infantry": 500,
-  "Tier II Javelin Infantry":300,
+  "Tier II Javelin Infantry": 300,
   "Tier II Melee Cavalry": 550,
   "Tier II Missile Cavalry": 600,
   "Tier II Shock Cavalry": 550,
@@ -24,7 +24,7 @@
   "Tier III Crossbow Infantry": 800,
   "Tier III Melee Cavalry": 800,
   "Tier III Spear Infantry": 500,
-  "Tier I Siege Weapon" : 400,
+  "Tier I Siege Weapon": 400,
   "Tier II Siege Weapon": 700,
   "Tier III Siege Weapon": 1200
 }

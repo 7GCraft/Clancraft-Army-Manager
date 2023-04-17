@@ -1,23 +1,35 @@
 <template>
-    <header class="flex justify-center">
-        <nav class="mr-20">
-            <h1 class="text-xl font-bold border border-white active:border-4 active:bg-green-600"><router-link to="/">Clancraft Army Manager</router-link></h1>
-        </nav>
-        <nav class="">
-            <ul>
-              <li>
-                    <router-link class="text-xl active:bg-green-600 active:border-white border border-white" to="/">Army List</router-link>
-                </li>
-                <li>
-                    <router-link class="text-xl active:bg-green-600 active:border-white border border-white" to="/units">Unit List</router-link>
-                </li>
-            </ul>
-        </nav>
-    </header>
+  <header class="flex justify-center">
+    <nav class="mr-20">
+      <h1
+        class="text-xl font-bold border border-white active:border-4 active:bg-green-600"
+      >
+        <router-link to="/">Clancraft Army Manager</router-link>
+      </h1>
+    </nav>
+    <nav class="">
+      <ul>
+        <li>
+          <router-link
+            class="text-xl active:bg-green-600 active:border-white border border-white"
+            to="/"
+            >Army List</router-link
+          >
+        </li>
+        <li>
+          <router-link
+            class="text-xl active:bg-green-600 active:border-white border border-white"
+            to="/units"
+            >Unit List</router-link
+          >
+        </li>
+      </ul>
+    </nav>
+  </header>
 </template>
 
 <style scoped>
- header {
+header {
   width: 100%;
   height: 5rem;
   background-color: green;
@@ -42,7 +54,7 @@ a.router-link-active {
 
 h1 {
   margin: 0;
-  color:white;
+  color: white;
 }
 
 h1 a {
@@ -55,8 +67,6 @@ h1 a:active,
 h1 a.router-link-active {
   border-color: transparent;
 }
-
-
 
 header ul {
   list-style: none;
