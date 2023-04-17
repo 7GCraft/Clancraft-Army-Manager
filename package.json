@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A fullstack app made using Vue.js/Tailwind and Express.js/Node to manage armies of states of the game \"Clancraft\" for the server 7GCraft. ",
   "scripts": {
-    "serve": "concurrently \" cd frontend && vue-cli-service serve \" \"cd backend && node index.js\"",
+    "serve": "concurrently \" cd frontend && vue-cli-service serve \" \"cd backend && nodemon index.js\"",
     "build": "cd frontend &&　vue-cli-service build",
     "serve-prod": "concurrently \"cd frontend && serve -s dist \" \"cd backend && node index.js\" "
   },
