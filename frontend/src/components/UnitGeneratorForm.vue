@@ -12,13 +12,13 @@
       <label for="feudal" class="mr-1">Feudal</label>
     </div>
     <div class="form-control mt-2" >
-        <label for="size" class="mr-[88px]">Army Size</label>
+        <label for="size" class="mr-[89px]">Army Size</label>
         <input type="text" class="border text-center w-[42px] border-black" name="size" v-model.number="generationSize"/>
         <label for="size" class="ml-1"> Units</label>
     </div>
 
     <div class="form-control mt-1" >
-        <label for="structure" class="mr-[54px]">Army Structure</label>
+        <label for="structure" class="mr-[53px]">Army Structure</label>
         <input type="text" class="border border-black px-2 w-42" name="structure" v-model.trim="generatedArmyStructure"/>
     </div>
     <div class="form-control mt-1" >
@@ -31,7 +31,7 @@
   </form>
     
     </div>
-    <div class="flex-grow text-center mx-3 mt-1" >
+    <div class="flex-grow text-center mx-3" >
       <h3 class="text-white bg-black text-lg text-bold">Generated Units</h3>
       <ul v-if="generatedUnits.length > 0" >
       <li v-for="unit in generatedUnits" class="border border-black px-2 " :key="unit.Number">
