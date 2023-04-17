@@ -68,9 +68,20 @@
       </template>
     </thead>
   </table>
-  
+
   <h2 class="font-bold text-xl my-1" v-if="this.armyList.length > 0">Total upkeep: {{ totalUpkeep }} {{baseUnit  }}</h2>
-  <button v-if="this.armyList.length > 0" @click="exportTable" class="w-28 h-24 border my-2 mx-2 text-xl   border-black bg-green-700 text-white" type="button">Save to Excel.</button>
+
+    <Teleport to="#app">
+  <button 
+  v-if="this.armyList.length > 0" 
+  @click="exportTable" 
+  class="group h-24 my-2 mx-2 text-xl sticky bottom-0 left-1/2 border-2 border-b-0 hover:bg-green-200  border-black bg-white text-white flex items-center px-8 py-3 space-x-5" 
+  type="button">
+    <font-awesome-icon class="text-4xl text-green-500" icon="fa-solid fa-file-excel"></font-awesome-icon>
+    <h3 class="group-hover:font-semibold text-black">Save to excel</h3>
+  </button>
+    </Teleport>
+    
   </div>
   <transition name="fade-in">
   <user-alert :show="showAlert" @hide="showAlert = false">
@@ -162,7 +173,7 @@ export default {
       this.showAlert = true;
       setTimeout(()=>{
         this.showAlert = false
-      },5000)
+      },3000)
     },
   },
 };
