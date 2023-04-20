@@ -142,23 +142,27 @@ export default {
     },
     async setArmyList(armyList) {
       let targetLink;
-
+      let reqBody;
       if(process.env.VUE_APP_DEPLOYMENT_TYPE === 'local'){
         console.log(process.env.NODE_ENV,'yahallo')
         targetLink = process.env.VUE_APP_SAVE_DATA_URL
+        reqBody = {
+            armyData: armyList,
+            armyName: this.armyName,
+        }
         console.log('celebrashun')
       }else{
         targetLink = process.env.VUE_APP_SAVE_DATA_URL+`/${this.armyName}.json`
+        reqBody = {
+          ...armyList
+        }
       }
 
       let response;
       try {
         response = await axios.post(
           targetLink,
-          {
-            armyData: armyList,
-            armyName: this.armyName,
-          }
+          reqBody
         );
       } catch (err) {
         console.log(err);
@@ -195,6 +199,13 @@ export default {
         responseData = [];
       } else {
         responseData = response.data;
+      }
+      if(process.env.VUE_APP_DEPLOYMENT_TYPE !== 'local'){
+        let newData = [];
+        for(let key in responseData){
+          newData.push({...key})
+        }
+        responseData = [...newData]
       }
       console.log(responseData, 'responsiveData');
       localStorage.setItem(
