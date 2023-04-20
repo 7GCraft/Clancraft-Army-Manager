@@ -4,8 +4,8 @@
   "description": "A fullstack app made using Vue.js/Tailwind and Express.js/Node to manage armies of states of the game \"Clancraft\" for the server 7GCraft. ",
   "scripts": {
     "serve": "concurrently \" cd frontend && vue-cli-service serve \" \"cd backend && nodemon index.js\"",
-    "build": "cd frontend &&　vue-cli-service build",
-    "serve-prod": "concurrently \"cd frontend && serve -s dist \" \"cd backend && node index.js\" "
+    "build": "cd frontend && vue-cli-service build",
+    "serve-prod": "concurrently \"cd frontend && npx serve -s dist \" \"cd backend && node index.js\" "
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,12 @@
   },
   "homepage": "https://github.com/7GCraft/Clancraft-Army-Manager#readme",
   "devDependencies": {
-    "concurrently": "^8.0.1"
+    "concurrently": "^8.0.1",
+    "serve": "^14.2.0"
+  },
+  "dependencies": {
+    "build": "^0.1.4",
+    "npm": "^9.6.5",
+    "run": "^1.4.0"
   }
 }
