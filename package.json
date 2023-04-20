@@ -28,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/7GCraft/Clancraft-Army-Manager/issues"
   },
-  "homepage": "https://github.com/7GCraft/Clancraft-Army-Manager#readme"
+  "homepage": "https://github.com/7GCraft/Clancraft-Army-Manager#readme",
+  "devDependencies": {
+    "concurrently": "^8.0.1"
+  }
 }
