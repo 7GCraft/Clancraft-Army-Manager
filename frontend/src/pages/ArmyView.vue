@@ -141,10 +141,20 @@ export default {
       this.showUnitGenerator = false;
     },
     async setArmyList(armyList) {
+      let targetLink;
+
+      if(process.env.VUE_APP_DEPLOYMENT_TYPE === 'local'){
+        console.log(process.env.NODE_ENV,'yahallo')
+        targetLink = process.env.VUE_APP_SAVE_DATA_URL
+        console.log('celebrashun')
+      }else{
+        targetLink = process.env.VUE_APP_SAVE_DATA_URL+`/${this.armyName}.json`
+      }
+
       let response;
       try {
         response = await axios.post(
-          'http://localhost:3000/api/save-army-data',
+          targetLink,
           {
             armyData: armyList,
             armyName: this.armyName,
@@ -160,10 +170,19 @@ export default {
       }
     },
     async fetchArmyList() {
+      let targetLink
+      console.log(process.env.VUE_APP_DEPLOYMENT_TYPE,'yahallo')
+      if(process.env.VUE_APP_DEPLOYMENT_TYPE === 'local'){
+        console.log(process.env.NODE_ENV,'yahallo')
+        targetLink = process.env.VUE_APP_GET_DATA_URL+`?armyName=${this.armyName}`
+      }else{
+        targetLink = process.env.VUE_APP_GET_DATA_URL+`/${this.armyName}.json`
+      }
+
       let response;
       try {
         response = await axios.get(
-          `http://localhost:3000/api/get-army-data?armyName=${this.armyName}`
+         targetLink
         );
       } catch (err) {
         if (response.status != 404) {
