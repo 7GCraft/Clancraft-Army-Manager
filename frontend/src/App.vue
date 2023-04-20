@@ -1,6 +1,9 @@
 <template>
-  <TheNavigation></TheNavigation>
-  <router-view> </router-view>
+  <div class="h-screen">
+    <TheNavigation></TheNavigation>
+  <router-view> </router-view> 
+  </div>
+
 </template>
 
 <script>
