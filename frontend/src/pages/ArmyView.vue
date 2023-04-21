@@ -198,12 +198,16 @@ export default {
       if (200 < response.status && response.status < 300) {
         responseData = [];
       } else {
-        responseData = response.data;
+   
+        responseData = response.data
+    
       }
       if(process.env.VUE_APP_DEPLOYMENT_TYPE !== 'local'){
         let newData = [];
+   
         for(let key in responseData){
-          newData.push({...key})
+          console.log(key,'before greatness2')
+          newData = [...newData, ...responseData[key]]
         }
         responseData = [...newData]
       }
