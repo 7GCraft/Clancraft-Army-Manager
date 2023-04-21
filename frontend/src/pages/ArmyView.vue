@@ -141,17 +141,20 @@ export default {
       this.showUnitGenerator = false;
     },
     async setArmyList(armyList) {
+      let method;
       let targetLink;
       let reqBody;
       if(process.env.VUE_APP_DEPLOYMENT_TYPE === 'local'){
         console.log(process.env.NODE_ENV,'yahallo')
         targetLink = process.env.VUE_APP_SAVE_DATA_URL
+        method = 'post'
         reqBody = {
             armyData: armyList,
             armyName: this.armyName,
         }
         console.log('celebrashun')
       }else{
+        method = 'put'
         targetLink = process.env.VUE_APP_SAVE_DATA_URL+`/${this.armyName}.json`
         reqBody = {
           ...armyList
@@ -160,7 +163,7 @@ export default {
 
       let response;
       try {
-        response = await axios.post(
+        response = await axios[method](
           targetLink,
           reqBody
         );
@@ -193,7 +196,7 @@ export default {
           throw Error('Network error!!');
         }
       }
-      console.log(response, 'responsive');
+      console.log(response.data, 'responsive');
       let responseData;
       if (200 < response.status && response.status < 300) {
         responseData = [];
@@ -202,15 +205,7 @@ export default {
         responseData = response.data
     
       }
-      if(process.env.VUE_APP_DEPLOYMENT_TYPE !== 'local'){
-        let newData = [];
-   
-        for(let key in responseData){
-          console.log(key,'before greatness2')
-          newData = [...newData, ...responseData[key]]
-        }
-        responseData = [...newData]
-      }
+    
       console.log(responseData, 'responsiveData');
       localStorage.setItem(
         `armies/${this.armyName}`,
