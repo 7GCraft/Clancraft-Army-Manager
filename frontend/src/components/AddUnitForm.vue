@@ -8,7 +8,7 @@
           <select
             name="unit-selection"
             v-model.trim="selectedUnit.ID"
-            class="border-black border w-[200px]"
+            class="border-black border w-[220px]"
           >
             <option v-for="unit in units" v-bind:key="unit.ID" :value="unit.ID">
               {{ unit['CC Units'] }}
@@ -18,12 +18,20 @@
         <div class="form control mt-1">
           <label for="unit-name" class="mr-9">Unit Name</label>
           <input
+            :disabled="defaultName"
             type="text"
-            class="border border-black px-2"
+            class="w-[220px] border border-black px-2"
             v-model.trim="selectedUnit.name"
             id="unit-name"
           />
+          
         </div>
+        <div class="form control mt-1">
+          <label for="unit-default mr-2">Default Name:  </label>
+          <input type="checkbox" value="default" @change="setDefaultName"/>
+          
+        </div>
+   
         <div class="form-control mt-1">
           <label for="unit-structure" class="mr-12">Structure</label>
           <input
@@ -98,6 +106,7 @@ export default {
     'unitUpkeep',
     'findRecruitmentCost',
     'recruitmentCost',
+    'generateOrdinalIndicator'
   ],
   data() {
     return {
@@ -107,8 +116,20 @@ export default {
         name: '',
         structure: '',
         subStructure: '',
+     
       },
+      defaultName: false
     };
+  },
+  watch:{
+    selectedUnit(newUnit, prevUnit){
+      if(newUnit.ID !== prevUnit.ID && this.defaultName){
+        newUnit.name = `${this.selectedUnits.length + 1}${this.generateOrdinalIndicator(
+          this.selectedUnits.length + 1
+        )} Unit of ${this.units.find(unit=>unit.ID === this.selectedUnit.ID)['CC Units']}`;
+        this.defaultName = true;
+      }
+    }
   },
   computed: {
     totalRecruitmentCost() {
@@ -128,6 +149,14 @@ export default {
     },
   },
   methods: {
+    setDefaultName(){
+      if(this.defaultName){
+        this.selectedUnit.name = ''
+        this.defaultName = false;
+      }else{
+        this.defaultName = true;
+      }
+    },
     submitForm() {
       this.$emit('submit', this.selectedUnits);
       this.selectedUnits = [];
