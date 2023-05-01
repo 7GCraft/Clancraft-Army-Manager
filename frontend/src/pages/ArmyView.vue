@@ -67,6 +67,7 @@ export default {
   inject: [
     'currency',
     'stateList',
+    'stateMap',
     'clancraftUnits',
     'calculateUnitSize',
     'findUpkeep',
@@ -74,7 +75,7 @@ export default {
   ],
   components: { ArmyTable, AddUnitForm, UnitGeneratorForm, SpecialUnitForm },
   created() {
-    if (!Object.values(this.stateList).includes(this.$route.params.armyId)) {
+    if (!Object.values(this.stateList.value).includes(this.$route.params.armyId)) {
       this.$router.push('/');
     }
 
@@ -247,16 +248,19 @@ export default {
   },
   computed: {
     armyName() {
-      for (const state in this.stateList) {
-        if (this.stateList[state] === this.$route.params.armyId) {
+      for (const state in this.stateList.value) {
+        if (this.stateList.value[state] === this.$route.params.armyId) {
           return state;
         }
       }
       return null;
     },
+    armyFaction(){
+      return this.stateMap.value[this.armyName]
+    },
     sortedAvailableUnits() {
       const availableUnits = this.clancraftUnits.filter(
-        unit => unit['CC Faction'] == this.armyName || unit['CC Faction'] === ''
+        unit => unit['CC Faction'] == this.armyFaction || unit['CC Faction'] === ''
       );
       console.log(availableUnits);
       return availableUnits.sort((a, b) =>
@@ -264,7 +268,7 @@ export default {
       );
     },
     stateCurrency() {
-      return this.currency[this.armyName];
+      return this.currency.value[this.armyName];
     },
   },
 };

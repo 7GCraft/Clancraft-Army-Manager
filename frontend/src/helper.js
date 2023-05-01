@@ -23,7 +23,7 @@ export function calculateUnitSize(tier) {
   if (tier.includes('Infantry')) {
     return 160;
   } else if (tier.includes('Cavalry')) {
-    return 80;
+    return 60;
   } else {
     return 40;
   }
@@ -44,3 +44,15 @@ export function generateOrdinalIndicator(number) {
       return 'th';
   }
 }
+
+export function sortObjectKeys(obj) {
+  return Object.keys(obj)
+    .sort()
+    .reduce((result, key) => {
+      result[key] = obj[key];
+      return result;
+    }, {});
+}
+
+
+

@@ -3,6 +3,10 @@
     <div class="w-96 mt-1 mb-2">
       <h3 class="px-2 text-lg text-white bg-black">Add Unit Form</h3>
       <form @submit.prevent="submitForm" class="border border-black px-2">
+        <div class="flex items-center my-2">
+          <input id="link-checkbox" type="checkbox" v-model="defaultName" checked class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+          <label for="link-checkbox" class="ml-2  text-gray-900 dark:text-gray-300">Default Naming</label>
+</div>
         <div class="form-control mt-1">
           <label for="unit-selection" class="mr-6">Select a unit</label>
           <select
@@ -26,11 +30,7 @@
           />
           
         </div>
-        <div class="form control mt-1">
-          <label for="unit-default mr-2">Default Name:  </label>
-          <input type="checkbox" value="default" @change="setDefaultName"/>
-          
-        </div>
+       
    
         <div class="form-control mt-1">
           <label for="unit-structure" class="mr-12">Structure</label>
@@ -58,7 +58,7 @@
           New Upkeep Cost: {{ totalUpkeepCost }} {{ baseUnit }}
         </h4>
         <button
-          class="active:font-bold active:bg-green-300 px-2 text-white border h-12 bg-green-500 hover:bg-green-400 hover:font-semibold border-black my-2 mr-2"
+          class="btn-add-unit"
           type="button"
           @click="addUnits"
         >
@@ -118,16 +118,17 @@ export default {
         subStructure: '',
      
       },
-      defaultName: false
+      defaultName: true
     };
   },
   watch:{
-    selectedUnit(newUnit, prevUnit){
-      if(newUnit.ID !== prevUnit.ID && this.defaultName){
-        newUnit.name = `${this.selectedUnits.length + 1}${this.generateOrdinalIndicator(
+    'selectedUnit.ID'(newID, prevID){
+      console.log('yahallo')
+      if(newID !== prevID && this.defaultName && newID !== ''){
+        this.selectedUnit.name = `${this.selectedUnits.length + 1}${this.generateOrdinalIndicator(
           this.selectedUnits.length + 1
         )} Unit of ${this.units.find(unit=>unit.ID === this.selectedUnit.ID)['CC Units']}`;
-        this.defaultName = true;
+        
       }
     }
   },
@@ -170,6 +171,7 @@ export default {
     addUnits() {
       let targetUnit;
       let startingIndex = this.selectedUnits.length;
+      console.log('checking',this.selectedUnit.ID)
       for (let unit of this.clancraftUnits) {
         if (unit.ID === this.selectedUnit.ID) {
           targetUnit = {

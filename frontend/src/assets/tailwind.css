@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .btn-add-unit {
+        @apply active:font-bold active:bg-green-300 px-2 text-white border h-12 bg-green-500 hover:bg-green-400 hover:font-semibold border-black my-2 mr-2;
+      }
+      .btn-add-state {
+        @apply active:font-bold active:bg-green-300 w-full text-white border h-16 bg-green-500 hover:bg-green-400 hover:font-semibold border-black ;
+      }
+      .btn-add-unit-form {
+        @apply active:font-bold active:bg-green-300 px-2 text-white border h-12 bg-green-500 hover:bg-green-400 hover:font-semibold border-black my-2 mr-2;
+      }
+}
+
