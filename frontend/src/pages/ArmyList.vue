@@ -85,8 +85,10 @@ export default {
      }
 
      console.log(this.sortObjectKeys(newStateList),'kalasar')
-
-
+   
+     localStorage.setItem('state-list',JSON.stringify(newStateList))
+      localStorage.setItem('state-map',JSON.stringify(newStateMap))
+      localStorage.setItem('currency',JSON.stringify(newCurrency))
       try{
         await axios.post('http://localhost:3000/api/add-new-state',{
           armyMap: this.sortObjectKeys(newStateMap),

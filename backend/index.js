@@ -1,7 +1,11 @@
 const fs = require('fs');
 const express = require('express');
-const { application } = require('express');
+const helper = require('./helper')
+const path = require('path')
+
+
 const app = express();
+
 
 const port = process.env.PORT || 3000;
 
@@ -99,48 +103,24 @@ app.post('/api/add-new-state', (req, res) => {
   res.send('Data saved successfully');
 });
 
+app.post('/api/replenish-all-units', (req, res) => {
+  const folderPath = './data/armies/'
+  const files = fs.readdirSync(folderPath); // get list of files in folder
 
-app.post('/api/replenish-all-state',(req,res)=>{
-  let folderPath = './data/armies'
-  fs.readdir(folderPath, (err, files) => {
-    if (err) {
-      console.error(`Error reading directory: ${err}`);
-      return;
-    }
-  
-    // Iterate over each file in the directory
-    files.forEach((file) => {
-      const filePath = path.join(directoryPath, file);
-  
-      // Read the file contents
-      fs.readFile(filePath, 'utf8', (err, data) => {
-        if (err) {
-          console.error(`Error reading file ${filePath}: ${err}`);
-          return;
-        }
-  
-        try {
-          // Parse the JSON data
-          const jsonData = JSON.parse(data);
-  
-          // Add the new property to each object in the JSON data
-          jsonData.forEach((obj) => {
-            obj.newProperty = propertyToAdd;
-          });
-  
-          // Write the modified JSON data back to the file
-          fs.writeFile(filePath, JSON.stringify(jsonData), (err) => {
-            if (err) {
-              console.error(`Error writing file ${filePath}: ${err}`);
-              return;
-            }
-            console.log(`Successfully updated file ${filePath}`);
-          });
-        } catch (err) {
-          console.error(`Error parsing JSON in file ${filePath}: ${err}`);
-        }
+  files.forEach((file) => {
+    if (file.endsWith('.json')) {
+      const filePath = path.join(folderPath, file);
+      console.log(filePath)
+      const jsonData = require(`./${filePath}`);
+
+      jsonData.forEach((item) => {
+        item.Size = helper.replenishUnit(item.Tier,item.localStatus,item.Size)
       });
-    });
+
+      fs.writeFileSync(filePath, JSON.stringify(jsonData)); // write updated JSON data back to file
+    }
   });
-})
+
+  res.send('JSON files updated!');
+});
 app.listen(port, () => {});

@@ -1,12 +1,13 @@
 <template>
   <div
-    class="h-fit pb-2 px-2 ml-0 mr-0 my-2 shadow-2xl inline-block border border-black grow"
+    class="h-fit pb-2 px-0 ml-0 mr-0 my-2 shadow-2xl inline-block border border-black grow"
   >
-    <h1
+  <h1
       class="text-white bg-black text-center font-bold py-3 text-2xl border border-black border-xl mb-2"
     >
       {{ armyName }}
     </h1>
+    <div class="px-2">
     <army-table
       :armyName="armyName"
       :baseUnit="stateCurrency"
@@ -55,6 +56,7 @@
         v-if="formVisibility.showSpecialAddUnit"
       />
     </div>
+  </div>
   </div>
 </template>
 <script>
@@ -268,6 +270,7 @@ export default {
       );
     },
     stateCurrency() {
+      console.log('name',this.armyName,this.currency.value)
       return this.currency.value[this.armyName];
     },
   },

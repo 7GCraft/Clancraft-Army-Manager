@@ -1,6 +1,6 @@
 <template>
   <div class="h-screen">
-    <TheNavigation></TheNavigation>
+    <TheNavigation @replenish-units="replenishAllUnits"></TheNavigation>
   <router-view> </router-view> 
   </div>
 
@@ -33,9 +33,9 @@ export default {
   },
   provide() {
     return {
-      stateList: computed(() =>  this.stateList),
-      stateMap: computed(()=> this.stateMap),
-      currency: computed(()=>this.currency),
+      stateList: computed(() => localStorage.getItem('state-list') !== null ? JSON.parse(localStorage.getItem('state-list')) : {}),
+      stateMap: computed(() => localStorage.getItem('state-map') !== null ? JSON.parse(localStorage.getItem('state-map')) : {}),
+      currency: computed(() => localStorage.getItem('currency') !== null ? JSON.parse(localStorage.getItem('currency')) : {}),
       findUpkeep: findBaseUpkeep,
       calculateUpkeep: calculateUpkeep,
       clancraftUnits: clancraftUnits,
@@ -56,6 +56,15 @@ export default {
     }
   },
   methods:{
+    async replenishAllUnits(){
+      let response;
+      try{
+        response = await axios.post('http://localhost:3000/api/replenish-all-units')
+      }catch(err){
+        throw new Error(err)
+      }
+      console.log(response)
+    },
     async getStateList(){
       let response;
       try{
@@ -70,8 +79,11 @@ export default {
       this.stateList = responseData.armyData
       this.stateMap = responseData.armyMap
       this.currency = responseData.currency
+      localStorage.setItem('state-list',JSON.stringify(responseData.armyData))
+      localStorage.setItem('state-map',JSON.stringify(responseData.armyMap))
+      localStorage.setItem('currency',JSON.stringify(responseData.currency))
       console.log('first',this.stateList)
-  
+      console.log('KAMAMAMA',JSON.parse(localStorage.getItem('currency')))
       console.log('second',this.stateMap)
       console.log('third',this.currency)
      

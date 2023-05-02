@@ -70,7 +70,7 @@ web_modules/
 *.tgz
 
 #Backend data
-backend/data/armies
+backend/data/
 
 # Yarn Integrity file
 .yarn-integrity
