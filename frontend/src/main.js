@@ -15,10 +15,10 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 /* import specific icons */
-import { faTrash, faX, faFileExcel,faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faX, faFileExcel,faPlus,faBriefcaseMedical } from '@fortawesome/free-solid-svg-icons';
 
 /* add icons to the library */
-library.add(faTrash, faX, faFileExcel,faPlus);
+library.add(faTrash, faX, faFileExcel,faPlus,faBriefcaseMedical);
 
 const app = createApp(App);
 

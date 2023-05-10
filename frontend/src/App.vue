@@ -56,15 +56,7 @@ export default {
     }
   },
   methods:{
-    async replenishAllUnits(){
-      let response;
-      try{
-        response = await axios.post('http://localhost:3000/api/replenish-all-units')
-      }catch(err){
-        throw new Error(err)
-      }
-      console.log(response)
-    },
+ 
     async getStateList(){
       let response;
       try{

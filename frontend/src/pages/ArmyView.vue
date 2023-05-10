@@ -84,6 +84,7 @@ export default {
     this.fetchArmyList();
     console.log(this.armyList, 'yotsuba');
   },
+
   data() {
     return {
       armyList: [],

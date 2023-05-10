@@ -26,7 +26,7 @@
       </ul>
     </nav>
     <nav>
-      <button @click="$emit('replenish-units')" class="bg-blue-500 p-3 border-white border text-white ">Replenish Units</button>
+    
     </nav>
   </header>
 </template>
