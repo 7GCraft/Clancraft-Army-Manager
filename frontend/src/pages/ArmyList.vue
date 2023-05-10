@@ -11,7 +11,7 @@
       </h1>
       <ul>
         <li
-        @dragstart="startDrag($event, id)"
+        @dragstart="startDrag($event, name)"
           class="hover:bg-green-700 active:bg-green-600 hover:text-white focus:bg-green-500 text-medium font-medium mx-2 my-1 px-2.5 py-0.5 rounded"
           v-for="(id,name) in CCStateList"
           :key="id"
@@ -110,6 +110,24 @@ export default {
     }
   },
   methods:{
+    async deleteState(name){
+
+
+  let response
+  console.log(this.currency.value[name],'uang')
+      try{
+     await axios.post('http://localhost:3000/api/delete-state',{
+        armyMap:name,
+        armyData:name,
+        currency:name
+      })
+
+      
+      }catch(error){
+        console.log(error)
+      }
+      console.log(response);
+    },
     async replenishAllUnits(){
       let response;
       try{
@@ -132,10 +150,11 @@ export default {
     },
     onDrop(){
     
-      console.log('karama')
-      this.$emit('deleteState',this.draggedItem)
+      console.log('karama',this.draggedItem)
+      this.deleteState(this.draggedItem)
       this.isDragging = false;
       this.draggedItem = null;
+  
     }
     ,
     toggleModal(){

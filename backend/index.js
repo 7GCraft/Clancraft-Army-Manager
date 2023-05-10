@@ -102,6 +102,47 @@ app.post('/api/add-new-state', (req, res) => {
   }
   res.send('Data saved successfully');
 });
+app.post('/api/delete-state', (req, res) => {
+  const filePaths = {
+    armyMap: './data/references/STATE_MAP.json',
+    armyData: './data/references/STATE_ID.json',
+    currency: './data/references/CURRENCY.json'
+  };
+  
+  for (const [key, filePath] of Object.entries(filePaths)) {
+    if (fs.existsSync(filePath)) {
+      fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+          console.error(err);
+          return res.status(500).send('Error reading file');
+        }
+
+        // Parse the JSON data
+        let jsonData = JSON.parse(data);
+
+        // Check if the key exists in the JSON object
+        if (jsonData.hasOwnProperty(req.body[key])) {
+          console.log(req.body[key])
+          // Remove the key and its property
+          delete jsonData[req.body[key]];
+
+          // Convert the updated JSON data back to a string
+          const updatedData = JSON.stringify(jsonData, null, 2);
+
+          // Write the updated contents back to the file
+          fs.writeFile(filePath, updatedData, 'utf8', err => {
+            if (err) {
+              console.error(err);
+              return res.status(500).send('Error updating file');
+            }
+          });
+        }
+      });
+    }
+  }
+  
+  res.send('Data deleted successfully');
+});
 
 app.post('/api/replenish-all-units', (req, res) => {
   const folderPath = './data/armies/'
