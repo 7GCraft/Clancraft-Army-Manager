@@ -12,6 +12,7 @@
       <ul>
         <li
         @dragstart="startDrag($event, name)"
+        @dragend="isDragging= false"
           class="hover:bg-green-700 active:bg-green-600 hover:text-white focus:bg-green-500 text-medium font-medium mx-2 my-1 px-2.5 py-0.5 rounded"
           v-for="(id,name) in CCStateList"
           :key="id"
@@ -30,7 +31,7 @@
         </li>
       </ul>
       <div class="text-center p-2">
-        <button v-if="!isDragging" class="btn-add-state rounded-xl" @click="toggleModal">
+        <button v-if="!isDragging" class="btn-add-state rounded-xl"  @click="toggleModal($event,'showAddStateModal')">
           <font-awesome-icon
                   icon="fa-solid fa-plus"
                   class="text-white text-5xl "
@@ -38,12 +39,13 @@
         </button>
         <button @drop="onDrop" 
         v-else class="btn-delete-state rounded-xl" 
-        @click="toggleModal"
+       
         :class="{ 'bg-red-200': isDraggingOverTrash }"
      
       @dragenter.prevent
       @dragover.prevent="isDraggingOverTrash = true"
       @dragleave="isDraggingOverTrash = false"
+  
       >
           <font-awesome-icon
                   icon="fa-solid fa-trash"
@@ -52,8 +54,8 @@
         </button>
       </div>
     </div>
-    <add-state-modal @submitModal="addNewState" @closeModal="toggleModal" :show="showAddStateModal"></add-state-modal>
-    <confirmation-modal @submitModal="replenishUnit" :show="showConfirmationModal"> </confirmation-modal>
+    <add-state-modal @submitModal="addNewState" @closeModal="toggleModal($event,'showAddStateModal')" :show="showAddStateModal"></add-state-modal>
+    <confirmation-modal @submitModal="replenishUnit" :show="showConfirmationModal" @closeModal="toggleModal($event,'showConfirmationModal')"> </confirmation-modal>
     <div v-if="$route.fullPath === '/armies'"  class="h-fit pb-2 px-0 ml-0 mr-0 my-2 shadow-2xl w-full border border-black grow flex flex-col space-y-3">
       <h1
       class="w-full text-white bg-black text-center font-bold py-3 text-2xl border border-black border-xl mb-2"
@@ -79,6 +81,14 @@
     </div>
     <router-view v-else ></router-view>
   </div>
+  <transition name="fade-in">
+    <user-alert :show="showDeleteStateAlert" @hide="showAlertDeleteStateAlert = false">
+      <template v-slot:title>State {{draggedItem}} has been deleted.</template>
+      <template v-slot:body>
+      The state {{ draggedItem }} no longer exist in the database!</template>
+      
+    </user-alert>
+  </transition>
 </template>
 <script>
 import AddStateModal from '@/components/AddStateModal.vue';
@@ -106,7 +116,8 @@ export default {
       showConfirmationModal:false,
       draggedItem:null,
       isDragging:false,
-      isDraggingOverTrash:false
+      isDraggingOverTrash:false,
+      showDeleteStateAlert: false,
     }
   },
   methods:{
@@ -142,7 +153,7 @@ export default {
       this.replenishAllUnits();
     },
     startDrag(evt,id){
-      console.log(evt)
+
       this.isDragging = true
       evt.dataTransfer.dropEffect = 'move'
       evt.dataTransfer.effectAllowed='move'
@@ -151,14 +162,20 @@ export default {
     onDrop(){
     
       console.log('karama',this.draggedItem)
+      this.showDeleteStateAlert = true;
+      setTimeout(()=>{
+        this.draggedItem = null,
+        this.showDeleteStateAlert = false
+      },1000)
       this.deleteState(this.draggedItem)
       this.isDragging = false;
-      this.draggedItem = null;
+ 
   
     }
     ,
-    toggleModal(){
-      this.showAddStateModal = !this.showAddStateModal
+    toggleModal(evt,property){
+      console.log(property,'property of his majesty');
+      this[property] = !this[property]
     },
     async addNewState(stateData){
       console.log
