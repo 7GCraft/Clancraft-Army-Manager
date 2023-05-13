@@ -14,7 +14,7 @@ function replenishUnit(tier, locationStatus, currentSize) {
     locationModifier = 0;
   }
   let result = +currentSize + locationModifier * size;
-  console.log(result);
+
   if (result > size) {
     result = size;
   }

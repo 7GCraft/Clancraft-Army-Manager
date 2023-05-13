@@ -113,7 +113,7 @@ app.post('/api/delete-state', (req, res) => {
 
         // Check if the key exists in the JSON object
         if (jsonData.hasOwnProperty(req.body[key])) {
-          console.log(req.body[key]);
+    
           // Remove the key and its property
           delete jsonData[req.body[key]];
 
@@ -142,7 +142,7 @@ app.post('/api/replenish-all-units', (req, res) => {
   files.forEach(file => {
     if (file.endsWith('.json')) {
       const filePath = path.join(folderPath, file);
-      console.log(filePath);
+
       const jsonData = require(`./${filePath}`);
 
       jsonData.forEach(item => {
