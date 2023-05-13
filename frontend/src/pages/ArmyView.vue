@@ -67,9 +67,8 @@ import UnitGeneratorForm from '@/components/UnitGeneratorForm.vue';
 import SpecialUnitForm from '@/components/SpecialUnitForm.vue';
 export default {
   inject: [
-    'currency',
-    'stateList',
-    'stateMap',
+ 
+ 
     'clancraftUnits',
     'calculateUnitSize',
     'findUpkeep',
@@ -77,7 +76,7 @@ export default {
   ],
   components: { ArmyTable, AddUnitForm, UnitGeneratorForm, SpecialUnitForm },
   created() {
-    if (!Object.values(this.stateList.value).includes(this.$route.params.armyId)) {
+    if (!Object.values(this.stateList).includes(this.$route.params.armyId)) {
       this.$router.push('/');
     }
 
@@ -98,7 +97,12 @@ export default {
   watch: {
     armyName() {
       this.fetchArmyList();
-      this.showUnitGenerator = false;
+      this.formVisiblity = {
+        showAddUnit: true,
+        showUnitGenerator: false,
+        showSpecialAddUnit: false,
+      }
+
     },
   },
   methods: {
@@ -238,9 +242,7 @@ export default {
       const targetUnitIdx = newArmyList.findIndex(
         unit => unit.Number == newUnit.Number
       );
-      console.log(targetUnitIdx);
       newArmyList.splice(targetUnitIdx, 1, newUnit);
-      console.log(newArmyList);
       localStorage.setItem(
         `armies/${this.armyName}`,
         JSON.stringify(newArmyList)
@@ -251,29 +253,33 @@ export default {
   },
   computed: {
     armyName() {
-      for (const state in this.stateList.value) {
-        if (this.stateList.value[state] === this.$route.params.armyId) {
+      for (const state in this.stateList) {
+        if (this.stateList[state] === this.$route.params.armyId) {
           return state;
         }
       }
       return null;
     },
     armyFaction(){
-      return this.stateMap.value[this.armyName]
+      return this.stateMap[this.armyName]
     },
     sortedAvailableUnits() {
       const availableUnits = this.clancraftUnits.filter(
         unit => unit['CC Faction'] == this.armyFaction || unit['CC Faction'] === ''
       );
-      console.log(availableUnits);
       return availableUnits.sort((a, b) =>
         a['CC Units'].localeCompare(b['CC Units'])
       );
     },
     stateCurrency() {
-      console.log('name',this.armyName,this.currency.value)
-      return this.currency.value[this.armyName];
+      return this.$store.getters.getCurrencyList[this.armyName];
     },
+    stateList(){
+      return this.$store.getters.getStateList
+    },
+    stateMap(){
+      return this.$store.getters.getStateMap
+    }
   },
 };
 </script>

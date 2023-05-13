@@ -87,8 +87,10 @@
         computed:{
             filteredStateMap(){
             let stateMapOptions = [];
-             for(let key in this.stateMap.value){
-                stateMapOptions.push(this.stateMap.value[key])
+            let stateMap = this.$store.getters.getStateMap;
+            console.log('statu-mappu',stateMap)
+             for(let key in stateMap){
+                stateMapOptions.push(stateMap[key])
              }
              return Array.from(new Set(stateMapOptions));
             }

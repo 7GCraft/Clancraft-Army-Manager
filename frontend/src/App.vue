@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen">
+  <div class="min-h-screen">
     <TheNavigation @replenish-units="replenishAllUnits"></TheNavigation>
   <router-view> </router-view> 
   </div>
@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+
 import clancraftUnits from './CC_UNITS.json';
 import unitUpkeep from './UNIT_UPKEEP.json';
 
@@ -30,12 +30,12 @@ export default {
   },
   created() {
     this.getStateList()
+    this.$store.dispatch('getStateData')
+    console.log(this.$store,'store to buy')
   },
   provide() {
     return {
-      stateList: computed(() => localStorage.getItem('state-list') !== null ? JSON.parse(localStorage.getItem('state-list')) : {}),
-      stateMap: computed(() => localStorage.getItem('state-map') !== null ? JSON.parse(localStorage.getItem('state-map')) : {}),
-      currency: computed(() => localStorage.getItem('currency') !== null ? JSON.parse(localStorage.getItem('currency')) : {}),
+  
       findUpkeep: findBaseUpkeep,
       calculateUpkeep: calculateUpkeep,
       clancraftUnits: clancraftUnits,
