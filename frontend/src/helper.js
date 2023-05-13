@@ -53,6 +53,3 @@ export function sortObjectKeys(obj) {
       return result;
     }, {});
 }
-
-
-

@@ -115,9 +115,7 @@
       <button
         v-if="this.armyList.length > 0"
         @click="exportTable"
-        class="group h-24 text-xl sticky bottom-0 left-1/2 
-        border-2 border-gray-200 shadow-lg border-b-0 hover:bg-green-200 border-black
-         bg-white text-white flex items-center px-8 py-3 space-x-5"
+        class="group h-24 text-xl sticky bottom-0 left-1/2 border-2 border-gray-200 shadow-lg border-b-0 hover:bg-green-200 border-black bg-white text-white flex items-center px-8 py-3 space-x-5"
         type="button"
       >
         <font-awesome-icon

@@ -69,40 +69,40 @@
       v-if="$route.fullPath === '/armies'"
       class="h-fit pb-2 px-0 ml-0 mr-0 my-2 shadow-2xl w-full border border-black grow flex flex-col space-y-3"
     >
-    <div v-if="!isLoading">
-      <h1
-        class="w-full text-white bg-black text-center font-bold py-3 text-2xl border border-black border-xl mb-2"
-      >
-        Home
-      </h1>
-      <p class="p-4 text-center font-semibold text-lg">
-        Welcome to the Clancraft Army Manager Application. In this app, You can
-        manage different armies from different states as well as add new ones.
-        You can begin by clicking a state in the state-list on the left or start
-        by adding a new state. There will be many functionality in this app, but
-        a very specific one is the replenishment button. The replenishment
-        button below will automatically replenish all units in the app across
-        all states depending on their size, location status, and unit type.
-        Please tread this button with caution.
-      </p>
-      <div
-        class="rounded-full border border-gray-100 w-full flex justify-center items-center"
-      >
-        <div
-          class="p-8 h-fit border-gray-100 border-2 flex-col flex items-center justify-center space-y-2"
+      <div v-if="!isLoading">
+        <h1
+          class="w-full text-white bg-black text-center font-bold py-3 text-2xl border border-black border-xl mb-2"
         >
-          <h1 class="text-xl font-bold">Replenish Unit Button</h1>
-          <button
-            @click="showConfirmationModal = true"
-            class="hover:bg-blue-200 text-5xl bg-blue-500 p-8 border-white border text-white rounded-full"
+          Home
+        </h1>
+        <p class="p-4 text-center font-semibold text-lg">
+          Welcome to the Clancraft Army Manager Application. In this app, You
+          can manage different armies from different states as well as add new
+          ones. You can begin by clicking a state in the state-list on the left
+          or start by adding a new state. There will be many functionality in
+          this app, but a very specific one is the replenishment button. The
+          replenishment button below will automatically replenish all units in
+          the app across all states depending on their size, location status,
+          and unit type. Please tread this button with caution.
+        </p>
+        <div
+          class="rounded-full border border-gray-100 w-full flex justify-center items-center"
+        >
+          <div
+            class="p-8 h-fit border-gray-100 border-2 flex-col flex items-center justify-center space-y-2"
           >
-            <font-awesome-icon icon="fa-solid fa-briefcase-medical ">
-            </font-awesome-icon>
-            <h3 class="text-lg">Click to Replenish Unit</h3>
-          </button>
+            <h1 class="text-xl font-bold">Replenish Unit Button</h1>
+            <button
+              @click="showConfirmationModal = true"
+              class="hover:bg-blue-200 text-5xl bg-blue-500 p-8 border-white border text-white rounded-full"
+            >
+              <font-awesome-icon icon="fa-solid fa-briefcase-medical ">
+              </font-awesome-icon>
+              <h3 class="text-lg">Click to Replenish Unit</h3>
+            </button>
+          </div>
         </div>
       </div>
-    </div>
     </div>
     <router-view v-else></router-view>
   </div>
@@ -150,22 +150,16 @@ export default {
       isDragging: false,
       isDraggingOverTrash: false,
       showDeleteStateAlert: false,
-  
     };
   },
   methods: {
-     deleteState(name) {
-      this.$store.dispatch('deleteState',name)
-  
+    deleteState(name) {
+      this.$store.dispatch('deleteState', name);
     },
 
     async replenishAllUnits() {
-  
- 
       try {
-         await axios.post(
-          'http://localhost:3000/api/replenish-all-units'
-        );
+        await axios.post('http://localhost:3000/api/replenish-all-units');
       } catch (err) {
         throw new Error(err);
       }
