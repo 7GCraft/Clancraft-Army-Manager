@@ -1,8 +1,7 @@
 <template>
   <div class="flex w-full">
-    
     <div
-      class=" pb-2 my-2 mx-2 shadow-2xl inline-block w-40 h-fit border border-black"
+      class="pb-2 my-2 mx-2 shadow-2xl inline-block w-40 h-fit border border-black"
     >
       <h1
         class="text-5xl border border-black px-2 bg-black text-white w-100 h-[110px] cursor-pointer"
@@ -11,82 +10,113 @@
       </h1>
       <ul>
         <li
-        @dragstart="startDrag($event, name)"
-        @dragend="isDragging= false"
+          @dragstart="startDrag($event, name)"
+          @dragend="isDragging = false"
           class="hover:bg-green-700 active:bg-green-600 hover:text-white focus:bg-green-500 text-medium font-medium mx-2 my-1 px-2.5 py-0.5 rounded"
-          v-for="(id,name) in CCStateList"
+          v-for="(id, name) in CCStateList"
           :key="id"
           draggable="true"
           :class="{ 'cursor-move': isDragging }"
-
         >
           <router-link
             class="inline-block w-full text-center"
             :to="'/armies/' + id"
             draggable="true"
-            :class="{ 'cursor-move': isDragging  }"
+            :class="{ 'cursor-move': isDragging }"
             >{{ name }}</router-link
-
           >
         </li>
       </ul>
       <div class="text-center p-2">
-        <button v-if="!isDragging" class="btn-add-state rounded-xl"  @click="toggleModal($event,'showAddStateModal')">
+        <button
+          v-if="!isDragging"
+          class="btn-add-state rounded-xl"
+          @click="toggleModal($event, 'showAddStateModal')"
+        >
           <font-awesome-icon
-                  icon="fa-solid fa-plus"
-                  class="text-white text-5xl "
-                ></font-awesome-icon>
+            icon="fa-solid fa-plus"
+            class="text-white text-5xl"
+          ></font-awesome-icon>
         </button>
-        <button @drop="onDrop" 
-        v-else class="btn-delete-state rounded-xl" 
-       
-        :class="{ 'bg-red-200': isDraggingOverTrash }"
-     
-      @dragenter.prevent
-      @dragover.prevent="isDraggingOverTrash = true"
-      @dragleave="isDraggingOverTrash = false"
-  
-      >
+        <button
+          @drop="onDrop"
+          v-else
+          class="btn-delete-state rounded-xl"
+          :class="{ 'bg-red-200': isDraggingOverTrash }"
+          @dragenter.prevent
+          @dragover.prevent="isDraggingOverTrash = true"
+          @dragleave="isDraggingOverTrash = false"
+        >
           <font-awesome-icon
-                  icon="fa-solid fa-trash"
-                  class="text-white text-5xl "
-                ></font-awesome-icon>
+            icon="fa-solid fa-trash"
+            class="text-white text-5xl"
+          ></font-awesome-icon>
         </button>
       </div>
     </div>
-    <add-state-modal @submitModal="addNewState" @closeModal="toggleModal($event,'showAddStateModal')" :show="showAddStateModal"></add-state-modal>
-    <confirmation-modal @submitModal="replenishUnit" :show="showConfirmationModal" @closeModal="toggleModal($event,'showConfirmationModal')"> </confirmation-modal>
-    <div v-if="$route.fullPath === '/armies'"  class="h-fit pb-2 px-0 ml-0 mr-0 my-2 shadow-2xl w-full border border-black grow flex flex-col space-y-3">
-      <h1
-      class="w-full text-white bg-black text-center font-bold py-3 text-2xl border border-black border-xl mb-2"
+    <add-state-modal
+      @submitModal="addNewState"
+      @closeModal="toggleModal($event, 'showAddStateModal')"
+      :show="showAddStateModal"
+    ></add-state-modal>
+    <confirmation-modal
+      @submitModal="replenishUnit"
+      :show="showConfirmationModal"
+      @closeModal="toggleModal($event, 'showConfirmationModal')"
     >
-      Home
-    </h1>
-    <p class="p-4 text-center font-semibold text-lg">Welcome to the Clancraft Army Manager Application. In this app, You can manage different armies from different states as well as add new ones. You can begin by clicking a state in the state-list on the left or start by adding a new state. There will be many functionality in this app, but a very specific one is the replenishment button. The replenishment button below will automatically replenish all units in the app across all states depending on their size, location status, and unit type. Please tread this button with caution. </p>
-    <div class=" rounded-full border border-gray-100 w-full flex justify-center items-center">
-      <div class="p-8 h-fit border-gray-100 border-2 flex-col flex items-center justify-center space-y-2" >
-      <h1 class="text-xl font-bold">Replenish Unit Button</h1>
-      <button @click="showConfirmationModal = true" class=" hover:bg-blue-200 text-5xl  bg-blue-500 p-8 border-white border text-white rounded-full">
-        <font-awesome-icon icon="fa-solid fa-briefcase-medical ">
-
-</font-awesome-icon>
-<h3 class="text-lg">Click to Replenish Unit</h3>
-
-      </button>
-     
-
-  </div>
+    </confirmation-modal>
+    <div
+      v-if="$route.fullPath === '/armies'"
+      class="h-fit pb-2 px-0 ml-0 mr-0 my-2 shadow-2xl w-full border border-black grow flex flex-col space-y-3"
+    >
+      <div v-if="!isLoading">
+        <h1
+          class="w-full text-white bg-black text-center font-bold py-3 text-2xl border border-black border-xl mb-2"
+        >
+          Home
+        </h1>
+        <p class="p-4 text-center font-semibold text-lg">
+          Welcome to the Clancraft Army Manager Application. In this app, You
+          can manage different armies from different states as well as add new
+          ones. You can begin by clicking a state in the state-list on the left
+          or start by adding a new state. There will be many functionality in
+          this app, but a very specific one is the replenishment button. The
+          replenishment button below will automatically replenish all units in
+          the app across all states depending on their size, location status,
+          and unit type. Please tread this button with caution.
+        </p>
+        <div
+          class="rounded-full border border-gray-100 w-full flex justify-center items-center"
+        >
+          <div
+            class="p-8 h-fit border-gray-100 border-2 flex-col flex items-center justify-center space-y-2"
+          >
+            <h1 class="text-xl font-bold">Replenish Unit Button</h1>
+            <button
+              @click="showConfirmationModal = true"
+              class="hover:bg-blue-200 text-5xl bg-blue-500 p-8 border-white border text-white rounded-full"
+            >
+              <font-awesome-icon icon="fa-solid fa-briefcase-medical ">
+              </font-awesome-icon>
+              <h3 class="text-lg">Click to Replenish Unit</h3>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-   
-    </div>
-    <router-view v-else ></router-view>
+    <router-view v-else></router-view>
   </div>
   <transition name="fade-in">
-    <user-alert :show="showDeleteStateAlert" @hide="showAlertDeleteStateAlert = false">
-      <template v-slot:title>State {{draggedItem}} has been deleted.</template>
+    <user-alert
+      :show="showDeleteStateAlert"
+      @hide="showAlertDeleteStateAlert = false"
+    >
+      <template v-slot:title
+        >State {{ draggedItem }} has been deleted.</template
+      >
       <template v-slot:body>
-      The state {{ draggedItem }} no longer exist in the database!</template>
-      
+        The state {{ draggedItem }} no longer exist in the database!</template
+      >
     </user-alert>
   </transition>
 </template>
@@ -95,123 +125,91 @@ import AddStateModal from '@/components/AddStateModal.vue';
 import axios from 'axios';
 import ConfirmationModal from '../components/ConfirmationModal.vue';
 export default {
-  inject: ['clancraftUnits', 'stateList','currency','stateMap','sortObjectKeys'],
-  components:{
+  inject: [
+    'clancraftUnits',
+    'stateList',
+    'currency',
+    'stateMap',
+    'sortObjectKeys',
+  ],
+  components: {
     AddStateModal,
-    ConfirmationModal
+    ConfirmationModal,
   },
-  mounted(){
-      console.log(this.$route,'sakarada')
-    },
+  mounted() {},
   computed: {
     CCStateList() {
-     
-      return this.stateList.value
+      return this.$store.getters.getStateList;
     },
-    
   },
-  data(){
-    return{
+  data() {
+    return {
       showAddStateModal: false,
-      showConfirmationModal:false,
-      draggedItem:null,
-      isDragging:false,
-      isDraggingOverTrash:false,
+      showConfirmationModal: false,
+      draggedItem: null,
+      isDragging: false,
+      isDraggingOverTrash: false,
       showDeleteStateAlert: false,
-    }
+    };
   },
-  methods:{
-    async deleteState(name){
-
-
-  let response
-  console.log(this.currency.value[name],'uang')
-      try{
-     await axios.post('http://localhost:3000/api/delete-state',{
-        armyMap:name,
-        armyData:name,
-        currency:name
-      })
-
-      
-      }catch(error){
-        console.log(error)
-      }
-      console.log(response);
+  methods: {
+    deleteState(name) {
+      this.$store.dispatch('deleteState', name);
     },
-    async replenishAllUnits(){
-      let response;
-      try{
-        response = await axios.post('http://localhost:3000/api/replenish-all-units')
-      }catch(err){
-        throw new Error(err)
+
+    async replenishAllUnits() {
+      try {
+        await axios.post('http://localhost:3000/api/replenish-all-units');
+      } catch (err) {
+        throw new Error(err);
       }
-      console.log(response)
     },
-    replenishUnit(){
-      this.showConfirmationModal = false
+    replenishUnit() {
+      this.showConfirmationModal = false;
       this.replenishAllUnits();
     },
-    startDrag(evt,id){
-
-      this.isDragging = true
-      evt.dataTransfer.dropEffect = 'move'
-      evt.dataTransfer.effectAllowed='move'
+    startDrag(evt, id) {
+      this.isDragging = true;
+      evt.dataTransfer.dropEffect = 'move';
+      evt.dataTransfer.effectAllowed = 'move';
       this.draggedItem = id;
     },
-    onDrop(){
-    
-      console.log('karama',this.draggedItem)
+    onDrop() {
+      console.log('karama', this.draggedItem);
       this.showDeleteStateAlert = true;
-      setTimeout(()=>{
-        this.draggedItem = null,
-        this.showDeleteStateAlert = false
-      },1000)
-      this.deleteState(this.draggedItem)
+      setTimeout(() => {
+        (this.draggedItem = null), (this.showDeleteStateAlert = false);
+      }, 1000);
+      this.deleteState(this.draggedItem);
       this.isDragging = false;
- 
-  
-    }
-    ,
-    toggleModal(evt,property){
-      console.log(property,'property of his majesty');
-      this[property] = !this[property]
     },
-    async addNewState(stateData){
-      console.log
+    toggleModal(evt, property) {
+      console.log(property, 'property of his majesty');
+      this[property] = !this[property];
+    },
+
+    addNewState(stateData) {
       this.showAddStateModal = false;
-     const newCurrency = {
-       ...this.currency.value,
-       [stateData.name] : stateData.currency
-     }
-     console.log(this.currency.value)
+      const newCurrencyList = {
+        ...this.$store.getters.getCurrencyList,
+        [stateData.name]: stateData.currency,
+      };
 
-     console.log(this.currency.value,'money')
-     const newStateList = {
-       ...this.stateList.value,
-       [stateData.name] : stateData.id
-     }
+      const newStateList = {
+        ...this.$store.getters.getStateList,
+        [stateData.name]: stateData.id,
+      };
 
-     const newStateMap = {
-       ...this.stateMap.value,
-       [stateData.name]: stateData.map
-     }
-
-     console.log(this.sortObjectKeys(newStateList),'kalasar')
-   
-     localStorage.setItem('state-list',JSON.stringify(newStateList))
-      localStorage.setItem('state-map',JSON.stringify(newStateMap))
-      localStorage.setItem('currency',JSON.stringify(newCurrency))
-      try{
-        await axios.post('http://localhost:3000/api/add-new-state',{
-          armyMap: this.sortObjectKeys(newStateMap),
-          armyData: this.sortObjectKeys(newStateList),
-          currency: this.sortObjectKeys(newCurrency)
-        })
-      }catch(error){
-        throw new Error(error)
-      }
-    }
-  }
+      const newStateMap = {
+        ...this.$store.getters.getStateMap,
+        [stateData.name]: stateData.map,
+      };
+      this.$store.dispatch('addNewState', {
+        stateMap: newStateMap,
+        stateList: newStateList,
+        currency: newCurrencyList,
+      });
+    },
+  },
 };
 </script>

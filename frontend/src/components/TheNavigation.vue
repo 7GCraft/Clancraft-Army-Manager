@@ -25,9 +25,7 @@
         </li>
       </ul>
     </nav>
-    <nav>
-    
-    </nav>
+    <nav></nav>
   </header>
 </template>
 

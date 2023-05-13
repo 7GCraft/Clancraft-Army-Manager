@@ -1,11 +1,9 @@
 const fs = require('fs');
 const express = require('express');
-const helper = require('./helper')
-const path = require('path')
-
+const helper = require('./helper');
+const path = require('path');
 
 const app = express();
-
 
 const port = process.env.PORT || 3000;
 
@@ -21,13 +19,9 @@ app.use((req, res, next) => {
 });
 app.use(express.json());
 
-
-
 app.post('/api/save-army-data', (req, res) => {
   const data = req.body.armyData;
   const armyUrl = req.body.armyName;
-
-
 
   fs.writeFile(`./data/armies/${armyUrl}.json`, JSON.stringify(data), err => {
     if (err) {
@@ -57,18 +51,16 @@ app.get('/api/get-army-data', (req, res) => {
       res.send(data);
     });
   } else {
- 
     // handle file not found error
     res.status(200).send();
   }
 });
 
 app.get('/api/get-state-list', (req, res) => {
-
   const filePaths = {
     armyMap: './data/references/STATE_MAP.json',
     armyData: './data/references/STATE_ID.json',
-    currency: './data/references/Currency.json'
+    currency: './data/references/Currency.json',
   };
 
   const data = {};
@@ -79,7 +71,6 @@ app.get('/api/get-state-list', (req, res) => {
       data[key] = JSON.parse(fileData);
     }
   }
-  
 
   res.send(data);
 });
@@ -88,7 +79,7 @@ app.post('/api/add-new-state', (req, res) => {
   const filePaths = {
     armyMap: './data/references/STATE_MAP.json',
     armyData: './data/references/STATE_ID.json',
-    currency: './data/references/CURRENCY.json'
+    currency: './data/references/CURRENCY.json',
   };
   for (const [key, filePath] of Object.entries(filePaths)) {
     if (fs.existsSync(filePath)) {
@@ -106,9 +97,9 @@ app.post('/api/delete-state', (req, res) => {
   const filePaths = {
     armyMap: './data/references/STATE_MAP.json',
     armyData: './data/references/STATE_ID.json',
-    currency: './data/references/CURRENCY.json'
+    currency: './data/references/CURRENCY.json',
   };
-  
+
   for (const [key, filePath] of Object.entries(filePaths)) {
     if (fs.existsSync(filePath)) {
       fs.readFile(filePath, 'utf8', (err, data) => {
@@ -122,7 +113,7 @@ app.post('/api/delete-state', (req, res) => {
 
         // Check if the key exists in the JSON object
         if (jsonData.hasOwnProperty(req.body[key])) {
-          console.log(req.body[key])
+          console.log(req.body[key]);
           // Remove the key and its property
           delete jsonData[req.body[key]];
 
@@ -140,22 +131,26 @@ app.post('/api/delete-state', (req, res) => {
       });
     }
   }
-  
+
   res.send('Data deleted successfully');
 });
 
 app.post('/api/replenish-all-units', (req, res) => {
-  const folderPath = './data/armies/'
+  const folderPath = './data/armies/';
   const files = fs.readdirSync(folderPath); // get list of files in folder
 
-  files.forEach((file) => {
+  files.forEach(file => {
     if (file.endsWith('.json')) {
       const filePath = path.join(folderPath, file);
-      console.log(filePath)
+      console.log(filePath);
       const jsonData = require(`./${filePath}`);
 
-      jsonData.forEach((item) => {
-        item.Size = helper.replenishUnit(item.Tier,item.localStatus,item.Size)
+      jsonData.forEach(item => {
+        item.Size = helper.replenishUnit(
+          item.Tier,
+          item.localStatus,
+          item.Size
+        );
       });
 
       fs.writeFileSync(filePath, JSON.stringify(jsonData)); // write updated JSON data back to file
