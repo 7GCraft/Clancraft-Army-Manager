@@ -14,7 +14,7 @@
           <th>Base Upkeep</th>
           <th>Modifier</th>
           <th>Unit Upkeep</th>
-          <th>Location Status</th>
+          <th @click="toggleLocationStatus" class="hover:bg-green-300 active:bg-green-200">Location Status</th>
           <th>Army Sub-Structure</th>
           <th>Army Structure</th>
           <th>Delete Unit</th>
@@ -28,8 +28,8 @@
             v-for="(armyUnits, subStructure, subStructureIdx) in groupedArmy"
             :key="subStructure"
           >
-            <tr v-for="(unit, unitIdx) of armyUnits" :key="unit.Name">
-              <td>{{ unit.Number }}</td>
+            <tr  v-for="(unit, unitIdx) of armyUnits" :key="unit.Name">
+              <td @click="highlightRow($event,unit)">{{ unit.Number }}</td>
               <td @dblclick="selectDataCellToEdit(unit, 'Name')">
                 <input
                   class="w-72 px-2 mx-1"
@@ -73,15 +73,10 @@
                   calculateUnitSize(unit.Tier)
                 }}
               </td>
-              <td @dblclick="selectDataCellToEdit(unit, 'localStatus')">
-                <input
-                  class="px-2 w-10"
-                  :value="unit.localStatus"
-                  @keydown.enter="saveEdit($event, unit, 'localStatus')"
-                  v-if="checkIfUnitAndAttributeSelected(unit, 'localStatus')"
-                  type="text"
-                />
-                <template v-else>{{ unit.localStatus }}</template>
+              <td @click="changeUnitLocalStatus(unit)">
+              <button class="w-full h-full p-2 hover:bg-green-400 active:bg-green-300">
+               {{ unit.localStatus }}
+              </button>
               </td>
               <td v-if="unitIdx === 0" :rowspan="armyUnits.length">
                 {{ subStructure }}
@@ -144,7 +139,7 @@ import { saveAs } from 'file-saver';
 
 export default {
   props: ['armyList', 'baseUnit', 'armyName'],
-  emits: ['deleteRow', 'updateRow'],
+  emits: ['deleteRow', 'updateRow','updateTable'],
   inject: ['findUpkeep', 'unitUpkeep', 'calculateUnitSize', 'calculateUpkeep'],
   data() {
     return {
@@ -152,9 +147,11 @@ export default {
       selectedEditAttribute: null,
       tableData: [],
       showAlert: false,
+      selectedUnitIndexes: [],
     };
   },
   computed: {
+   
     groupedArmyList: function () {
       if (this.armyList.length == 0) {
         return {};
@@ -179,6 +176,55 @@ export default {
     },
   },
   methods: {
+    toggleLocationStatus(){
+      console.log(this.selectedUnitIndexes,'langus')
+      let newArmyList
+      if(this.selectedUnitIndexes.length <= 0){
+        newArmyList = this.armyList.map(unit => this.changeUnitLocalStatus(unit))
+        console.log(newArmyList[0].localStatus,'takusada')
+      }else{
+         newArmyList = [...this.armyList]
+       
+       for(let index of this.selectedUnitIndexes){
+        
+         newArmyList[index] = this.changeUnitLocalStatus[newArmyList[index]]
+       }
+      }
+
+    },
+    highlightRow(evt){
+      let targetRow = evt.target.parentNode
+      let targetUnitNumber = +evt.target.innerHTML
+      console.log(this.selectedUnitIndexes,'begin')
+      targetRow.classList.toggle('bg-red-100')
+      if(this.selectedUnitIndexes.includes(targetUnitNumber)){
+        const index = this.selectedUnitIndexes.indexOf(targetUnitNumber)
+        this.selectedUnitIndexes.splice(index,1)
+        console.log(index,'indexus')
+        console.log(this.selectedUnitIndexes,'HALABLOS')
+      }else {
+        this.selectedUnitIndexes.push(targetUnitNumber)
+        console.log(this.selectedUnitIndexes,'HALABLOS')
+      }
+      
+
+
+    },
+    changeUnitLocalStatus(unit){
+      console.log(unit,'russian unification')
+      if(unit.localStatus === 'F'){
+        unit.localStatus ='A'
+      }else if(unit.localStatus === 'A'){
+        unit.localStatus = 'E'
+      }else{
+        unit.localStatus = 'F'
+      }
+      return unit
+     
+    },
+    callUpdateRow(newRow){
+      this.$emit('updateRow',newRow);
+    },
     calculateGroupRowspan(groupedArmy) {
       return Object.values(groupedArmy).reduce(
         (totalUnits, units) => totalUnits + units.length,
@@ -195,7 +241,7 @@ export default {
       console.log('adraso"s death we mourn', unit);
       console.log('Turlan is the most superior race', targetAttribute);
       newUnit[targetAttribute] = evt.target.value;
-      this.$emit('updateRow', newUnit);
+      this.callUpdateRow(newUnit)
 
       this.beforeEditUnit = null;
       this.selectedEditAttribute = null;

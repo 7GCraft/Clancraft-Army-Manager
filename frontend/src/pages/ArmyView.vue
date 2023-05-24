@@ -12,6 +12,7 @@
       :armyName="armyName"
       :baseUnit="stateCurrency"
       @deleteRow="removeUnit"
+      @updateTable="updateArmy"
       @updateRow="updateUnit"
       :armyList="armyList"
     ></army-table>
@@ -40,19 +41,19 @@
       <add-unit-form
         :baseUnit="stateCurrency"
         v-if="formVisibility.showAddUnit"
-        @submit="updateArmy"
+        @submit="addNewUnits"
         :units="sortedAvailableUnits"
       ></add-unit-form>
 
       <unit-generator-form
         :baseUnit="stateCurrency"
         v-if="formVisibility.showUnitGenerator"
-        @add-units="updateArmy"
+        @add-units="addNewUnits"
         :units="sortedAvailableUnits"
       />
       <special-unit-form
         :baseUnit="stateCurrency"
-        @submit="updateArmy"
+        @submit="addNewUnits"
         v-if="formVisibility.showSpecialAddUnit"
       />
     </div>
@@ -136,10 +137,14 @@ export default {
       }
       return newArmy;
     },
-    updateArmy(newUnits) {
+    addNewUnits(newUnits){
       console.log(newUnits, 'laser');
       const newArmy = this.addBasicDetails(newUnits);
       const newArmyList = [...this.armyList, ...newArmy];
+      this.updateArmy(newArmyList)
+    },
+    updateArmy(newArmyList) {
+      
       localStorage.setItem(
         `armies/${this.armyName}`,
         JSON.stringify(newArmyList)
