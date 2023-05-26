@@ -28,8 +28,18 @@
             v-for="(armyUnits, subStructure, subStructureIdx) in groupedArmy"
             :key="subStructure"
           >
-            <tr  v-for="(unit, unitIdx) of armyUnits" :key="unit.Name">
-              <td @click="highlightRow($event)">{{ unit.Number }}</td>
+            <tr draggable="true"
+          
+             @dragstart="startUnitDrag($event,unit.Number)" 
+             
+             @dragend="endUnitDrag"  v-for="(unit, unitIdx) of armyUnits" :key="unit.Name">
+              <td @dragenter.prevent="onDragEnter"
+              @dragover.prevent
+              @drop.prevent="onDrop($event,'Number')"
+              @dragleave="onDragLeave"
+              :class="{'bg-yellow-100' : isDragging, 'cursor-move': isDragging}"
+              
+               @click="highlightRow($event)">{{ unit.Number }}</td>
               <td   :class="{ 'bg-blue-100': unit.Tier.includes('Ship') }" @dblclick="selectDataCellToEdit(unit, 'Name')">
                 <input
                   class="w-72 px-2 mx-1"
@@ -78,10 +88,23 @@
                {{ unit.localStatus }}
               </button>
               </td>
-              <td @click=" highlightRow($event,'SubStructure')" v-if="unitIdx === 0" :rowspan="armyUnits.length">
+              <td 
+              ref="structure"
+               @click=" highlightRow($event,'SubStructure')
+               " v-if="unitIdx === 0" :rowspan="armyUnits.length"
+                @dragenter.prevent="onDragEnter"
+                @dragover.prevent
+              @drop="onDrop($event,'Structure')"
+              @dragleave="onDragLeave"
+              :class="{'bg-yellow-100' : isDragging}">
                 {{ subStructure }}
               </td>
-              <td @click=" highlightRow($event,'Structure')"
+              <td ref="structure" @click=" highlightRow($event,'Structure')"
+              :class="{'bg-yellow-100' : isDragging,'cursor-move': isDragging,'cursor-pointer': true}"
+              @dragenter.prevent="onDragEnter"
+              @dragover.prevent
+              @drop="onDrop($event,'Structure')"
+              @dragleave="onDragLeave"
                 v-if="subStructureIdx === 0 && unitIdx === 0"
                 :rowspan="calculateGroupRowspan(groupedArmy)"
               >
@@ -148,11 +171,13 @@ export default {
       tableData: [],
       showAlert: false,
       selectedUnitIndexes: [],
+      draggedUnit: null,
+      draggedUnitIndex: null,
+      isDragging:false
     };
   },
   computed: {
-   
-    groupedArmyList: function () {
+      groupedArmyList: function () {
       if (this.armyList.length == 0) {
         return {};
       }
@@ -176,6 +201,68 @@ export default {
     },
   },
   methods: {
+    onDragEnter(evt){
+     
+      evt.target.classList.add('bg-yellow-200')
+    
+    },
+    onDragLeave(evt){
+     evt.target.classList.remove('bg-yellow-200')
+    },
+    onDrop(evt,mode){
+      console.log(mode,'rasengan')
+      let targetNumber
+   
+     
+      if(mode === 'Number'){
+        targetNumber = +evt.target.innerHTML
+        console.log(targetNumber)
+        console.log('where everything is',targetNumber)
+      }else{
+        let targetOrganization = evt.target.innerHTML
+        let targetUnit = this.armyList[0];
+        console.log(targetUnit[mode],'foundation')
+        let targetUnits = this.armyList.filter(unit=>unit[mode] === targetOrganization)
+        console.log(targetUnits,'what we seek')
+        targetNumber = targetUnits[0].Number
+
+      }
+      let newArmyList = [...this.armyList]
+      
+      let targetUnitIndex = newArmyList.findIndex(unit=>unit.Number == this.draggedUnitIndex)
+    
+      let targetUnit = newArmyList.splice(targetUnitIndex,1)[0]
+      let originalIndex = newArmyList.findIndex(unit=> unit.Number == targetNumber);
+      console.log(originalIndex,'here is the convict')
+      console.log('where everything is',targetNumber)
+      targetUnit.Number =targetNumber
+
+     
+      for(let unit of newArmyList){
+       if(unit.Number <= targetNumber){
+         unit.Number --;
+       }
+     }
+     newArmyList.splice(originalIndex,0,targetUnit)
+     this.$emit('updateTable',newArmyList)
+    
+   
+    },
+    startUnitDrag(evt,index){
+      this.isDragging = true
+      this.draggedUnit = evt.target
+      this.draggedUnitIndex = index
+      this.draggedUnit.classList.add('bg-blue-100')
+      let organizations = this.$refs.structure;
+      for(let organization of organizations){
+        organization.classList.add('bg-yellow-100')
+      }
+    },
+    endUnitDrag(){
+      this.isDragging = false
+
+      this.draggedUnit.classList.remove('bg-blue-100')
+    },
     toggleLocationStatus(){
       console.log(this.selectedUnitIndexes,'langus')
       let newArmyList
@@ -202,6 +289,7 @@ export default {
         let targetUnitIndexes = this.armyList.filter(unit=> unit[mode] == targetOrganization).map(unit=> unit.Number)
         console.log('targetus indexus',targetUnitIndexes)
         console.log('organi',targetOrganization)
+        this.selectedUnitIndexes = [...targetUnitIndexes]
       }else{
         let targetRow = evt.target.parentNode
       let targetUnitNumber = +evt.target.innerHTML
