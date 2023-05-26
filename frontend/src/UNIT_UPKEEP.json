@@ -26,5 +26,18 @@
   "Tier III Sword Infantry": 400,
   "Tier I Siege Weapon": 200,
   "Tier II Siege Weapon": 350,
-  "Tier III Siege Weapon": 600
+  "Tier III Siege Weapon": 600,
+  "Tier I Missile Ship": 150,
+  "Tier I Melee Ship": 100,
+  "Tier I Artillery Ship":250,
+  "Tier I Ramming Ship": 100,
+  "Tier I Fire Ship": 100,
+  "Tier II Missile Ship": 250,
+  "Tier II Melee Ship" : 200,
+  "Tier II Artillery Ship":400,
+  "Tier II Fire Ship": 200,
+  "Tier III Missile Ship" : 400,
+  "Tier III Melee Ship": 500,
+  "Tier III Artillery Ship": 700,
+  "Tier III Fire Ship": 400
 }
