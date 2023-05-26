@@ -29,8 +29,8 @@
             :key="subStructure"
           >
             <tr  v-for="(unit, unitIdx) of armyUnits" :key="unit.Name">
-              <td @click="highlightRow($event,unit)">{{ unit.Number }}</td>
-              <td @dblclick="selectDataCellToEdit(unit, 'Name')">
+              <td @click="highlightRow($event)">{{ unit.Number }}</td>
+              <td   :class="{ 'bg-blue-100': unit.Tier.includes('Ship') }" @dblclick="selectDataCellToEdit(unit, 'Name')">
                 <input
                   class="w-72 px-2 mx-1"
                   :value="unit.Name"
@@ -78,10 +78,10 @@
                {{ unit.localStatus }}
               </button>
               </td>
-              <td v-if="unitIdx === 0" :rowspan="armyUnits.length">
+              <td @click=" highlightRow($event,'SubStructure')" v-if="unitIdx === 0" :rowspan="armyUnits.length">
                 {{ subStructure }}
               </td>
-              <td
+              <td @click=" highlightRow($event,'Structure')"
                 v-if="subStructureIdx === 0 && unitIdx === 0"
                 :rowspan="calculateGroupRowspan(groupedArmy)"
               >
@@ -186,14 +186,24 @@ export default {
          newArmyList = [...this.armyList]
        
        for(let index of this.selectedUnitIndexes){
-        
-         newArmyList[index] = this.changeUnitLocalStatus[newArmyList[index]]
+         let targetUnit = newArmyList.find(unit=> unit.Number == index)
+        targetUnit = this.changeUnitLocalStatus(targetUnit)
        }
+       this.$emit('updateTable',newArmyList)
       }
 
     },
-    highlightRow(evt){
-      let targetRow = evt.target.parentNode
+    highlightRow(evt,mode){
+      if(mode === 'Structure' || mode === 'SubStructure'){
+        let targetRow = evt.target;
+        targetRow.classList.toggle('bg-red-100')
+        let targetOrganization = evt.target.innerHTML
+        console.log(this.armyList)
+        let targetUnitIndexes = this.armyList.filter(unit=> unit[mode] == targetOrganization).map(unit=> unit.Number)
+        console.log('targetus indexus',targetUnitIndexes)
+        console.log('organi',targetOrganization)
+      }else{
+        let targetRow = evt.target.parentNode
       let targetUnitNumber = +evt.target.innerHTML
       console.log(this.selectedUnitIndexes,'begin')
       targetRow.classList.toggle('bg-red-100')
@@ -206,6 +216,8 @@ export default {
         this.selectedUnitIndexes.push(targetUnitNumber)
         console.log(this.selectedUnitIndexes,'HALABLOS')
       }
+      }
+   
       
 
 

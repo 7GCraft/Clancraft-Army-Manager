@@ -24,8 +24,10 @@ export function calculateUnitSize(tier) {
     return 160;
   } else if (tier.includes('Cavalry')) {
     return 60;
-  } else {
+  } else if(tier.includes('Siege')) {
     return 40;
+  }else{
+    return 1
   }
 }
 
