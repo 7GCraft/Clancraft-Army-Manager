@@ -14,6 +14,7 @@ import recruitmentCost from './UNIT_RECRUITMENT.json';
 import {
   calculateUpkeep,
   calculateUnitSize,
+  compareUnits,
   findBaseUpkeep,
   findRecruitmentCost,
   generateOrdinalIndicator,
@@ -35,13 +36,13 @@ export default {
       findUpkeep: findBaseUpkeep,
       calculateUpkeep: calculateUpkeep,
       clancraftUnits: clancraftUnits,
+      compareUnits,
       unitUpkeep: unitUpkeep,
       calculateUnitSize: calculateUnitSize,
       findRecruitmentCost: findRecruitmentCost,
       recruitmentCost: recruitmentCost,
       generateOrdinalIndicator,
-
-      sortObjectKeys,
+      sortObjectKeys
     };
   },
   data() {

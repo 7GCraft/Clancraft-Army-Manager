@@ -55,3 +55,12 @@ export function sortObjectKeys(obj) {
       return result;
     }, {});
 }
+export function compareUnits(a,b){
+  if ( a.Number < b.Number ){
+return -1;
+}
+if ( a.Number > b.Number ){
+return 1;
+}
+return 0;
+}

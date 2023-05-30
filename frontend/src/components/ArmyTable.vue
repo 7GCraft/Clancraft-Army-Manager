@@ -163,7 +163,7 @@ import { saveAs } from 'file-saver';
 export default {
   props: ['armyList', 'baseUnit', 'armyName'],
   emits: ['deleteRow', 'updateRow','updateTable'],
-  inject: ['findUpkeep', 'unitUpkeep', 'calculateUnitSize', 'calculateUpkeep'],
+  inject: ['compareUnits','findUpkeep', 'unitUpkeep', 'calculateUnitSize', 'calculateUpkeep'],
   data() {
     return {
       beforeEditUnit: null,
@@ -212,39 +212,36 @@ export default {
     onDrop(evt,mode){
       console.log(mode,'rasengan')
       let targetNumber
-   
-     
+      let originalNumber;
+      let newArmyList = [...this.armyList]
       if(mode === 'Number'){
         targetNumber = +evt.target.innerHTML
-        console.log(targetNumber)
-        console.log('where everything is',targetNumber)
+        originalNumber = +this.draggedUnitIndex
+        let originalUnit = newArmyList.find(unit=>unit.Number === originalNumber)
+        let targetUnit = newArmyList.find(unit=>unit.Number === targetNumber)
+        originalUnit.Number= targetNumber
+        targetUnit.Number = originalNumber
       }else{
         let targetOrganization = evt.target.innerHTML
-        let targetUnit = this.armyList[0];
-        console.log(targetUnit[mode],'foundation')
+        let draggedUnit = this.armyList.find(unit=>unit.Number === this.draggedUnitIndex);
         let targetUnits = this.armyList.filter(unit=>unit[mode] === targetOrganization)
+        let newIndex = targetUnits[targetUnits.length-1].Number +1
+        draggedUnit[mode] = targetOrganization;
+        draggedUnit.Number = newIndex
         console.log(targetUnits,'what we seek')
-        targetNumber = targetUnits[0].Number
+        let counter = 1;
+        for(let unit of newArmyList){
+          unit.Number = counter;
+          counter++
+        }
 
       }
-      let newArmyList = [...this.armyList]
-      
-      let targetUnitIndex = newArmyList.findIndex(unit=>unit.Number == this.draggedUnitIndex)
-    
-      let targetUnit = newArmyList.splice(targetUnitIndex,1)[0]
-      let originalIndex = newArmyList.findIndex(unit=> unit.Number == targetNumber);
-      console.log(originalIndex,'here is the convict')
-      console.log('where everything is',targetNumber)
-      targetUnit.Number =targetNumber
-
      
-      for(let unit of newArmyList){
-       if(unit.Number <= targetNumber){
-         unit.Number --;
-       }
-     }
-     newArmyList.splice(originalIndex,0,targetUnit)
-     this.$emit('updateTable',newArmyList)
+     
+      newArmyList.sort(this.compareUnits)
+console.log(newArmyList,'the deay after')
+      this.$emit('updateTable',newArmyList)
+    
     
    
     },
@@ -276,12 +273,14 @@ export default {
          let targetUnit = newArmyList.find(unit=> unit.Number == index)
         targetUnit = this.changeUnitLocalStatus(targetUnit)
        }
+     
        this.$emit('updateTable',newArmyList)
       }
 
     },
     highlightRow(evt,mode){
       if(mode === 'Structure' || mode === 'SubStructure'){
+        this.selectedUnitIndexes = null;
         let targetRow = evt.target;
         targetRow.classList.toggle('bg-red-100')
         let targetOrganization = evt.target.innerHTML
