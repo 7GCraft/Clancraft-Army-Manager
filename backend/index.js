@@ -113,7 +113,6 @@ app.post('/api/delete-state', (req, res) => {
 
         // Check if the key exists in the JSON object
         if (jsonData.hasOwnProperty(req.body[key])) {
-    
           // Remove the key and its property
           delete jsonData[req.body[key]];
 

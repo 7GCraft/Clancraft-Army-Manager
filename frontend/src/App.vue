@@ -27,7 +27,6 @@ export default {
     TheNavigation,
   },
   created() {
-
     this.$store.dispatch('getStateData');
     console.log(this.$store, 'store to buy');
   },
@@ -42,7 +41,7 @@ export default {
       findRecruitmentCost: findRecruitmentCost,
       recruitmentCost: recruitmentCost,
       generateOrdinalIndicator,
-      sortObjectKeys
+      sortObjectKeys,
     };
   },
   data() {
@@ -52,7 +51,6 @@ export default {
       currency: [],
     };
   },
-
 };
 </script>
 

@@ -2,62 +2,64 @@
   <div
     class="h-fit pb-2 px-0 ml-0 mr-0 my-2 shadow-2xl inline-block border border-black grow"
   >
-  <h1
+    <h1
       class="text-white bg-black text-center font-bold py-3 text-2xl border border-black border-xl mb-2"
     >
       {{ armyName }}
     </h1>
     <div class="px-2">
-    <army-table
-      :armyName="armyName"
-      :baseUnit="stateCurrency"
-      @deleteRow="removeUnit"
-      @updateTable="updateArmy"
-      @updateRow="updateUnit"
-      :armyList="armyList"
-    ></army-table>
-    <div class="mb-4">
-      <button
-        @click="toggleForm('showAddUnit')"
-        class="active:bg-green-400 active:font-bold mx-2 hover:font-semibold hover:bg-green-500 h-12 border px-2 text-white border-black bg-green-600 mt-2"
-      >
-        {{ formVisibility.showAddUnit ? 'Close' : 'Open' }} Factional Unit Adder
-      </button>
-      <button
-        @click="toggleForm('showUnitGenerator')"
-        class="active:bg-sky-400 active:font-bold hover:font-semibold hover:bg-sky-500 h-12 border px-2 text-white border-black bg-sky-600 mt-2"
-      >
-        {{ formVisibility.showUnitGenerator ? 'Close' : 'Open' }} Unit Generator
-      </button>
-      <button
-        @click="toggleForm('showSpecialAddUnit')"
-        class="active:bg-yellow-400 active:font-bold mx-2 hover:font-semibold hover:bg-yellow-500 h-12 border px-2 text-white border-black bg-yellow-600 mt-2"
-      >
-        {{ formVisibility.showSpecialAddUnit ? 'Close' : 'Open' }} Special Unit
-        Adder
-      </button>
-    </div>
-    <div class="mb-8 mx-2">
-      <add-unit-form
+      <army-table
+        :armyName="armyName"
         :baseUnit="stateCurrency"
-        v-if="formVisibility.showAddUnit"
-        @submit="addNewUnits"
-        :units="sortedAvailableUnits"
-      ></add-unit-form>
+        @deleteRow="removeUnit"
+        @updateTable="updateArmy"
+        @updateRow="updateUnit"
+        :armyList="armyList"
+      ></army-table>
+      <div class="mb-4">
+        <button
+          @click="toggleForm('showAddUnit')"
+          class="active:bg-green-400 active:font-bold mx-2 hover:font-semibold hover:bg-green-500 h-12 border px-2 text-white border-black bg-green-600 mt-2"
+        >
+          {{ formVisibility.showAddUnit ? 'Close' : 'Open' }} Factional Unit
+          Adder
+        </button>
+        <button
+          @click="toggleForm('showUnitGenerator')"
+          class="active:bg-sky-400 active:font-bold hover:font-semibold hover:bg-sky-500 h-12 border px-2 text-white border-black bg-sky-600 mt-2"
+        >
+          {{ formVisibility.showUnitGenerator ? 'Close' : 'Open' }} Unit
+          Generator
+        </button>
+        <button
+          @click="toggleForm('showSpecialAddUnit')"
+          class="active:bg-yellow-400 active:font-bold mx-2 hover:font-semibold hover:bg-yellow-500 h-12 border px-2 text-white border-black bg-yellow-600 mt-2"
+        >
+          {{ formVisibility.showSpecialAddUnit ? 'Close' : 'Open' }} Special
+          Unit Adder
+        </button>
+      </div>
+      <div class="mb-8 mx-2">
+        <add-unit-form
+          :baseUnit="stateCurrency"
+          v-if="formVisibility.showAddUnit"
+          @submit="addNewUnits"
+          :units="sortedAvailableUnits"
+        ></add-unit-form>
 
-      <unit-generator-form
-        :baseUnit="stateCurrency"
-        v-if="formVisibility.showUnitGenerator"
-        @add-units="addNewUnits"
-        :units="sortedAvailableUnits"
-      />
-      <special-unit-form
-        :baseUnit="stateCurrency"
-        @submit="addNewUnits"
-        v-if="formVisibility.showSpecialAddUnit"
-      />
+        <unit-generator-form
+          :baseUnit="stateCurrency"
+          v-if="formVisibility.showUnitGenerator"
+          @add-units="addNewUnits"
+          :units="sortedAvailableUnits"
+        />
+        <special-unit-form
+          :baseUnit="stateCurrency"
+          @submit="addNewUnits"
+          v-if="formVisibility.showSpecialAddUnit"
+        />
+      </div>
     </div>
-  </div>
   </div>
 </template>
 <script>
@@ -67,14 +69,7 @@ import AddUnitForm from '@/components/AddUnitForm.vue';
 import UnitGeneratorForm from '@/components/UnitGeneratorForm.vue';
 import SpecialUnitForm from '@/components/SpecialUnitForm.vue';
 export default {
-  inject: [
- 
- 
-    'clancraftUnits',
-    'calculateUnitSize',
-    'findUpkeep',
-    'unitUpkeep',
-  ],
+  inject: ['clancraftUnits', 'calculateUnitSize', 'findUpkeep', 'unitUpkeep'],
   components: { ArmyTable, AddUnitForm, UnitGeneratorForm, SpecialUnitForm },
   created() {
     if (!Object.values(this.stateList).includes(this.$route.params.armyId)) {
@@ -102,8 +97,7 @@ export default {
         showAddUnit: true,
         showUnitGenerator: false,
         showSpecialAddUnit: false,
-      }
-
+      };
     },
   },
   methods: {
@@ -137,14 +131,13 @@ export default {
       }
       return newArmy;
     },
-    addNewUnits(newUnits){
+    addNewUnits(newUnits) {
       console.log(newUnits, 'laser');
       const newArmy = this.addBasicDetails(newUnits);
       const newArmyList = [...this.armyList, ...newArmy];
-      this.updateArmy(newArmyList)
+      this.updateArmy(newArmyList);
     },
     updateArmy(newArmyList) {
-      
       localStorage.setItem(
         `armies/${this.armyName}`,
         JSON.stringify(newArmyList)
@@ -157,29 +150,27 @@ export default {
       let method;
       let targetLink;
       let reqBody;
-      if(process.env.VUE_APP_DEPLOYMENT_TYPE === 'local'){
-        console.log(process.env.NODE_ENV,'yahallo')
-        targetLink = process.env.VUE_APP_SAVE_DATA_URL
-        method = 'post'
+      if (process.env.VUE_APP_DEPLOYMENT_TYPE === 'local') {
+        console.log(process.env.NODE_ENV, 'yahallo');
+        targetLink = process.env.VUE_APP_SAVE_DATA_URL;
+        method = 'post';
         reqBody = {
-            armyData: armyList,
-            armyName: this.armyName,
-        }
-        console.log('celebrashun')
-      }else{
-        method = 'put'
-        targetLink = process.env.VUE_APP_SAVE_DATA_URL+`/${this.armyName}.json`
+          armyData: armyList,
+          armyName: this.armyName,
+        };
+        console.log('celebrashun');
+      } else {
+        method = 'put';
+        targetLink =
+          process.env.VUE_APP_SAVE_DATA_URL + `/${this.armyName}.json`;
         reqBody = {
-          ...armyList
-        }
+          ...armyList,
+        };
       }
 
       let response;
       try {
-        response = await axios[method](
-          targetLink,
-          reqBody
-        );
+        response = await axios[method](targetLink, reqBody);
       } catch (err) {
         console.log(err);
         throw Error('Failed to save army data!');
@@ -190,20 +181,20 @@ export default {
       }
     },
     async fetchArmyList() {
-      let targetLink
-      console.log(process.env.VUE_APP_DEPLOYMENT_TYPE,'yahallo')
-      if(process.env.VUE_APP_DEPLOYMENT_TYPE === 'local'){
-        console.log(process.env.NODE_ENV,'yahallo')
-        targetLink = process.env.VUE_APP_GET_DATA_URL+`?armyName=${this.armyName}`
-      }else{
-        targetLink = process.env.VUE_APP_GET_DATA_URL+`/${this.armyName}.json`
+      let targetLink;
+      console.log(process.env.VUE_APP_DEPLOYMENT_TYPE, 'yahallo');
+      if (process.env.VUE_APP_DEPLOYMENT_TYPE === 'local') {
+        console.log(process.env.NODE_ENV, 'yahallo');
+        targetLink =
+          process.env.VUE_APP_GET_DATA_URL + `?armyName=${this.armyName}`;
+      } else {
+        targetLink =
+          process.env.VUE_APP_GET_DATA_URL + `/${this.armyName}.json`;
       }
 
       let response;
       try {
-        response = await axios.get(
-         targetLink
-        );
+        response = await axios.get(targetLink);
       } catch (err) {
         if (response.status != 404) {
           throw Error('Network error!!');
@@ -214,11 +205,9 @@ export default {
       if (200 < response.status && response.status < 300) {
         responseData = [];
       } else {
-   
-        responseData = response.data
-    
+        responseData = response.data;
       }
-    
+
       console.log(responseData, 'responsiveData');
       localStorage.setItem(
         `armies/${this.armyName}`,
@@ -265,12 +254,13 @@ export default {
       }
       return null;
     },
-    armyFaction(){
-      return this.stateMap[this.armyName]
+    armyFaction() {
+      return this.stateMap[this.armyName];
     },
     sortedAvailableUnits() {
       const availableUnits = this.clancraftUnits.filter(
-        unit => unit['CC Faction'] == this.armyFaction || unit['CC Faction'] === ''
+        unit =>
+          unit['CC Faction'] == this.armyFaction || unit['CC Faction'] === ''
       );
       return availableUnits.sort((a, b) =>
         a['CC Units'].localeCompare(b['CC Units'])
@@ -279,12 +269,12 @@ export default {
     stateCurrency() {
       return this.$store.getters.getCurrencyList[this.armyName];
     },
-    stateList(){
-      return this.$store.getters.getStateList
+    stateList() {
+      return this.$store.getters.getStateList;
     },
-    stateMap(){
-      return this.$store.getters.getStateMap
-    }
+    stateMap() {
+      return this.$store.getters.getStateMap;
+    },
   },
 };
 </script>

@@ -24,10 +24,10 @@ export function calculateUnitSize(tier) {
     return 160;
   } else if (tier.includes('Cavalry')) {
     return 60;
-  } else if(tier.includes('Siege')) {
+  } else if (tier.includes('Siege')) {
     return 40;
-  }else{
-    return 1
+  } else {
+    return 1;
   }
 }
 
@@ -55,12 +55,12 @@ export function sortObjectKeys(obj) {
       return result;
     }, {});
 }
-export function compareUnits(a,b){
-  if ( a.Number < b.Number ){
-return -1;
-}
-if ( a.Number > b.Number ){
-return 1;
-}
-return 0;
+export function compareUnits(a, b) {
+  if (a.Number < b.Number) {
+    return -1;
+  }
+  if (a.Number > b.Number) {
+    return 1;
+  }
+  return 0;
 }
