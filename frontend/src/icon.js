@@ -6,9 +6,11 @@ import {
   faFileExcel,
   faPlus,
   faBriefcaseMedical,
+  faUpload,
+  faDownload
 } from '@fortawesome/free-solid-svg-icons';
 
 // Add icons to the library
-library.add(faTrash, faX, faFileExcel, faPlus, faBriefcaseMedical);
+library.add(faTrash, faX, faFileExcel, faPlus, faBriefcaseMedical,faDownload,faUpload);
 
 export { FontAwesomeIcon };

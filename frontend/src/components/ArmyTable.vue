@@ -95,13 +95,20 @@
     </h2>
 
     <Teleport to="#app">
-      <div class="bg-gray-100 border-white flex flex-row w-1/2 sticky bottom-0 left-1/2">
-        <button v-if="this.armyList.length > 0" @click="exportTable" type="button">
+      <div class="bg-gray-50 rounded-pill border-gray-100 border-2 p-2  flex flex-row w-fit sticky bottom-0 left-1/2 space-x-4">
+        <button class="border rounded-full p-6 px-8 bg-green group hover:bg-green-500 flex flex-col space-y-2 items-center" v-if="this.armyList.length > 0" @click="exportTable" type="button">
 
-          <font-awesome-icon class="text-5xl text-green-500" icon="fa-solid fa-file-excel"></font-awesome-icon>
-          <h3 class="group-hover:font-semibold text-black">Save to excel</h3>
+          <font-awesome-icon class="text-5xl text-green-500 group-hover:text-white" icon="fa-solid fa-download"></font-awesome-icon>
+          <h3 class="text-xl group-hover:font-semibold group-hover:text-white text-black">Export Excel</h3>
         </button>
-        <input type="file" class="px-8 placeholder-none" @change="importExcel" />
+
+          <label for="import" class="p-6 px-8 rounded-full cursor-pointer group hover:bg-blue-500 border flex flex-col items-center space-y-2">  
+          <font-awesome-icon class="text-5xl text-blue-500 group-hover:text-white" icon="fa-solid fa-upload"></font-awesome-icon>
+          <h3 class="text-xl group-hover:font-semibold text-black group-hover:text-white">Import Excel</h3>
+        </label>
+          <input id="import" type="file" name="import" class="hidden placeholder-none opacity-0" @change="importExcel" />
+ 
+      
 
       </div>
     </Teleport>
@@ -141,6 +148,7 @@ export default {
       draggedUnitIndex: null,
       isDragging: false,
       importedUnits: [],
+      importedExcel: null
     };
   },
   computed: {
