@@ -122,11 +122,24 @@ export default {
         let targetUnit = this.sortedAvailableUnits.find(availableUnit=>{
           return unit['Unit Name'].includes(availableUnit['CC Units'])
         })
-        let newUnit = {...targetUnit,
-           Name:unit['Unit Name'],
+        let newUnit = {};
+        if(!targetUnit){
+          newUnit = {
+            Tier: `Tier ${unit['Tier Level']} ${unit['Type']}`,
+            Name:unit['Unit Name'],
+            Structure: unit['Structure'], 
+            Size:unit['Size'],
+            SubStructure: unit['Sub Structure'],
+
+          }
+        }else{
+            newUnit = {...targetUnit,
+              Name:unit['Unit Name'],
            Structure: unit['Structure'], 
            Size:unit['Size'],
            SubStructure: unit['Sub Structure']}
+        }
+ 
         newUnits.push(newUnit)
       }
       this.addNewUnits(newUnits)
