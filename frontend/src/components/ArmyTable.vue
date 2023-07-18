@@ -95,29 +95,38 @@
     </h2>
 
     <Teleport to="#app">
-      <div class="bg-gray-50 rounded-pill border-gray-100 border-2 p-2  flex flex-row w-fit sticky bottom-0 left-1/2 space-x-4">
-        <button class="border rounded-full p-6 px-8 bg-green group hover:bg-green-500 flex flex-col space-y-2 items-center" v-if="this.armyList.length > 0" @click="exportTable" type="button">
+      <div
+        class="bg-gray-50 rounded-pill border-gray-100 border-2 p-2  flex flex-row w-fit sticky bottom-0 left-1/2 space-x-4">
+        <button
+          class="active:bg-green-400 border rounded-full p-6 px-8 bg-green group hover:bg-green-500 flex flex-col space-y-2 items-center"
+          v-if="this.armyList.length > 0" @click="exportTable" type="button">
 
-          <font-awesome-icon class="text-5xl text-green-500 group-hover:text-white" icon="fa-solid fa-download"></font-awesome-icon>
+          <font-awesome-icon class="text-5xl text-green-500 group-hover:text-white"
+            icon="fa-solid fa-download"></font-awesome-icon>
           <h3 class="text-xl group-hover:font-semibold group-hover:text-white text-black">Export Excel</h3>
         </button>
 
-          <label for="import" class="p-6 px-8 rounded-full cursor-pointer group hover:bg-blue-500 border flex flex-col items-center space-y-2">  
-          <font-awesome-icon class="text-5xl text-blue-500 group-hover:text-white" icon="fa-solid fa-upload"></font-awesome-icon>
+        <label for="import"
+          class="button active:bg-blue-400 p-6 px-8 rounded-full cursor-pointer group hover:bg-blue-500 border flex flex-col items-center space-y-2">
+          <font-awesome-icon class="text-5xl text-blue-500 group-hover:text-white"
+            icon="fa-solid fa-upload"></font-awesome-icon>
           <h3 class="text-xl group-hover:font-semibold text-black group-hover:text-white">Import Excel</h3>
         </label>
-          <input id="import" type="file" name="import" class="hidden placeholder-none opacity-0" @change="importExcel" />
- 
-      
-
+        <input id="import" type="file" name="import" class="hidden placeholder-none opacity-0" @change="importExcel" />
       </div>
     </Teleport>
   </div>
   <transition name="fade-in">
-    <user-alert :show="showAlert" @hide="showAlert = false">
+    <user-alert :show="showExportAlert" @hide="showExportAlert = false">
       <template v-slot:title>Army data transported to Excel!</template>
       <template v-slot:body>The excel army data of state {{ armyName }} has been created in
         {{ armyName }}.xlsx</template>
+    </user-alert>
+  </transition>
+  <transition name="fade-in">
+    <user-alert :show="showImportAlert" @hide="showImportAlert = false">
+      <template v-slot:title>Excel data imported to App!</template>
+      <template v-slot:body>The excel data from {{ importedExcel }} consisting of {{ importedUnits.length }} have been added to the {{ armyName }}'s army list.</template>
     </user-alert>
   </transition>
 </template>
@@ -129,7 +138,7 @@ import { saveAs } from 'file-saver';
 
 export default {
   props: ['armyList', 'baseUnit', 'armyName'],
-  emits: ['deleteRow', 'updateRow', 'updateTable','importExcel'],
+  emits: ['deleteRow', 'updateRow', 'updateTable', 'importExcel'],
   inject: [
     'compareUnits',
     'findUpkeep',
@@ -142,13 +151,15 @@ export default {
       beforeEditUnit: null,
       selectedEditAttribute: null,
       tableData: [],
-      showAlert: false,
+      showExportAlert: false,
+      showImportAlert: false,
       selectedUnitIndexes: [],
       draggedUnit: null,
       draggedUnitIndex: null,
       isDragging: false,
       importedUnits: [],
-      importedExcel: null
+      importedExcel: '',
+   
     };
   },
   computed: {
@@ -184,6 +195,7 @@ export default {
     },
     importExcel(event) {
       const file = event.target.files[0];
+      this.importedExcel = file.name;
       const reader = new FileReader();
       reader.onload = (e) => {
         const data = new Uint8Array(e.target.result);
@@ -197,27 +209,35 @@ export default {
           let structure = 'Structure'
           let subStructure = 'Sub Structure'
           console.log(row[structure])
-          if(!row[structure]){
+          if (!row[structure]) {
             row[structure] = lastValues[structure]
-          }else{
+          } else {
             lastValues[structure] = row[structure]
           }
 
-          if(!row[subStructure]){
+          if (!row[subStructure]) {
             row[subStructure] = lastValues[subStructure]
-       
-          }else{
+
+          } else {
             lastValues[subStructure] = row[subStructure]
 
           }
           return row
-        
-        
+
+
         });
 
         // Assign the resulting JSON array to a data property or emit it as an event
         this.importedUnits = tableData;
-        this.$emit('importExcel',this.importedUnits)
+        this.$emit('importExcel', this.importedUnits)
+        this.showImportAlert = true;
+        setTimeout(() => {
+          this.showImportAlert = false;
+          this.importedUnits = []
+          this.importedExcel ='';
+        }, 3000);
+
+
       };
 
       reader.readAsArrayBuffer(file);
@@ -387,9 +407,9 @@ export default {
         type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
       });
       saveAs(excelBlob, `${this.armyName}.xlsx`);
-      this.showAlert = true;
+      this.showExportAlert = true;
       setTimeout(() => {
-        this.showAlert = false;
+        this.showExportAlert = false;
       }, 3000);
     },
   },
@@ -411,5 +431,4 @@ td {
   height: 20px;
   text-align: center;
   border: 2px solid;
-}
-</style>
+}</style>

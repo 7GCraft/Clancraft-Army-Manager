@@ -122,7 +122,11 @@ export default {
         let targetUnit = this.sortedAvailableUnits.find(availableUnit=>{
           return unit['Unit Name'].includes(availableUnit['CC Units'])
         })
-        let newUnit = {...targetUnit, Name:unit['Unit Name'],Structure: unit['Structure'], SubStructure: unit['Sub Structure']}
+        let newUnit = {...targetUnit,
+           Name:unit['Unit Name'],
+           Structure: unit['Structure'], 
+           Size:unit['Size'],
+           SubStructure: unit['Sub Structure']}
         newUnits.push(newUnit)
       }
       this.addNewUnits(newUnits)
@@ -131,16 +135,19 @@ export default {
       const newArmy = [];
       let newNumber = this.armyList.length + 1;
       for (let newUnit of newUnits) {
+       
         newUnit = {
           ...newUnit,
           Number: newNumber,
-          Size: this.calculateUnitSize(newUnit.Tier),
           upkeepModifier: 0,
           localStatus: 'F',
           BaseUpkeep:
             this.findUpkeep(newUnit.Tier, this.unitUpkeep) ||
             newUnit.baseUpkeep,
         };
+        if(!newUnit.Size){
+          newUnit.Size = this.calculateUnitSize(newUnit.Tier)
+        }
         newNumber++;
         newArmy.push(newUnit);
       }
