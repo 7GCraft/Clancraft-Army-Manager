@@ -14,6 +14,7 @@
         @deleteRow="removeUnit"
         @updateTable="updateArmy"
         @updateRow="updateUnit"
+        @importExcel="loadImportedUnits"
         :armyList="armyList"
       ></army-table>
       <div class="mb-4">
@@ -111,11 +112,25 @@ export default {
         }
       }
     },
+    loadImportedUnits(importedUnits){
+      console.log(importedUnits,'import barang')
+      let newUnits = []
+      console.log(this.armyList,'army list lebron')
+      for(let unit of importedUnits){
+        
+   
+        let targetUnit = this.sortedAvailableUnits.find(availableUnit=>{
+          return unit['Unit Name'].includes(availableUnit['CC Units'])
+        })
+        let newUnit = {...targetUnit, Name:unit['Unit Name'],Structure: unit['Structure'], SubStructure: unit['Sub Structure']}
+        newUnits.push(newUnit)
+      }
+      this.addNewUnits(newUnits)
+    },
     addBasicDetails(newUnits) {
       const newArmy = [];
       let newNumber = this.armyList.length + 1;
       for (let newUnit of newUnits) {
-        console.log(newUnit, 'nueva', this.calculateUnitSize, this.findUpkeep);
         newUnit = {
           ...newUnit,
           Number: newNumber,

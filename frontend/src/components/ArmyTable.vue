@@ -14,10 +14,7 @@
           <th>Base Upkeep</th>
           <th>Modifier</th>
           <th>Unit Upkeep</th>
-          <th
-            @click="toggleLocationStatus"
-            class="hover:bg-green-300 active:bg-green-200"
-          >
+          <th @click="toggleLocationStatus" class="hover:bg-green-300 active:bg-green-200">
             Location Status
           </th>
           <th>Army Sub-Structure</th>
@@ -25,45 +22,20 @@
           <th>Delete Unit</th>
         </tr>
 
-        <template
-          v-for="(groupedArmy, structure) in groupedArmyList"
-          :key="structure"
-        >
-          <template
-            v-for="(armyUnits, subStructure, subStructureIdx) in groupedArmy"
-            :key="subStructure"
-          >
-            <tr
-              draggable="true"
-              @dragstart="startUnitDrag($event, unit.Number)"
-              @dragend="endUnitDrag"
-              v-for="(unit, unitIdx) of armyUnits"
-              :key="unit.Name"
-            >
-              <td
-                @dragenter.prevent="onDragEnter"
-                @dragover.prevent
-                @drop.prevent="onDrop($event, 'Number')"
-                @dragleave="onDragLeave"
-                :class="{
+        <template v-for="(groupedArmy, structure) in groupedArmyList" :key="structure">
+          <template v-for="(armyUnits, subStructure, subStructureIdx) in groupedArmy" :key="subStructure">
+            <tr draggable="true" @dragstart="startUnitDrag($event, unit.Number)" @dragend="endUnitDrag"
+              v-for="(unit, unitIdx) of armyUnits" :key="unit.Name">
+              <td @dragenter.prevent="onDragEnter" @dragover.prevent @drop.prevent="onDrop($event, 'Number')"
+                @dragleave="onDragLeave" :class="{
                   'bg-yellow-100': isDragging,
                   'cursor-move': isDragging,
-                }"
-                @click="highlightRow($event)"
-              >
+                }" @click="highlightRow($event)">
                 {{ unit.Number }}
               </td>
-              <td
-                :class="{ 'bg-blue-100': unit.Tier.includes('Ship') }"
-                @dblclick="selectDataCellToEdit(unit, 'Name')"
-              >
-                <input
-                  class="w-72 px-2 mx-1"
-                  :value="unit.Name"
-                  @keydown.enter="saveEdit($event, unit, 'Name')"
-                  v-if="checkIfUnitAndAttributeSelected(unit, 'Name')"
-                  type="text"
-                />
+              <td :class="{ 'bg-blue-100': unit.Tier.includes('Ship') }" @dblclick="selectDataCellToEdit(unit, 'Name')">
+                <input class="w-72 px-2 mx-1" :value="unit.Name" @keydown.enter="saveEdit($event, unit, 'Name')"
+                  v-if="checkIfUnitAndAttributeSelected(unit, 'Name')" type="text" />
                 <template v-else>{{ unit.Name }}</template>
               </td>
               <td>{{ unit['Atilla Faction'] }}</td>
@@ -71,25 +43,16 @@
               <td>{{ unit.ID }}</td>
               <td>{{ unit.Tier }}</td>
               <td @dblclick="selectDataCellToEdit(unit, 'Size')">
-                <input
-                  class="w-16 px-1"
-                  :value="unit.Size"
-                  @keydown.enter="saveEdit($event, unit, 'Size')"
-                  v-if="checkIfUnitAndAttributeSelected(unit, 'Size')"
-                  type="number"
-                />
+                <input class="w-16 px-1" :value="unit.Size" @keydown.enter="saveEdit($event, unit, 'Size')"
+                  v-if="checkIfUnitAndAttributeSelected(unit, 'Size')" type="number" />
                 <template v-else>{{ unit.Size }}</template>
               </td>
               <td>{{ calculateUnitSize(unit.Tier) }}</td>
               <td>{{ unit.BaseUpkeep }}</td>
               <td @dblclick="selectDataCellToEdit(unit, 'upkeepModifier')">
-                <input
-                  class="w-16 px-1 mx-1"
-                  :value="unit.upkeepModifier"
+                <input class="w-16 px-1 mx-1" :value="unit.upkeepModifier"
                   @keydown.enter="saveEdit($event, unit, 'upkeepModifier')"
-                  v-if="checkIfUnitAndAttributeSelected(unit, 'upkeepModifier')"
-                  type="number"
-                />
+                  v-if="checkIfUnitAndAttributeSelected(unit, 'upkeepModifier')" type="number" />
                 <template v-else>{{ unit.upkeepModifier }}</template>
               </td>
               <td>
@@ -100,50 +63,26 @@
                 }}
               </td>
               <td @click="changeUnitLocalStatus(unit)">
-                <button
-                  class="w-full h-full p-2 hover:bg-green-400 active:bg-green-300"
-                >
+                <button class="w-full h-full p-2 hover:bg-green-400 active:bg-green-300">
                   {{ unit.localStatus }}
                 </button>
               </td>
-              <td
-                ref="structure"
-                @click="highlightRow($event, 'SubStructure')"
-                v-if="unitIdx === 0"
-                :rowspan="armyUnits.length"
-                @dragenter.prevent="onDragEnter"
-                @dragover.prevent
-                @drop="onDrop($event, 'Structure')"
-                @dragleave="onDragLeave"
-                :class="{ 'bg-yellow-100': isDragging }"
-              >
+              <td ref="structure" @click="highlightRow($event, 'SubStructure')" v-if="unitIdx === 0"
+                :rowspan="armyUnits.length" @dragenter.prevent="onDragEnter" @dragover.prevent
+                @drop="onDrop($event, 'Structure')" @dragleave="onDragLeave" :class="{ 'bg-yellow-100': isDragging }">
                 {{ subStructure }}
               </td>
-              <td
-                ref="structure"
-                @click="highlightRow($event, 'Structure')"
-                :class="{
-                  'bg-yellow-100': isDragging,
-                  'cursor-move': isDragging,
-                  'cursor-pointer': true,
-                }"
-                @dragenter.prevent="onDragEnter"
-                @dragover.prevent
-                @drop="onDrop($event, 'Structure')"
-                @dragleave="onDragLeave"
-                v-if="subStructureIdx === 0 && unitIdx === 0"
-                :rowspan="calculateGroupRowspan(groupedArmy)"
-              >
+              <td ref="structure" @click="highlightRow($event, 'Structure')" :class="{
+                'bg-yellow-100': isDragging,
+                'cursor-move': isDragging,
+                'cursor-pointer': true,
+              }" @dragenter.prevent="onDragEnter" @dragover.prevent @drop="onDrop($event, 'Structure')"
+                @dragleave="onDragLeave" v-if="subStructureIdx === 0 && unitIdx === 0"
+                :rowspan="calculateGroupRowspan(groupedArmy)">
                 {{ structure }}
               </td>
-              <td
-                class="cursor-pointer active:bg-red-300"
-                @click="deleteRow(unit)"
-              >
-                <font-awesome-icon
-                  icon="fa-solid fa-trash"
-                  class="text-red-400 border"
-                ></font-awesome-icon>
+              <td class="cursor-pointer active:bg-red-300" @click="deleteRow(unit)">
+                <font-awesome-icon icon="fa-solid fa-trash" class="text-red-400 border"></font-awesome-icon>
               </td>
             </tr>
           </template>
@@ -156,27 +95,22 @@
     </h2>
 
     <Teleport to="#app">
-      <button
-        v-if="this.armyList.length > 0"
-        @click="exportTable"
-        class="group h-24 text-xl sticky bottom-0 left-1/2 border-2 border-gray-200 shadow-lg border-b-0 hover:bg-green-200 bg-white text-white flex items-center px-8 py-3 space-x-5"
-        type="button"
-      >
-        <font-awesome-icon
-          class="text-5xl text-green-500"
-          icon="fa-solid fa-file-excel"
-        ></font-awesome-icon>
-        <h3 class="group-hover:font-semibold text-black">Save to excel</h3>
-      </button>
+      <div class="bg-gray-100 border-white flex flex-row w-1/2 sticky bottom-0 left-1/2">
+        <button v-if="this.armyList.length > 0" @click="exportTable" type="button">
+
+          <font-awesome-icon class="text-5xl text-green-500" icon="fa-solid fa-file-excel"></font-awesome-icon>
+          <h3 class="group-hover:font-semibold text-black">Save to excel</h3>
+        </button>
+        <input type="file" class="px-8 placeholder-none" @change="importExcel" />
+
+      </div>
     </Teleport>
   </div>
   <transition name="fade-in">
     <user-alert :show="showAlert" @hide="showAlert = false">
       <template v-slot:title>Army data transported to Excel!</template>
-      <template v-slot:body
-        >The excel army data of state {{ armyName }} has been created in
-        {{ armyName }}.xlsx</template
-      >
+      <template v-slot:body>The excel army data of state {{ armyName }} has been created in
+        {{ armyName }}.xlsx</template>
     </user-alert>
   </transition>
 </template>
@@ -188,7 +122,7 @@ import { saveAs } from 'file-saver';
 
 export default {
   props: ['armyList', 'baseUnit', 'armyName'],
-  emits: ['deleteRow', 'updateRow', 'updateTable'],
+  emits: ['deleteRow', 'updateRow', 'updateTable','importExcel'],
   inject: [
     'compareUnits',
     'findUpkeep',
@@ -206,6 +140,7 @@ export default {
       draggedUnit: null,
       draggedUnitIndex: null,
       isDragging: false,
+      importedUnits: [],
     };
   },
   computed: {
@@ -227,7 +162,7 @@ export default {
         (sum, unit) =>
           sum +
           this.calculateUpkeep(unit.BaseUpkeep, unit.upkeepModifier) *
-            (unit.Size / this.calculateUnitSize(unit.Tier)),
+          (unit.Size / this.calculateUnitSize(unit.Tier)),
         0
       );
     },
@@ -239,6 +174,47 @@ export default {
     onDragLeave(evt) {
       evt.target.classList.remove('bg-yellow-200');
     },
+    importExcel(event) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const data = new Uint8Array(e.target.result);
+        const workbook = XLSX.read(data, { type: 'array' });
+        const sheetName = workbook.SheetNames[0];
+        const sheet = workbook.Sheets[sheetName];
+        const jsonData = XLSX.utils.sheet_to_json(sheet);
+        const lastValues = {};
+        const tableData = jsonData.map((row) => {
+
+          let structure = 'Structure'
+          let subStructure = 'Sub Structure'
+          console.log(row[structure])
+          if(!row[structure]){
+            row[structure] = lastValues[structure]
+          }else{
+            lastValues[structure] = row[structure]
+          }
+
+          if(!row[subStructure]){
+            row[subStructure] = lastValues[subStructure]
+       
+          }else{
+            lastValues[subStructure] = row[subStructure]
+
+          }
+          return row
+        
+        
+        });
+
+        // Assign the resulting JSON array to a data property or emit it as an event
+        this.importedUnits = tableData;
+        this.$emit('importExcel',this.importedUnits)
+      };
+
+      reader.readAsArrayBuffer(file);
+    },
+
     onDrop(evt, mode) {
       console.log(mode, 'rasengan');
       let targetNumber;
@@ -416,11 +392,13 @@ export default {
   width: 100%;
   border: 2px solid;
 }
+
 th {
   height: 20px;
   text-align: center;
   border: 2px solid;
 }
+
 td {
   height: 20px;
   text-align: center;

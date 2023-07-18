@@ -76,7 +76,7 @@
                         {{ value }}
                       </option>
                     </select>
-                    <input type="file" @change="importExcel"/>
+                   
                   </div>
                 </form>
               </div>
@@ -107,7 +107,7 @@
 </template>
 
 <script>
-import * as XLSX from 'xlsx';
+
 export default {
   props: ['show'],
   emits: ['closeModal', 'submitModal'],
@@ -134,33 +134,7 @@ export default {
     };
   },
   methods: {
-    importExcel(event){
-      const file = event.target.files[0];
-      const reader = new FileReader();
-
-      reader.onload = (e) => {
-        const data = new Uint8Array(e.target.result);
-        const workbook = XLSX.read(data, { type: 'array' });
-        const sheetName = workbook.SheetNames[0];
-        const sheet = workbook.Sheets[sheetName];
-        const jsonData = XLSX.utils.sheet_to_json(sheet);
-        const tableData = jsonData.map((row) => {
-          const newObj = {};
-          Object.keys(row).forEach((key) => {
-            console.log(row,'row',key,'key')
-            const header = key;
-            const value = row[key];
-            newObj[header] = value;
-          });
-          return newObj;
-        });
-
-        // Assign the resulting JSON array to a data property or emit it as an event
-        console.log(tableData)
-      };
-
-      reader.readAsArrayBuffer(file);
-    },
+   
   }
 };
 </script>
