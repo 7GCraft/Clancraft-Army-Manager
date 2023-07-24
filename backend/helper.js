@@ -6,6 +6,8 @@ function replenishUnit(tier, locationStatus, currentSize) {
     size = 60;
   } else if (tier.includes('Siege')) {
     size = 40;
+  }else if(tier.includes('Ship')){
+    size = 1;
   }
 
   if (locationStatus === 'A') {
