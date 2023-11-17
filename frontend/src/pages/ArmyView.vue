@@ -120,7 +120,7 @@ export default {
         console.log(unit,'unit')
    
         let targetUnit = this.sortedAvailableUnits.find(availableUnit=>{
-         
+          unit['Unit Name'] = unit['Unit Name'].replace('*','')
           return unit['Unit Name'].includes(availableUnit['CC Units']) || availableUnit['CC Units'].includes(unit['Unit Name'])
         })
         console.log(this.sortedAvailableUnits,'mas bro ada ga ya')
