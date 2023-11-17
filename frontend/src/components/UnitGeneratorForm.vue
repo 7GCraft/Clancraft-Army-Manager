@@ -4,7 +4,7 @@
       <h3 class="px-2 text-lg text-white bg-black">Unit Generator</h3>
       <form class="border border-black px-2" @submit.prevent="addUnits">
         <div class="form-control mt-1">
-          <label class="mr-28">Mode </label>
+          <label class="mr-16">Mode </label>
           <input
             type="radio"
             class="mr-1"
@@ -21,6 +21,14 @@
             v-model="mode"
           />
           <label for="feudal" class="mr-1">Feudal</label>
+          <input
+            type="radio"
+            class="mr-1"
+            value="conscript"
+            name="conscript"
+            v-model="mode"
+          />
+          <label for="conscript" class="mr-1">Conscript</label>
         </div>
         <div class="form-control mt-2">
           <label for="size" class="mr-[89px]">Army Size</label>
@@ -159,7 +167,8 @@ export default {
             !name.includes('noble') &&
             !name.includes('cavalry') &&
             !name.includes('knight') &&
-            !unit.Tier.includes('Tier III')
+            !unit.Tier.includes('Tier III') &&
+            !unit.Tier.includes('cavalry')
           );
         });
         const nobleArmy = this.generateUnits(nobleUnits, nobleSize, 0);
@@ -171,13 +180,32 @@ export default {
         const combinedArmy = [...nobleArmy, ...levyArmy];
         this.addUnitStructure(combinedArmy);
         this.generatedUnits = [...this.generatedUnits, ...combinedArmy];
-      } else {
+      } else if(this.mode === 'normal') {
         const newUnits = this.generateUnits(this.units, this.generationSize, 0);
         this.addUnitStructure(newUnits);
         this.generatedUnits = [...this.generatedUnits, ...newUnits];
+      }else{
+        console.log('we are here?')
+        const conscriptUnits = this.units.filter(unit => {
+          const name = unit['CC Units'].toLowerCase();
+          return (
+            !name.includes('samurai') &&
+            !name.includes('noble') &&
+            !name.includes('cavalry') &&
+            !name.includes('knight') &&
+            !unit.Tier.includes('Tier II') &&
+            !unit.Tier.includes('Tier III') &&
+            !unit.Tier.includes('cavalry')
+          );
+        });
+        console.log(this.generationSize,'size matters?')
+        const conscriptArmy = this.generateUnits(conscriptUnits,this.generationSize,0);
+        this.addUnitStructure(conscriptArmy)
+        this.generatedUnits = [...this.generatedUnits,...conscriptArmy]
       }
 
-      (this.mode = 'normal'), (this.generationSize = 0);
+      this.mode = 'normal' 
+      this.generationSize = 0;
       this.generatedArmyStructure = '';
       this.generatedArmySubStructure = '';
     },
