@@ -208,11 +208,19 @@ export default {
 
           let structure = 'Structure'
           let subStructure = 'Sub Structure'
-          console.log(row[structure])
+        
+          console.log(row,'mas bljr structure ya',lastValues[structure])
+          if(row[structure] && row[structure] !== lastValues[structure]){
+            lastValues[subStructure] = ''
+          }
+          
           if (!row[structure]) {
             row[structure] = lastValues[structure]
           } else {
             lastValues[structure] = row[structure]
+          }
+          if(row[structure] === undefined){
+            row[structure] = ''
           }
 
           if (!row[subStructure]) {
@@ -222,6 +230,11 @@ export default {
             lastValues[subStructure] = row[subStructure]
 
           }
+        
+          if(row[subStructure] === undefined){
+            row[subStructure] = ''
+          }
+          
           return row
 
 
