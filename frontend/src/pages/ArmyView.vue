@@ -115,13 +115,13 @@ export default {
     loadImportedUnits(importedUnits){
       console.log(importedUnits,'import barang')
       let newUnits = []
-      console.log(this.armyList,'army list lebron')
+      console.log(this.sortedAvailableUnits,'army list lebron')
       for(let unit of importedUnits){
         console.log(unit,'unit')
    
         let targetUnit = this.sortedAvailableUnits.find(availableUnit=>{
          
-          return unit['Unit Name'].includes(availableUnit['CC Units'])
+          return unit['Unit Name'].includes(availableUnit['CC Units']) || availableUnit['CC Units'].includes(unit['Unit Name'])
         })
         console.log(this.sortedAvailableUnits,'mas bro ada ga ya')
         let newUnit = {};
