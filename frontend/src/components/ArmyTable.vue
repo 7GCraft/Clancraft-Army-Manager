@@ -69,7 +69,7 @@
               </td>
               <td ref="structure" @click="highlightRow($event, 'SubStructure')" v-if="unitIdx === 0"
                 :rowspan="armyUnits.length" @dragenter.prevent="onDragEnter" @dragover.prevent
-                @drop="onDrop($event, 'Structure')" @dragleave="onDragLeave" :class="{ 'bg-yellow-100': isDragging }">
+                @drop="onDrop($event, 'SubStructure')" @dragleave="onDragLeave" :class="{ 'bg-yellow-100': isDragging }">
                 {{ subStructure }}
               </td>
               <td ref="structure" @click="highlightRow($event, 'Structure')" :class="{
