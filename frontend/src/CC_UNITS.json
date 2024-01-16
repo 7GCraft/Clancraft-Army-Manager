@@ -890,7 +890,7 @@
   {
     "CC Units": "Chinese Imperial Infantry",
     "Atilla Units": "Legio Comitatenses",
-    "Tier": "Tier III Sword Infantry",
+    "Tier": "Tier II Sword Infantry",
     "CC Faction": "Longquan",
     "Atilla Faction": "Western Roman Empire",
     "ID": "LQ09"
@@ -929,8 +929,8 @@
   },
   {
     "CC Units": "Chinese Archers",
-    "Atilla Units": "Sagitarii",
-    "Tier": "Tier I Melee Cavalry",
+    "Atilla Units": "Sagitarii*",
+    "Tier": "Tier I Bow Infantry",
     "CC Faction": "Longquan",
     "Atilla Faction": "Western Roman Empire",
     "ID": "LQ14"
