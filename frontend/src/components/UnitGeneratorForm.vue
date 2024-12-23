@@ -151,24 +151,18 @@ export default {
         const nobleSize = Math.round((this.generationSize * 2) / 10);
         const levySize = Math.round((this.generationSize * 8) / 10);
         const nobleUnits = this.units.filter(unit => {
-          const name = unit['CC Units'].toLowerCase();
+          console.log(unit.Tier.toLowerCase(),"tapejara")
           return (
-            name.includes('samurai') ||
-            name.includes('noble') ||
-            name.includes('cavalry') ||
-            name.includes('knight') ||
-            unit.Tier.includes('Tier III')
+            unit.Tier.toLowerCase().includes('cavalry')||
+            unit.Tier.toLowerCase().includes('tier ii')||
+            unit.Tier.toLowerCase().includes('tier iii')
           );
         });
         const levyUnits = this.units.filter(unit => {
-          const name = unit['CC Units'].toLowerCase();
           return (
-            !name.includes('samurai') &&
-            !name.includes('noble') &&
-            !name.includes('cavalry') &&
-            !name.includes('knight') &&
-            !unit.Tier.includes('Tier III') &&
-            !unit.Tier.includes('cavalry')
+            !unit.Tier.toLowerCase().includes('cavalry') &&
+            !unit.Tier.toLowerCase().includes('tier ii') &&
+            !unit.Tier.toLowerCase().includes('tier iii')
           );
         });
         const nobleArmy = this.generateUnits(nobleUnits, nobleSize, 0);
